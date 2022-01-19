@@ -1,0 +1,249 @@
+<html lang="en" class="">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex">
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.iconninja.com/files/518/627/701/pokeball-icon.png">
+    <link rel="mask-icon" type=""
+        href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg"
+        color="#111">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="stile.css">
+    <style class="INLINE_PEN_STYLESHEET_ID">
+        @import url("https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300,700");
+    </style>
+
+    <!--import carte-->
+
+    <!--<script type="text/javascript" src="automaton.js"></script>-->
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+</head>
+
+<body>
+    <button id="settings"> <img src="./img/settings_pokemon.png"></button>
+    <div id="settingsBar" style="display: none;">
+        <!-- <button class="backgroundSettings" id="backgroundSettings0"><img src="./img/background0.png"></button> -->
+    </div>
+    <!--Scelta dei pokemon-->
+
+    <a href="battle.html">
+        <!-- https://textcraft.net/style/Textcraft/pokemon -->
+        <img src="img/Pokemon_zuccante.png" id="titleImg" style="margin:1% 0 1%; padding-right: 5%;">
+    </a>
+
+
+    <!-- Carta di sinistra-->
+    <div id="leftNotification" class="notification">
+        <span id="leftNotificationSpan"> </span>
+    </div>
+    <div id="card">
+        <div id="leftCard" style="float: left;">
+            <div class="teamNameDiv" id="leftTeamNameDiv">
+                <span class="teamName" id="leftTeamName"></span>
+            </div>
+            <figure id="left__card__type" class="card">
+                <!--style="visibility: hidden"-->
+                <div class="card__image-container">
+                    <img id="left_image" class="card__image card:after" src="img/question mark.png">
+                </div>
+                <figcaption class="card__caption">
+
+                    <div class="parentHp">
+                        <div class="hp" id="leftHp">
+                            <div id="leftHpPercent">100%</div>
+                        </div>
+                    </div>
+
+                    <h1 id="left__card__name" class="card__name">Pokemon Name</h1>
+
+                    <h3 id="left_top" class="card__type ">???</h3>
+
+                    <table class="card__stats">
+
+                        <tbody>
+                            <tr>
+                                <th>HP</th>
+                                <td id="left-pokemon-hp">???</td>
+                            </tr>
+                            <tr>
+                                <th>Attack</th>
+                                <td id="left_pokemon_attack">???</td>
+                            </tr>
+                            <tr>
+                                <th>Defense</th>
+                                <td id="left_pokemon_defense">???</td>
+                            </tr>
+                            <tr>
+                                <th>Special Attack</th>
+                                <td id="left_pokemon_special_attack">???</td>
+                            </tr>
+                            <tr>
+                                <th>Special Defense</th>
+                                <td id="left_pokemon_special_defense">???</td>
+                            </tr>
+                            <tr>
+                                <th>Speed</th>
+                                <td id="left_pokemon_speed">???</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="card__abilities">
+                        <h4 class="card__ability">
+                            <span class="card__label">Ability</span>
+                            <div id="left_ability">???</div>
+                        </h4>
+                        <h4 class="card__ability">
+                            <span class="card__label">Hidden Ability</span>
+                            <div id="left_hidden_ability">???</div>
+                        </h4>
+                    </div>
+                </figcaption>
+            </figure>
+
+            <div id="leftDiv" class="underCard">
+                <form id="leftInputForm" onsubmit="return false;" autocomplete="off" class="autocomplete">
+                    <div class="userInputDiv">
+                        <input class="input" id="leftUserInput" type="text" name="myPokemon"
+                            placeholder="Pokemon (name/id)">
+                        <button class="submitButton" id="leftSubmitButton">GO!</button>
+                    </div>
+                    <button id="leftMic" class="micButton leftButton"></button>
+                    <button class="randomButton leftButton" id="leftRandomButton">RANDOM</button>
+                    <button id="leftResetButton" class="resetButton" style="display: none;"> RESET </button>
+                </form>
+            </div>
+        </div>
+        <!-- fine carta di sinistra-->
+        <!-- <button onclick="remove()">AAAA</button>-->
+
+        <!--inizio carta di destra-->
+        <div id="rightCard" style="float: right;">
+            <div class="teamNameDiv" id="rightTeamNameDiv">
+                <span class="teamName" id="rightTeamName"></span>
+            </div>
+            <figure id="right__card__type" class="card">
+                <!--style="visibility: hidden"-->
+                <div class="card__image-container ">
+                    <img id="right_image" class="card__image" src="img/question mark.png">
+                </div>
+                <figcaption class="card__caption">
+                    <div class="parentHp">
+                        <div class="hp" id="rightHp">
+                            <div id="rightHpPercent">100%</div>
+                        </div>
+                    </div>
+
+                    <h1 id="right__card__name" class="card__name">Pokemon Name</h1>
+
+                    <h3 id="right_top" class="card__type">???
+                    </h3>
+
+                    <table class="card__stats">
+                        <tbody>
+                            <tr>
+                                <th>HP</th>
+                                <td id="right-pokemon-hp">???</td>
+                            </tr>
+                            <tr>
+                                <th>Attack</th>
+                                <td id="right_pokemon_attack">???</td>
+                            </tr>
+                            <tr>
+                                <th>Defense</th>
+                                <td id="right_pokemon_defense">???</td>
+                            </tr>
+                            <tr>
+                                <th>Special Attack</th>
+                                <td id="right_pokemon_special_attack">???</td>
+                            </tr>
+                            <tr>
+                                <th>Special Defense</th>
+                                <td id="right_pokemon_special_defense">???</td>
+                            </tr>
+                            <tr>
+                                <th>Speed</th>
+                                <td id="right_pokemon_speed">???</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="card__abilities">
+                        <h4 class="card__ability">
+                            <span class="card__label">Ability</span>
+                            <div id="right_ability">???</div>
+                        </h4>
+                        <h4 class="card__ability">
+                            <span class="card__label">Hidden Ability</span>
+                            <div id="right_hidden_ability">???</div>
+                        </h4>
+                    </div>
+                </figcaption>
+            </figure>
+
+            <div id="rightDiv" class="underCard">
+                <form id="rightInputForm" onsubmit="return false;" autocomplete="off" class="autocomplete">
+                    <div class="userInputDiv">
+                        <input class="input" id="rightUserInput" type="text" name="myPokemon"
+                            placeholder="Pokemon (name/id)">
+                        <button class="submitButton" id="rightSubmitButton">GO!</button>
+                    </div>
+                    <button class="randomButton rightButton" id="rightRandomButton"
+                        title="Call a RANDOM pokemon!">RANDOM</button>
+                    <button id="rightMic" class="micButton rightButton"></button>
+                    <!-- <input class="input submitButton" type="submit" id="rightSubmitButton" onclick="rightPokemonSelector();" />-->
+
+                    <button id="rightResetButton" class="resetButton" style="display: none;"> RESET </button>
+                </form>
+            </div>
+        </div>
+        <!-- fine rightCard-->
+    </div>
+
+    <div id="rightNotification" class="notification">
+        <span id="rightNotificationSpan"> </span>
+    </div>
+
+    <div id="rightMiniaturesDiv" class="miniaturesDiv">
+        <div class="miniatures"></div>
+        <div class="miniatures"></div>
+        <div class="miniatures"></div>
+        <div class="miniatures"></div>
+        <div class="miniatures"></div>
+        <div class="miniatures"></div>
+    </div>
+
+    <div id="leftMiniaturesDiv" class="miniaturesDiv">
+        <div class="miniatures"></div>
+        <div class="miniatures"></div>
+        <div class="miniatures"></div>
+        <div class="miniatures"></div>
+        <div class="miniatures"></div>
+        <div class="miniatures"></div>
+    </div>
+
+    <!--MUSICA-->
+    <button class="music_button" id="onoff" onclick="onoff();">Sound on</button>
+    <!--MUSICA-->
+
+    <div id="results" style="visibility: hidden"></div>
+    <br>
+    <div id="interim" style="visibility: hidden"></div>
+    <br>
+</body>
+
+<script>
+    let turn;
+</script>
+
+<script type="text/javascript" src="/javascript/music.js"></script>
+<!-- <script type="module" src="/javascript/fight/fight.js"></script> -->
+<!-- <script type="module" src="/javascript/speech.js"></script> -->
+
+</html>

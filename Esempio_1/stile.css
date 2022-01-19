@@ -1,0 +1,660 @@
+* {
+	font-family: Verdana, Arial, sans-serif;
+	box-sizing: border-box;
+	outline: none !important;
+	list-style-type: none;
+}
+
+#settingsBar {
+	overflow: scroll;
+	top: 95px;
+	position: absolute;
+	background-color: #eee;
+	width: 20%;
+	height: 60%;
+}
+
+.teamNameDiv {
+
+	width: 92%;
+	margin-left: 8%;
+	margin-bottom: 10px;
+
+
+}
+
+.teamName {
+
+	text-decoration: underline;
+	font-size: 2em;
+	font-weight: 1000;
+}
+
+#settings {
+	margin-top: 10px;
+	margin-left: 10px;
+	float: left;
+	height: 80px;
+	width: 80px;
+}
+
+#settings img {
+	width: 100%;
+}
+
+div#rightMiniaturesDiv {
+	height: 10%;
+	width: 30%;
+	position: absolute;
+	top: 78%;
+	left: 60%;
+}
+
+div#leftMiniaturesDiv {
+	height: 10%;
+	width: 30%;
+	position: absolute;
+	top: 78%;
+	left: 11%;
+}
+
+
+div.miniatures {
+	border-radius: 15px;
+	position: relative;
+	height: 100%;
+	width: calc(100%/6);
+	background-color: #bbb;
+	float: right;
+	border: 1px solid black;
+}
+
+.main {
+	margin: auto;
+	width: 50%;
+}
+
+.parentHp {
+	visibility: hidden;
+}
+
+div#leftCard,
+div#rightCard {
+	width: 300px;
+	position: relative;
+}
+
+.divUnderCard {
+	margin-top: 10px;
+}
+
+.movesDiv {
+	display: none;
+}
+
+@media (min-width: 1601px) {
+	#infoMoves {
+		display: block;
+	}
+
+	button.music_button {
+		display: inline-block;
+	}
+
+	#leftCard {
+		left: 25%;
+	}
+
+	#rightCard {
+		right: 25%;
+	}
+}
+
+@media (min-width: 1055px) and (max-width: 1600px) {
+	#infoMoves {
+		display: block;
+	}
+
+	button.music_button {
+		display: inline-block;
+	}
+
+	#leftCard {
+		left: 21%;
+	}
+
+	#rightCard {
+		right: 19%;
+	}
+}
+
+@media (max-width: 1522px) {
+	#infoMoves {
+		display: none;
+	}
+}
+
+@media (min-width: 791px) and (max-width: 1054px) {
+	#infoMoves {
+		display: none;
+	}
+
+	button.music_button {
+		display: none;
+	}
+
+	#leftCard {
+		left: 10%;
+	}
+
+	#rightCard {
+		right: 10%;
+	}
+}
+
+@media (min-width: 601px) and (max-width: 790px) {
+	#infoMoves {
+		display: none;
+	}
+
+	button.music_button {
+		display: none;
+	}
+
+	#leftCard {
+		left: 0;
+	}
+
+	#rightCard {
+		right: 0;
+	}
+}
+
+@media (max-width: 600px) {
+	#infoMoves {
+		display: none;
+	}
+
+	button.music_button {
+		display: none;
+	}
+
+	#leftCard {
+		display: none;
+	}
+
+	#rightCard {
+		right: 24%;
+	}
+}
+
+body {
+	font-family: "Open Sans", Helvetica, sans-serif;
+	text-align: center;
+	/*margin: 20px;*/
+	/* background-image: url("img/backgrounds/background15.jpg"); */
+	/*background-image: linear-gradient(115deg, transparent 0%, rgb(0, 231, 255) 30%, rgb(255, 0, 231) 70%, transparent 100%);*/
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+
+/*BUTTON STYLING*/
+
+form button {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	cursor: pointer;
+	/* border: 1px solid #bbb; */
+	font: bold 13px arial, helvetica, sans-serif;
+	text-decoration: none;
+	white-space: nowrap;
+	/* color: #555; */
+	/* background-color: #ddd; */
+	-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
+	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
+	box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .9);
+}
+
+form button:hover {
+	background-color: #eee;
+	color: #555;
+}
+
+form button:active {
+	top: 2px;
+	background: #e9e9e9;
+	text-shadow: none;
+	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+}
+
+
+/*HP BAR*/
+
+.parentHp {
+	width: 100%;
+	background-color: lightblue;
+	height: 18px;
+	position: relative;
+}
+
+#hpPercent {
+	position: absolute;
+}
+
+.hp {
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	background-color: green;
+}
+
+
+/* NOTICATIONS */
+
+.notification {
+	border-radius: 15px;
+	position: absolute;
+	background-color: #fff;
+	top: 80%;
+	font-size: larger;
+	display: none;
+	padding: 10px;
+}
+
+#leftNotification {
+	left: 2%;
+}
+
+#rightNotification {
+	left: 78%;
+}
+
+/*INFO MOVES*/
+
+#infoMoves hr {
+	opacity: 0.5;
+}
+
+#infoMoves {
+	position: absolute;
+	left: 42%;
+	top: 65%;
+	min-height: 5%;
+	min-width: 17%;
+}
+
+#infomoves span {
+	opacity: 1;
+}
+
+
+/*MOVES BUTTONS*/
+
+button.leftmoveButton,
+button.rightmoveButton {
+	border: 0;
+	position: relative;
+	padding: 10px;
+	width: 60%;
+	font-size: 1.1em;
+	margin: 2px;
+	border-radius: 5px;
+	/*background-image: linear-gradient(to right bottom, #7b88b3, #34a4d9, #00c1e2, #00d9c2, #12eb81);*/
+}
+
+button.leftmoveButton:hover,
+button.rightMoveButton:hover {
+	border: 1px solid white;
+}
+
+#leftMovesUl,
+#rightMovesUl {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+
+/*TEXT FIELD*/
+
+input.input {
+
+	position: relative;
+	left: 10px;
+	width: calc(100% - 15px);
+	height: 3.5%;
+	font-size: 1.5em;
+	background-color: #fff;
+	border-radius: 10px;
+	border: none;
+}
+
+
+/* BUTTONS UNDER TEXT FIELD */
+
+/* .leftButton {
+	float: right;
+}
+
+.rightButton {
+	float: left;
+} */
+
+.randomButton,
+button.micButton,
+button.resetButton,
+button.reloadButton {
+	font-size: 1.1em;
+	height: 3.5%;
+	/* float: right; */
+	/* margin: 0 5% 0; */
+	margin-right: 17%;
+	margin-top: 10px;
+	float: right;
+}
+
+.submitButton {
+	/*SUBM*/
+	position: absolute;
+	right: 0px;
+	top: 2.5%;
+	height: 95%;
+	color: gray;
+	/*background-image: url(img/random.png);
+    background-position: center;
+    background-repeat: no-repeat;*/
+	border-radius: 10px;
+}
+
+.randomButton {
+
+	border-radius: 10px;
+
+}
+
+button.micButton {
+	/* border-radius: 0%; */
+	border-radius: 10px;
+	width: 33px;
+	position: relative;
+	background-image: url(img/mic.gif);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+/*MUSIC BUTTON*/
+
+.music_button {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	border: none;
+	background: rgb(255, 255, 255);
+	padding: 20px;
+	text-transform: uppercase;
+	border-radius: 35px;
+	display: none;
+	/*Questo valore verrà sovrascritto da un @media che verificherà la corretta visualizzazione e - grazie ad una specificità maggiore - sovrascriverà l'attributo.*/
+	transition: all 0.3s ease 0s;
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+	letter-spacing: 2px;
+
+}
+
+.music_button:hover {
+	background-color: lightgray;
+	color: black;
+}
+
+
+.music_button {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	border: none;
+	font-weight: 100;
+	padding: 20px;
+	text-transform: uppercase;
+	border-radius: 35px;
+	display: inline-block;
+	transition: all 0.3s ease 0s;
+	color: black !important;
+	font-weight: 750 !important;
+	letter-spacing: 2px;
+	background: gray;
+}
+
+/* AUTOCOMPLETE */
+
+input#rightUserInput[type=submit] {
+	background-color: DodgerBlue;
+	color: #fff;
+	cursor: pointer;
+}
+
+.autocomplete-items {
+	margin-top: 15%;
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+.autocomplete-items div:hover {
+	background-color: #e9e9e9;
+}
+
+.autocomplete-active {
+	background-color: rgb(232, 233, 184) !important;
+	color: #000;
+}
+
+#rightUserInputautocomplete-list,
+#leftUserInputautocomplete-list {
+	max-height: 150px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.userInputDiv {
+	position: relative;
+}
+
+h1,
+h3,
+h4 {
+	margin: 0;
+	font-weight: 400;
+}
+
+
+/****** CARDS ******/
+
+#left__card__type,
+#right__card__type {
+	right: 10%;
+	margin-top: 0px;
+	margin-bottom: 7%;
+}
+
+#left_image,
+#right_image {
+	width: 96px;
+	height: 96px;
+}
+
+img {
+	max-height: 150px;
+	margin: auto;
+	display: inline-block;
+}
+
+.card {
+	width: 300px;
+	padding: 1em;
+	border-radius: 15px;
+	/*margin: 10px;*/
+	background: #ddd;
+	text-align: left;
+	box-shadow: 0px 5px 20px -10px #111111;
+	position: relative;
+	transition: 0.5s;
+	
+}
+
+.card__caption {
+	background-color: rgba(255, 255, 255, 0.65);
+	padding: 1em;
+	position: relative;
+	border-radius: 0 0 3px 3px;
+	
+}
+
+.card__image-container {
+	background-color: rgba(0, 0, 0, 0.7);
+	text-align: center;
+	padding: 1em 1em 0;
+	border-radius: 3px 3px 0 0;
+	max-height: 100px;
+}
+
+.card__type {
+	position: absolute;
+	top: 0;
+	right: 1em;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	color: #000;
+	text-transform: uppercase;
+	font-family: "Open Sans Condensed", "Open Sans", helvetica, sans-serif;
+	letter-spacing: 0.1em;
+	padding: 0.25em;
+	line-height: 1;
+	border-radius: 2px;
+	font-weight: 800;
+}
+
+.card__type2 {
+	position: absolute;
+	top: 0;
+	left: 1em;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	color: #ffffff;
+	text-transform: uppercase;
+	font-family: "Open Sans Condensed", "Open Sans", helvetica, sans-serif;
+	letter-spacing: 0.1em;
+	padding: 0.25em;
+	line-height: 1;
+	border-radius: 2px;
+}
+
+.card__label {
+	font-size: 10px;
+	text-transform: uppercase;
+	font-weight: 400;
+	display: block;
+	margin-bottom: 3px;
+}
+
+.card__name {
+	font-family: "Open Sans Condensed", "Open Sans", helvetica, sans-serif;
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+}
+
+.card__stats {
+	margin: 1em 0;
+	width: 100%;
+}
+
+.card__stats th {
+	font-family: "Open Sans Condensed", "Open Sans", helvetica, sans-serif;
+	text-align: right;
+	font-weight: 300;
+}
+
+.card__stats th,
+.card__stats td {
+	width: 50%;
+	padding: 0.25em 0.5em 0;
+}
+
+.card__abilities {
+	display: flex;
+	justify-content: space-between;
+}
+
+.card__ability {
+	margin-top: 1em;
+	flex: 1 0;
+}
+
+.card:hover {
+	/*box-shadow: 0px 13px 30px -15px #000000;*/
+	z-index: 5;
+	-webkit-transform: translateY(-10px);
+	transform: translateY(-10px);
+}
+
+
+/*Stile aggiuntivo carta*/
+
+.card:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	border-radius: 15px;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	/*background-image: linear-gradient(115deg, transparent 0%, rgb(0, 231, 255) 30%, rgb(255, 0, 231) 70%, transparent 100%);*/
+	background-position: 0% 0%;
+	background-repeat: no-repeat;
+	background-size: 300% 300%;
+	mix-blend-mode: color-dodge;
+	opacity: 0.2;
+	z-index: 1;
+	animation: holoGradient 15s ease infinite;
+}
+
+.turn {
+	background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/sparkles.gif");
+}
+
+.card:after {
+	background-position: center;
+	background-size: 180%;
+	mix-blend-mode: color-dodge;
+	opacity: 1;
+	z-index: 2;
+	animation: holoSparkle 20s ease infinite;
+}
+
+
+/********* END CARDS**********/
+
+#rightTeamName {
+	background: -webkit-gradient(linear, left top, right top, from(#8777ce), to(#1900ff));
+	background: linear-gradient(to right, #8777ce 0%, #1900ff 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+#leftTeamName {
+	background: -webkit-gradient(linear, left top, right top, from(#ff8a00), to(#da1b60));
+	background: linear-gradient(to right, #ff8a00 0%, #da1b60 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="resources/css/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+
+
+  <style>
+    #content {
+      margin-left: 25%;
+    }
+
+    #button-opennav {
+      float: right;
+    }
+
+    #sidebar {
+      display: table;
+      position: fixed;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 1);
+      overflow: hidden;
+    }
+
+    #red-vertical-rectangle {
+      fill: rgba(240, 63, 53, 1);
+      z-index: -1;
+      position: fixed;
+      overflow: visible;
+      width: 230px;
+      height: 100%;
+      left: 0px;
+      top: 0px;
+      bottom: 0px;
+    }
+
+
+    #black-vertical-rectangle {
+      overflow: visible;
+      position: fixed;
+      width: 40px;
+      top: 0px;
+      left: 230px;
+      height: 100%;
+    }
+
+    #black-ellipse {
+      fill: rgba(65, 65, 65, 1);
+      position: fixed;
+      overflow: visible;
+      width: 160px;
+      height: 160px;
+      left: 250px;
+      top: 50%;
+    }
+
+    #white-ellipse {
+      fill: rgba(255, 255, 255, 1);
+      position: fixed;
+      overflow: visible;
+      width: 80px;
+      height: 80px;
+      left: 250px;
+      top: 50%;
+    }
+
+    #white-ellipse-hover:hover {
+      cursor: pointer;
+      transition: fill 400ms;
+      fill: rgba(240, 63, 53, 0.6);
+    }
+
+    #sidebar-links {
+      height: 100%;
+      list-style-type: none;
+    }
+
+    #sidebar-links li a {
+      color: white;
+      font-size: 25px;
+      font-family: "Roboto", normal;
+    }
+
+    #sidebar-links li a:hover {
+      text-decoration: none;
+    }
+
+    #upper-links li {
+      margin-top: 50px;
+    }
+
+    #lower-links {
+      position: fixed;
+      margin-bottom: 0;
+    }
+
+    #lower-links li {
+      margin-top: 50px;
+    }
+  </style>
+
+  <script type="text/javascript">
+    var opened = true;
+    function sidebar_movement() {
+      if (opened) {
+        document.getElementById("red-rectangle").width = "0";
+        document.getElementById("red-rectangle").style = "display: none;";
+        document.getElementById("sidebar-links").style = "display: none;";
+        document.getElementById('black-ellipse').style = "left: 10px";
+        document.getElementById('white-ellipse').style = "left: 10px";
+        document.getElementById('black-vertical-rectangle').style = "left: 0";
+        document.getElementById("content").style.marginLeft = "auto";
+        opened = false;
+      } else {
+        document.getElementById("red-rectangle").width = "230px";
+        document.getElementById("red-rectangle").style = "display: show;";
+        document.getElementById("sidebar-links").style = "display: show;";
+        document.getElementById('black-ellipse').style = "left: 250px";
+        document.getElementById('white-ellipse').style = "left: 250px";
+        document.getElementById('black-vertical-rectangle').style = "left: 230";
+        document.getElementById("content").style.marginLeft = "25%";
+        opened = true;
+      }
+    }
+  </script>
+
+</head>
+
+<body>
+  <nav id="sidebar" opened="true">
+    <svg id="red-vertical-rectangle">
+      <rect id="red-rectangle" width="230px" height="100%"></rect>
+      <ul id="sidebar-links">
+        <div id="upper-links">
+          <li><a href="#">Home page</a></li>
+          <li><a href="#">Play</a></li>
+          <li><a href="#">Stats</a></li>
+        </div>
+        <div id="lower-links">
+          <li><a href="#">Api</a></li>
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Register</a></li>
+        </div>
+      </ul>
+    </svg>
+    <svg id="black-vertical-rectangle">
+      <rect fill="rgba(65,65,65,1)" id="black-rectangle" width="40px" height="100%"></rect>
+    </svg>
+    <svg id="black-ellipse">
+      <ellipse rx="80" ry="80" cx="0" cy="0"></ellipse>
+    </svg>
+    <svg id="white-ellipse">
+      <ellipse id="white-ellipse-hover" rx="40" ry="40" cx="0" cy="0" onclick="sidebar_movement()"></ellipse>
+    </svg>
+  </nav>
+
+  <main id="content" class="container">
+    <h2>Responsive Sidebar Example</h2>
+    <p>This example use media queries to transform the sidebar to a top navigation bar when the screen size is 700px or
+      less.</p>
+    <p>We have also added a media query for screens that are 400px or less, which will vertically stack and center the
+      navigation links.</p>
+    <h3>Resize the browser window to see the effect.</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </main>
+
+</body>

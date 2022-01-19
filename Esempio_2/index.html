@@ -1,0 +1,393 @@
+<html lang="en" class="">
+
+<head>
+
+
+    <!-- NOTIFICATIONS ATTENZIONE! ALCUNI DI QUESTI DATI VERRANNO SOVRASCRITTI PER PERMETTERE IL GIUSTO FUNZIONAMENTO. -->
+    <!-- <link rel="stylesheet" type="text/css" media="all" href="css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" media="all" href="css/jquery.bootstrap.message.css">
+    <!-- /NOTIFICATIONS  -->
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="selectionStyle.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.iconninja.com/files/518/627/701/pokeball-icon.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="index.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Zuckemon</title>
+</head>
+
+<body id="index-page" style="background-image: url('./img/backgrounds/background23.jpg');">
+
+
+    <div class="row">
+        <div class="col text-center">
+            <!-- <a href="index.html"><img src="img/Pokemon_zuccante.png"></a> -->
+            <a href="index.html"><img src="img/Zuckemon.png"></a>
+            <!-- https://textcraft.net/style/Textcraft/pokemon -->
+        </div>
+    </div>
+
+    <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div> -->
+
+    <div class="row">
+        <div style="height:100%;" class="col-6 left-side-cards">
+            <div class="row">
+                <div class="col">
+                    <input
+                        style="width: 40%; background-color: rgba(200,200,200, .8); border-style: solid; border-width: 1px; font-size: 1.8em;"
+                        placeholder="Left team name" value="Left team"
+                        class="form-control mx-auto text-center team-name-field" type="text" id="leftTeamName">
+                </div>
+            </div>
+            <div class="row">
+                <!-- MOST LEFT COLUMN -->
+                <div class="col col-4">
+                    <!-- INIZIO -->
+
+                    <div class="card mt-3 mx-3 mx-auto pokemonCard" id="left0Pokemon">
+                        <img src="img\pokemon-question-mark.png" alt="Foto pokemon" id="left0_image">
+                        <div class="card-body p-0" id="left0footer">
+                            <!-- invisible  -->
+                            <div class="card_type" id="left0_top"></div>
+                            <h5 class="card-title  text-center mt-2 mb-0 pokemonName" id="left0__card__name"></h5>
+                        </div>
+                    </div>
+
+                    <!-- FINE -->
+                    <div class="card mt-3 mx-3 mx-auto pokemonCard" id="left3Pokemon">
+                        <img src="img\pokemon-question-mark.png" alt="Foto pokemon" id="left3_image">
+                        <div class="card-body p-0" id="left3footer">
+                            <!-- invisible  -->
+                            <div class="card_type" id="left3_top"></div>
+                            <h5 class="card-title  text-center mt-2 mb-0 pokemonName" id="left3__card__name"></h5>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- CENTRAL COLUMN -->
+                <div class="col col-4">
+
+                    <div class="card mt-3 mx-3 mx-auto pokemonCard" id="left1Pokemon">
+                        <img src="img\pokemon-question-mark.png" alt="Foto pokemon" id="left1_image">
+                        <div class="card-body p-0" id="left1footer">
+                            <!-- invisible  -->
+                            <div class="card_type" id="left1_top"></div>
+                            <h5 class="card-title  text-center mt-2 mb-0 pokemonName" id="left1__card__name"></h5>
+                        </div>
+                    </div>
+
+                    <div class="card mt-3 mx-3 mx-auto pokemonCard" id="left4Pokemon">
+                        <img src="img\pokemon-question-mark.png" alt="Foto pokemon" id="left4_image">
+                        <div class="card-body p-0" id="left4footer">
+                            <!-- invisible  -->
+                            <div class="card_type" id="left4_top"></div>
+                            <h5 class="card-title  text-center mt-2 mb-0 pokemonName" id="left4__card__name"></h5>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- RIGHT COLUMN -->
+                <div class="col col-4">
+
+                    <div class="card mt-3 mx-3 mx-auto pokemonCard" id="left2Pokemon">
+                        <img src="img\pokemon-question-mark.png" alt="Foto pokemon" id="left2_image">
+                        <div class="card-body p-0" id="left2footer">
+                            <!-- invisible  -->
+                            <div class="card_type" id="left2_top"></div>
+                            <h5 class="card-title  text-center mt-2 mb-0 pokemonName" id="left2__card__name"></h5>
+                        </div>
+                    </div>
+
+                    <div class="card mt-3 mx-3 mx-auto pokemonCard" id="left5Pokemon">
+                        <img src="img\pokemon-question-mark.png" alt="Foto pokemon" id="left5_image">
+                        <div class="card-body p-0" id="left5footer">
+                            <!-- invisible  -->
+                            <div class="card_type" id="left5_top"></div>
+                            <h5 class="card-title  text-center mt-2 mb-0 pokemonName" id="left5__card__name"></h5>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+
+
+        <div style="height:100%;" class="col-6 right-side-cards">
+            <div class="row">
+                <div class="col">
+                    <input
+                        style="width: 40%; background-color: rgba(200,200,200, .8); border-style: solid; border-width: 1px; font-size: 1.8em;"
+                        placeholder="Right team name" value="Right team"
+                        class="form-control mx-auto text-center team-name-field" type="text" id="rightTeamName">
+                </div>
+            </div>
+            <div class="row">
+                <!-- MOST right COLUMN -->
+                <div class="col col-4">
+                    <!-- INIZIO -->
+
+                    <div class="card mt-3 mx-3 mx-auto pokemonCard" id="right0Pokemon">
+                        <img src="img\pokemon-question-mark.png" alt="Foto pokemon" id="right0_image">
+                        <div class="card-body p-0" id="right0footer">
+                            <!-- invisible  -->
+                            <div class="card_type" id="right0_top"></div>
+                            <h5 class="card-title  text-center mt-2 mb-0 pokemonName" id="right0__card__name"></h5>
+                        </div>
+                    </div>
+
+                    <!-- FINE -->
+                    <div class="card mt-3 mx-3 mx-auto pokemonCard" id="right3Pokemon">
+                        <img src="img\pokemon-question-mark.png" alt="Foto pokemon" id="right3_image">
+                        <div class="card-body p-0" id="right3footer">
+                            <!-- invisible  -->
+                            <div class="card_type" id="right3_top"></div>
+                            <h5 class="card-title  text-center mt-2 mb-0 pokemonName" id="right3__card__name"></h5>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- CENTRAL COLUMN -->
+                <div class="col col-4">
+
+                    <div class="card mt-3 mx-3 mx-auto pokemonCard" id="right1Pokemon">
+                        <img src="img\pokemon-question-mark.png" alt="Foto pokemon" id="right1_image">
+                        <div class="card-body p-0" id="right1footer">
+                            <!-- invisible  -->
+                            <div class="card_type" id="right1_top"></div>
+                            <h5 class="card-title  text-center mt-2 mb-0 pokemonName" id="right1__card__name"></h5>
+                        </div>
+                    </div>
+
+                    <div class="card mt-3 mx-3 mx-auto pokemonCard" id="right4Pokemon">
+                        <img src="img\pokemon-question-mark.png" alt="Foto pokemon" id="right4_image">
+                        <div class="card-body p-0" id="right4footer">
+                            <!-- invisible  -->
+                            <div class="card_type" id="right4_top"></div>
+                            <h5 class="card-title  text-center mt-2 mb-0 pokemonName" id="right4__card__name"></h5>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- RIGHT COLUMN -->
+                <div class="col col-4">
+
+                    <div class="card mt-3 mx-3 mx-auto pokemonCard" id="right2Pokemon">
+                        <img src="img\pokemon-question-mark.png" alt="Foto pokemon" id="right2_image">
+                        <div class="card-body p-0" id="right2footer">
+                            <!-- invisible  -->
+                            <div class="card_type" id="right2_top"></div>
+                            <h5 class="card-title  text-center mt-2 mb-0 pokemonName" id="right2__card__name"></h5>
+                        </div>
+                    </div>
+
+                    <div class="card mt-3 mx-3 mx-auto pokemonCard" id="right5Pokemon">
+                        <img src="img\pokemon-question-mark.png" alt="Foto pokemon" id="right5_image">
+                        <div class="card-body p-0" id="right5footer">
+                            <!-- invisible  -->
+                            <div class="card_type" id="right5_top"></div>
+                            <h5 class="card-title  text-center mt-2 mb-0 pokemonName" id="right5__card__name"></h5>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Right side -->
+        <!-- <div style="height:100%;background-color: rebeccapurple;" class=" col-6">right</div> -->
+
+    </div>
+
+    <div class="row  mt-xl-4 align-items-center">
+        <!-- isoletta di form -->
+        <!-- border: 1px solid black; -->
+        <div class="formIsland row mx-auto p-3 col-xl-4 col-5 left-side-container"
+            style="border-radius: 60px; background-color: rgba(200,200,200, .8);">
+            <div class="col col-10 mx-auto">
+                <!-- style="width: 80%;" -->
+                <form class="form-inline" autocomplete="off" onsubmit="return false;">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <!-- <label for="pokenameLeft" class="sr-only">Pokemon name</label> -->
+                        <input type="text" class="mx-auto form-control text-center" placeholder="Pokemon name"
+                            style="width: 100%; background-color: rgba(200,200,200, .6); border: none;"
+                            id="leftUserInput2">
+                    </div>
+                </form>
+                <button type="submit" class="btn btn-outline-primary mb-2 mx-2 iChooseYouButton" id="leftSubmitButton2">I choose
+                    you!</button>
+                <button type="submit" class="btn btn-outline-primary mb-2 mx-2 randomButton" id="leftRandomButton"><img
+                        src="img/shuffle.svg" alt="">
+                    Random</button>
+
+                <!-- <button type="submit" class="btn btn-outline-primary mb-2 mx-2" id="leftRandomButton6"><img
+                        src="img/shuffle.svg" alt="">x6</button> -->
+
+                <button type="submit" class="btn btn-outline-primary mb-2 mx-2 d-none"><img src="img/mic-fill.svg"
+                        alt="">
+                    Voice</button>
+                <div class="row">
+                    <button type="submit" style="width: 100%;" class="mx-auto btn btn-outline-danger mb-2 d-none"
+                        id="leftPronto">Ready!</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- BOTTONE CENTRALE -->
+        <div class="col-2 text-center">
+            <button class="btn fight" id="fightButton">Fight ! </button>
+        </div>
+        <!-- FINE BOTTONE CENTRALE -->
+
+
+        <style>
+            /* CARD STYLE */
+            div.card.pokemonCard {
+                min-height: 45%;
+                max-width: 95%;
+                border-radius: 10%;
+                background-color: lightgray;
+            }
+
+            div.card_type {
+                width: max-content;
+                float: right;
+                padding: 5px;
+                border-radius: 4px;
+            }
+
+            h5.pokemonName {
+                width: 100%;
+                float: left;
+            }
+
+            /* END CARD STYLE */
+            button.fight:hover {
+
+                color: red;
+                /* background-color: transparent; */
+                box-shadow: none;
+                border: 3px solid red;
+            }
+
+            button.fight {
+                transition: .9s;
+                font-family: 'Luckiest Guy', cursive !important;
+                font-size: 1.8em;
+                color: black;
+                background-color: lightgray;
+
+                padding: 0.6em 1em;
+                margin: 0 0.3em 0.3em 0;
+                border-radius: 0.15em;
+                box-sizing: border-box;
+                text-decoration: none;
+                font-family: 'Roboto', sans-serif;
+                text-transform: uppercase;
+                font-weight: 400;
+                box-shadow: inset 0 -0.6em 0 -0.35em rgba(0, 0, 0, 0.17);
+                text-align: center;
+            }
+        </style>
+
+        <!-- isoletta di form -->
+        <!-- border: 1px solid black; -->
+        <div class="formIsland row mx-auto p-3 col-xl-4 col-5 right-side-container"
+            style="border-radius: 60px; background-color: rgba(200,200,200, .8);">
+            <div class="col col-10 mx-auto">
+                <!-- style="width: 80%;" -->
+                <form class="form-inline" autocomplete="off" onsubmit="return false;">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <!-- <label for="pokenameLeft" class="sr-only">Pokemon name</label> -->
+                        <input type="text" class="mx-auto form-control text-center" placeholder="Pokemon name"
+                            style="width: 100%; background-color: rgba(200,200,200, .6); border: none;"
+                            id="rightUserInput2">
+                    </div>
+                </form>
+                <button type="submit" class="btn btn-outline-primary mb-2 mx-2 iChooseYouButton" id="rightSubmitButton2">I choose
+                    you!</button>
+                <button type="submit" class="btn btn-outline-primary mb-2 mx-2 randomButton" id="rightRandomButton"><img
+                        src="img/shuffle.svg" alt="">
+                    Random</button>
+
+                <!-- <button type="submit" class="btn btn-outline-primary mb-2 mx-2" id="rightRandomButton6"><img
+                        src="img/shuffle.svg" alt="">x6</button> -->
+
+                <button type="submit" class="btn btn-outline-primary mb-2 mx-2 d-none"><img src="img/mic-fill.svg"
+                        alt="">
+                    Voice</button>
+                <div class="row">
+                    <button type="submit" style="width: 100%;" class="mx-auto btn btn-outline-danger mb-2 d-none"
+                        id="rightPronto">Ready!</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <style>
+        @keyframes changewidth {
+            from {
+                /* width: 100px; */
+                top: 10px;
+            }
+
+            to {
+                /* width: 300px; */
+                top: 0;
+            }
+        }
+
+        div.card.animated {
+            position: relative;
+            animation-duration: .5s;
+            animation-name: changewidth;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+    </style>
+
+    <script type="module" src="javascript/team/selection.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+    <!-------------- NOTIFICATIONS ----------- -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+
+    <script type="text/javascript" src="javascript/js/libs/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="javascript/js/libs/jquery.bootstrap.message.js"></script>
+    <script type="text/javascript" src="javascript/js/index.js"></script>
+    
+    <!-- <script type="module" src="Classes/Listners.js"></script> -->
+    <!-- <input type="text" id="leftNotificationText">
+        <button type="button" class="btn btn-sm btn-primary" id="leftNotification">leftNotification</button> -->
+</body>
+
+</html>

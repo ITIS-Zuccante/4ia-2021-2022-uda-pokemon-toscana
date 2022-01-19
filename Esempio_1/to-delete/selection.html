@@ -1,0 +1,225 @@
+<html lang="en" class="">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="selectionStyle.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.iconninja.com/files/518/627/701/pokeball-icon.png">
+    
+</head>
+
+<body>
+    <!--  <img src="img/fassina_kirpachov.png" id="titleImg" style=" margin:1% 0 1%;">-->
+
+    <a href="selection.html"><img src="img/fassina_kirpachov.png" id="titleImg"></a>
+
+    <!--CARTA SINISTRA-->
+
+    <div id="left">
+        <div id="leftTeamNameDiv">
+            <input class="input teamName" id="leftTeamName" type="text" placeholder="Red team" value="Red team">
+        </div>
+        <div class="pokemonSelection" id="left0Pokemon">
+
+            <figure id="left0__card__type" class="card">
+                <div class="card__image-container">
+                    <img id="left0_image" class="card__image card:after" src="img/question mark.png">
+                </div>
+                <figcaption class="card__caption">
+                    <h3 id="left0_top" class="card__type ">???</h3>
+                    <h1 id="left0__card__name" class="card__name">Pokemon Name</h1>
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="pokemonSelection" id="left1Pokemon">
+
+            <figure id="left1__card__type" class="card">
+                <div class="card__image-container">
+                    <img id="left1_image" class="card__image card:after" src="img/question mark.png">
+                </div>
+                <figcaption class="card__caption">
+                    <h3 id="left1_top" class="card__type ">???</h3>
+                    <h1 id="left1__card__name" class="card__name">Pokemon Name</h1>
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="pokemonSelection" id="left2Pokemon">
+
+            <figure id="left2__card__type" class="card">
+                <div class="card__image-container">
+                    <img id="left2_image" class="card__image card:after" src="img/question mark.png">
+                </div>
+                <figcaption class="card__caption">
+                    <h3 id="left2_top" class="card__type ">???</h3>
+                    <h1 id="left2__card__name" class="card__name">Pokemon Name</h1>
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="pokemonSelection" id="left3Pokemon">
+
+            <figure id="left3__card__type" class="card">
+                <div class="card__image-container">
+                    <img id="left3_image" class="card__image card:after" src="img/question mark.png">
+                </div>
+                <figcaption class="card__caption">
+                    <h3 id="left3_top" class="card__type ">???</h3>
+                    <h1 id="left3__card__name" class="card__name">Pokemon Name</h1>
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="pokemonSelection" id="left4Pokemon">
+
+            <figure id="left4__card__type" class="card">
+                <div class="card__image-container">
+                    <img id="left4_image" class="card__image card:after" src="img/question mark.png">
+                </div>
+                <figcaption class="card__caption">
+                    <h3 id="left4_top" class="card__type ">???</h3>
+                    <h1 id="left4__card__name" class="card__name">Pokemon Name</h1>
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="pokemonSelection" id="left5Pokemon">
+
+            <figure id="left5__card__type" class="card">
+                <div class="card__image-container">
+                    <img id="left5_image" class="card__image card:after" src="img/question mark.png">
+                </div>
+                <figcaption class="card__caption">
+                    <h3 id="left5_top" class="card__type ">???</h3>
+                    <h1 id="left5__card__name" class="card__name">Pokemon Name</h1>
+                </figcaption>
+            </figure>
+        </div>
+
+        <div id="leftDiv">
+            <form id="leftInputForm" onsubmit="return false;" autocomplete="off" class="autocomplete">
+                <div class="userInputDiv">
+                    <input class="input" id="leftUserInput2" type="text" name="myPokemon"
+                        placeholder="Pokemon (name/id)">
+                    <button class="submitButton2" id="leftSubmitButton2">GO!</button>
+                </div>
+                <button class="randomButton" id="leftRandomButton">RANDOM</button>
+                <button class="pronto" id="leftPronto">Pronto</button>
+            </form>
+        </div>
+    </div>
+
+    <!--Test local storage-->
+    <!--<button id="test">Test Local Storage</button>-->
+
+    <!--CARTA DESTRA-->
+
+    <div id="right">
+        <div id="rightTeamNameDiv">
+            <input class="input teamName" id="rightTeamName" type="text" placeholder="Blue team" value="Blue team">
+        </div>
+
+        <div class="pokemonSelection" id="right0Pokemon">
+            <figure id="right0__card__type" class="card">
+                <div class="card__image-container">
+                    <img id="right0_image" class="card__image card:after" src="img/question mark.png">
+                </div>
+                <figcaption class="card__caption">
+                    <h3 id="right0_top" class="card__type ">???</h3>
+                    <h1 id="right0__card__name" class="card__name">Pokemon Name</h1>
+                </figcaption>
+            </figure>
+
+        </div>
+        <div class="pokemonSelection" id="right1Pokemon">
+
+            <figure id="right1__card__type" class="card">
+                <div class="card__image-container">
+                    <img id="right1_image" class="card__image card:after" src="img/question mark.png">
+                </div>
+                <figcaption class="card__caption">
+                    <h3 id="right1_top" class="card__type ">???</h3>
+                    <h1 id="right1__card__name" class="card__name">Pokemon Name</h1>
+                </figcaption>
+            </figure>
+
+        </div>
+        <div class="pokemonSelection" id="right2Pokemon">
+
+            <figure id="right2__card__type" class="card">
+                <div class="card__image-container">
+                    <img id="right2_image" class="card__image card:after" src="img/question mark.png">
+                </div>
+                <figcaption class="card__caption">
+                    <h3 id="right2_top" class="card__type ">???</h3>
+                    <h1 id="right2__card__name" class="card__name">Pokemon Name</h1>
+                </figcaption>
+            </figure>
+
+        </div>
+        <div class="pokemonSelection" id="right3Pokemon">
+
+            <figure id="right3__card__type" class="card">
+                <div class="card__image-container">
+                    <img id="right3_image" class="card__image card:after" src="img/question mark.png">
+                </div>
+                <figcaption class="card__caption">
+                    <h3 id="right3_top" class="card__type ">???</h3>
+                    <h1 id="right3__card__name" class="card__name">Pokemon Name</h1>
+                </figcaption>
+            </figure>
+
+        </div>
+        <div class="pokemonSelection" id="right4Pokemon">
+
+            <figure id="right4__card__type" class="card">
+                <div class="card__image-container">
+                    <img id="right4_image" class="card__image card:after" src="img/question mark.png">
+                </div>
+                <figcaption class="card__caption">
+                    <h3 id="right4_top" class="card__type ">???</h3>
+                    <h1 id="right4__card__name" class="card__name">Pokemon Name</h1>
+                </figcaption>
+            </figure>
+
+        </div>
+        <div class="pokemonSelection" id="right5Pokemon">
+
+            <figure id="right5__card__type" class="card">
+                <div class="card__image-container">
+                    <img id="right5_image" class="card__image card:after" src="img/question mark.png">
+                </div>
+                <figcaption class="card__caption">
+                    <h3 id="right5_top" class="card__type ">???</h3>
+                    <h1 id="right5__card__name" class="card__name">Pokemon Name</h1>
+                </figcaption>
+            </figure>
+
+        </div>
+
+        <div id="rightDiv">
+            <form id="rightInputForm" onsubmit="return false;" autocomplete="off" class="autocomplete">
+                <div class="userInputDiv">
+                    <input class="input" id="rightUserInput2" type="text" name="myPokemon"
+                        placeholder="Pokemon (name/id)">
+                    <button class="submitButton2" id="rightSubmitButton2">GO!</button>
+                </div>
+                <button class="randomButton" id="rightRandomButton">RANDOM</button>
+                <button class="pronto" id="rightPronto">Pronto</button>
+            </form>
+        </div>
+    </div>
+
+    <button id="fightButton"> Fight! </button>
+    <!-- <script type="module" src="javascript/team/selection.js"></script> -->
+    <!-- <script type="text/javascript" src="javascript/music.js"></script> -->
+
+    <!-- <script type="module" src="javascript/team/autocomplete.js"></script> -->
+
+    <!--<script type="module" src="javascript/speech.js"></script>-->
+
+</body>
+
+</html>

@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="Lorenzo Vaccher & Tommaso Rizzo & Valentin Necula & Jia Hao Ruan">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <title>PokémonCardZ - Teams</title>
+  <link rel="icon" href="resources/img/pokemon-logo.png">
+
+  <!-- STYLE -->
+  <link rel="stylesheet" href="resources/css/style.css">
+
+  <!-- JS -->
+  <script type="text/javascript" src="resources/js/typescolor.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+    integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="resources/js/pokemondifferencies.js"></script>
+  <script type="module" src="resources/js/chooseTeams.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
+
+
+    #cards {
+      display: grid;
+      grid-template-columns: 350px auto 350px;
+      padding: 10px;
+      margin-top: 5%;
+      margin-right: 10%;
+      margin-left: 30%;
+    }
+
+    .card {
+      background-color: #ddd;
+      padding: 10px 10px 0 10px;
+      border-radius: 15px;
+      justify-content: right;
+      width: 211px;
+      height: 274px;
+      display: table;
+      margin: 20px auto 20px;
+      transition: 0.4s;
+    }
+
+    .card:hover {
+      z-index: 5;
+      box-shadow: 0px 13px 30px -15px #000000;
+      -webkit-transform: translateY(-10px) !important;
+      transform: translateY(-10px);
+    }
+
+    .card-header {
+      background-color: rgba(0, 0, 0, 0.7);
+      text-align: center;
+      border-radius: 3px 3px 0 0;
+    }
+
+    .card-info {
+      height: 84px;
+      background-color: rgba(255, 255, 255, 0.65);
+      padding: 1em;
+      position: relative;
+      border-radius: 0 0 3px 3px;
+    }
+
+    .card-animation {
+      animation: shake 0.5s;
+    }
+
+    .card-title {
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+
+    .card-type,
+    .card-type-1 {
+      font-family: 'Roboto', sans-serif;
+      letter-spacing: 0.1em;
+      font-size: 15px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: white;
+      padding: 0.2rem 0.5rem;
+      margin: 0px 16px 5px;
+      background-color: #DDDDDD;
+      text-align: center;
+      border-radius: 5px;
+      cursor: context-menu;
+    }
+
+    .card-delete img {
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .card-delete button {
+      display: flex;
+      float: right;
+      justify-content: right !important;
+      align-items: right !important;
+      text-align: center !important;
+      border: none;
+      outline: none;
+      background-color: transparent;
+    }
+
+    .card-image-container {
+      display: block;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-image {
+      margin-top: 20px;
+      margin-left: 40px;
+    }
+
+    #team-page {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    #team-title {
+      margin-top: 30px;
+      text-align: center;
+      vertical-align: center;
+      font-size: 32px;
+      border: none;
+      outline: none;
+      background: none;
+      color: white;
+    }
+
+    .column {
+      float: left;
+      width: 100%;
+      height: 100%;
+    }
+
+    .team {
+      height: 100%;
+      position: absolute;
+    }
+
+    #alfa {
+      width: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+
+    .text {
+      color: blue;
+      position: absolute;
+      padding: 64px;
+      font-size: 64px;
+    }
+
+    #input-searchbar {
+      vertical-align: center;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      background: none;
+      color: white;
+      width: 95%;
+      height: 24px;
+      margin-top: 9.5px;
+      margin-left: 10px;
+    }
+
+    #left {
+      position: absolute;
+      width: 100px;
+      margin-left: 40%;
+      float: left;
+    }
+
+    #right {
+      position: absolute;
+      width: 100;
+    }
+
+    .erba {
+      z-index: -1;
+      width: 100%;
+      bottom: 0;
+      position: absolute;
+      margin-bottom: -3px;
+    }
+
+    .shinystars {
+      margin-top: 3px;
+      clear: left;
+    }
+
+    /***************CONTAINER CHOOSENAME E CHOOSETEAM*****************/
+
+    div.input-team-container {
+      font-family: 'Lato', sans-serif;
+      color: white;
+      width: 500px;
+      position: absolute;
+      top: 8%;
+      left: 60%;
+      transform: translate(-50%, -50%);
+      vertical-align: middle;
+    }
+
+    div.input-pokemon-container {
+      font-family: 'Lato', sans-serif;
+      color: white;
+      width: 500px;
+      position: absolute;
+      top: 90%;
+      left: 60%;
+      transform: translate(-50%, -50%);
+      vertical-align: middle;
+    }
+
+    div.input-team-container div,
+    div.input-pokemon-container div {
+      position: relative;
+      margin: 0px 0;
+    }
+
+    label {
+      position: absolute;
+      top: 0;
+      font-size: 30px;
+      margin: 5% 10px;
+      padding: 0 10px;
+      background: transparent;
+      -webkit-transition: top .2s ease-in-out,
+        font-size .2s ease-in-out;
+      transition: top .2s ease-in-out,
+        font-size .2s ease-in-out;
+      cursor: text;
+    }
+
+    .active {
+      top: -50px;
+      font-size: 20px;
+    }
+
+    input[type=text] {
+      width: 70%;
+      padding: 20px;
+      border: 1px solid white;
+      background-color: transparent;
+      font-size: 20px;
+      color: white;
+    }
+
+    input[type=text]:focus {
+      outline: none;
+    }
+
+    /***********************NAVBAR************************/
+    #sidebar {
+      display: table;
+      position: fixed;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 1);
+      overflow: hidden;
+    }
+
+    #red-vertical-rectangle {
+      fill: rgba(240, 63, 53, 1);
+      z-index: -1;
+      position: fixed;
+      overflow: visible;
+      width: 270px;
+      height: 100%;
+      left: 0px;
+      top: 0px;
+      bottom: 0px;
+    }
+
+    #red-rectangle {
+      width: 100%;
+      height: 100%;
+    }
+
+
+    #black-vertical-rectangle {
+      box-shadow: 7px 0px 20px -3px rgba(0, 0, 0, 0.75);
+      overflow: visible;
+      position: fixed;
+      width: 40px;
+      top: 0px;
+      left: 270px;
+      height: 100%;
+    }
+
+    #black-ellipse {
+      fill: rgba(65, 65, 65, 1);
+      position: fixed;
+      overflow: visible;
+      width: 160px;
+      height: 160px;
+      left: 290px;
+      top: 50%;
+    }
+
+    #white-ellipse {
+      fill: rgba(255, 255, 255, 1);
+      position: fixed;
+      overflow: visible;
+      width: 80px;
+      height: 80px;
+      left: 290px;
+      top: 50%;
+    }
+
+    #white-ellipse-hover:hover {
+      cursor: pointer;
+      transition: fill 400ms;
+      fill: rgba(240, 63, 53, 0.6);
+    }
+
+    #sidebar-links {
+      height: 100%;
+      list-style-type: none;
+    }
+
+    #upper-links {
+      top: 0;
+    }
+
+    #text-versus {
+      width: 100%;
+      text-align: center;
+      margin: 10% 0%;
+      color: #ffffff;
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 900;
+      font-size: 60px;
+      color: #438fff;
+      text-shadow: 3px 0 0 #fff, -3px 0 0 #fff, 0 3px 0 #fff, 0 -3px 0 #fff, 2px 2px #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
+    }
+
+    #text-versus::first-letter {
+      font-size: 90px;
+      color: #fece3c;
+      transform: none;
+    }
+
+    .team-name {
+      margin-bottom: 10px;
+      margin-left: 25px;
+      font-weight: 900;
+      font-size: 25px;
+      width: 100%;
+      text-align: left;
+      color: #ffffff;
+    }
+
+
+
+    /*****************DROPDOWN MENU***************************/
+    #mounth option {
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-block;
+      color: #fff;
+      padding: 5px 10px;
+      margin: 0 5px;
+      background-color: #b83729;
+      -moz-transition: all 0.2s ease-in;
+      -o-transition: all 0.2s ease-in;
+      -webkit-transition: all 0.2s ease-in;
+      transition: all 0.2s ease-in;
+    }
+
+    #mounth option:hover {
+      background-color: #ab3326;
+    }
+
+    .select-hidden {
+      display: none;
+      visibility: hidden;
+      padding-right: 10px;
+    }
+
+    .select {
+      margin-left: 25px;
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      font-size: 20px;
+      color: #fff;
+      width: 220px;
+      height: 40px;
+    }
+
+    .select-styled {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: #c0392b;
+      padding: 8px 15px;
+      -moz-transition: all 0.2s ease-in;
+      -o-transition: all 0.2s ease-in;
+      -webkit-transition: all 0.2s ease-in;
+      transition: all 0.2s ease-in;
+    }
+
+    .select-styled:after {
+      content: "";
+      width: 0;
+      height: 0;
+      border: 7px solid transparent;
+      border-color: #fff transparent transparent transparent;
+      position: absolute;
+      top: 16px;
+      right: 10px;
+    }
+
+    .select-styled:hover {
+      background-color: #b83729;
+    }
+
+    .select-styled:active,
+    .select-styled.active {
+      background-color: #ab3326;
+    }
+
+    .select-styled:active:after,
+    .select-styled.active:after {
+      top: 9px;
+      border-color: transparent transparent #fff transparent;
+    }
+
+    .select-options {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      z-index: 999;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      background-color: #ab3326;
+    }
+
+    .select-options li {
+      margin: 0;
+      padding: 12px 0;
+      text-indent: 15px;
+      border-top: 1px solid #962d22;
+      -moz-transition: all 0.15s ease-in;
+      -o-transition: all 0.15s ease-in;
+      -webkit-transition: all 0.15s ease-in;
+      transition: all 0.15s ease-in;
+    }
+
+    .select-options li:hover {
+      color: #c0392b;
+      background: #fff;
+    }
+
+    .select-options li[rel="hide"] {
+      display: none;
+    }
+
+
+    /************************bottone battaglia******************************/
+
+    #submit {
+      position: absolute;
+      bottom: 0;
+      margin-left: 25%;
+      margin-bottom: 250px;
+      background-color: #c0392b;
+    }
+
+    #submit:hover {
+      color: #c0392b;
+      margin-left: 25%;
+    }
+
+    /******************************botton addteam*********************************/
+    #div-addteam {
+      margin-top: 15%;
+      float: right;
+      margin-right: 3%;
+    }
+
+    #button-addteam {
+      width: 150px;
+      height: 45px;
+      background: transparent;
+      border: 1px solid rgba(245, 245, 245, 0.8);
+      border-radius: 4px;
+      font-family: "Montserrat", sans-serif;
+      color: whitesmoke;
+      font-size: 1em;
+      font-weight: 400;
+      line-height: 2.6em;
+      transition: all 0.3s;
+      outline: none;
+      cursor: pointer;
+    }
+
+    #button-addteam:hover {
+      background: whitesmoke;
+      color: #71CDF4;
+      border: 1px solid whitesmoke;
+    }
+  </style>
+</head>
+
+<body style="background: #71CDF4;">
+
+  <nav id="sidebar" opened="true">
+    <svg id="red-vertical-rectangle">
+      <rect id="red-rectangle"></rect>
+      <div id="sidebar-links">
+        <div class="noselect" id="upper-links">
+          <div class="team-name">Team Alfa</div>
+          <select id="select-team-alfa">
+          </select>
+        </div>
+        <div id="text-versus">VS</div>
+        <div class="noselect" id="lower-links">
+          <div class="team-name">Team Beta</div>
+          <select id="select-team-beta">
+          </select>
+        </div>
+        <div id="pokemon-input-buttons">
+          <button id="submit">Go!</button>
+        </div>
+      </div>
+    </svg>
+    <svg id="black-vertical-rectangle">
+      <rect fill="rgba(65,65,65,1)" id="black-rectangle" width="40px" height="100%"></rect>
+    </svg>
+    <svg id="black-ellipse">
+      <ellipse rx="80" ry="80" cx="0" cy="0"></ellipse>
+    </svg>
+    <svg id="white-ellipse">
+      <ellipse id="white-ellipse-hover" rx="40" ry="40" cx="0" cy="0"></ellipse>
+    </svg>
+  </nav>
+  <svg class="erba" height="700" viewBox="0 0 842 596" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
+    clip-rule="evenodd " preserveAspectRatio="none" stroke-linejoin="round" stroke-miterlimit="1.41">
+    <g id="Grass">
+      <!-- parte rettangolare sotto -->
+      <path fill="#7ac143" d="M0 467.68h841.9v127.6H0z" style="width:100%" />
+      <!--erbette-->
+      <path
+        d="M77.76 455.92c0-12.33-10-22.32-22.32-22.32v71.52h22.32v-49.2zM386.88 472.96c0-5.92 2.35-11.6 6.54-15.78 4.18-4.2 9.86-6.54 15.78-6.54v56.94h-22.32v-34.62zM679.2 436.42c0-12.33 10-22.32 22.32-22.32v113.88H679.2v-91.56zM313.68 435.04c0-12.06 9.78-21.84 21.84-21.84v113.88H313.7v-92.04zM517.68 472.96c0-5.92-2.35-11.6-6.54-15.78-4.18-4.2-9.86-6.54-15.78-6.54v94.38h22.32v-72.06zM166.08 436.42c0-12.33 10-22.32 22.32-22.32v73.08h-22.32v-50.76zM735.6 455.92c0-12.33-10-22.32-22.32-22.32v94.38h22.32v-72.06zM661.2 474.94c0-12.06-9.78-21.84-21.84-21.84v94.38h21.84v-72.54zM222.48 455.92c0-12.33-10-22.32-22.32-22.32v53.58h22.32v-31.26z"
+        fill="#68a944" />
+      <!--erbette-->
+      <path
+        d="M531.6 433.96c0-5.92 2.35-11.6 6.54-15.78 4.18-4.2 9.86-6.54 15.78-6.54v113.88H531.6v-91.56zM148.08 433.06c0-12.33-10-22.32-22.32-22.32v113.88h22.32v-91.56zM461.28 453.46c0-12.33 10-22.32 22.32-22.32v113.88h-22.32v-91.56zM753.6 473.86c0-12.33 10-22.32 22.32-22.32v113.88H753.6v-91.56zM295.68 414.64c0-12.06-9.78-21.84-21.84-21.84v113.88h21.84v-92.04zM799.2 432.58c0-12.06 9.78-21.84 21.84-21.84v113.88H799.2v-92.04zM606 455.44c0-12.06 9.78-21.84 21.84-21.84v113.88H606v-92.04zM21.36 433.06c0-12.33 10-22.32 22.32-22.32v94.38H21.36v-72.06zM588 453.46c0-12.33-10-22.32-22.32-22.32v94.38H588v-72.06zM91.68 452.56c0-12.33 10-22.32 22.32-22.32v94.38H91.68v-72.06z"
+        fill="#7ac143" />
+      <!--erbette-->
+      <path
+        d="M810 493.36c0-5.92-2.35-11.6-6.54-15.78-4.18-4.2-9.86-6.54-15.78-6.54v94.38H810v-72.06zM443.28 435.52c0-12.33-10-22.32-22.32-22.32v94.38h22.32v-72.06zM240.48 434.14c0-12.06 9.78-21.84 21.84-21.84v94.38h-21.84v-72.54zM368.88 454.54c0-12.06-9.78-21.84-21.84-21.84v94.38h21.84v-72.54z"
+        fill="#7ac143" />
+    </g>
+  </svg>
+  <main id="team-page">
+
+    <div class="input-team-container">
+      <div>
+        <label for="fname">Team Name</label>
+        <input id="fname" type="text" class="cool" />
+      </div>
+    </div>
+    <div id="div-addteam">
+      <button id="button-addteam">Add Team</button>
+    </div>
+    <div id="cards">
+
+      <div class="row">
+
+        <div class="card left-card" pokemon="???" shiny="false">
+          <div class="card-header">
+            <div class="card-delete">
+              <button class="deletebutton">
+                <img src="resources/img/delete.png" alt="delete" title="Delete Pokemon" draggable="false" height="25"
+                  width="25">
+              </button>
+            </div>
+            <div class="card-image-container">
+              <img class="card-image" src="resources/img/question-mark.png" draggable="false" alt="???" title="???"
+                height="110" width="110">
+              <img id="shinystar-0" class="shinystars bounceIn" src="resources/img/star.png" title="Shiny"
+                draggable="false" alt="Shiny" style="visibility: hidden;">
+            </div>
+          </div>
+          <div class="card-info">
+            <h5 class="card-title">???</h5>
+            <div class="card-type">???</div>
+            <div class="card-type-1" style="visibility: hidden; margin-top: 0;">???</div>
+          </div>
+        </div>
+
+        <div class="card left-card" pokemon="???" shiny="false">
+          <div class="card-header">
+            <div class="card-delete">
+              <button class="deletebutton">
+                <img src="resources/img/delete.png" alt="delete" title="Delete Pokemon" draggable="false" height="25"
+                  width="25">
+              </button>
+            </div>
+            <div class="card-image-container">
+              <img class="card-image" src="resources/img/question-mark.png" draggable="false" alt="???" title="???"
+                height="110" width="110">
+              <img id="shinystar-1" class="shinystars bounceIn" src="resources/img/star.png" title="Shiny"
+                draggable="false" alt="Shiny" style="visibility: hidden;">
+            </div>
+          </div>
+          <div class="card-info">
+            <h5 class="card-title">???</h5>
+            <div class="card-type">???</div>
+            <div class="card-type-1" style="visibility: hidden; margin-top: 0;">???</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="card left-card" pokemon="???" shiny="false">
+          <div class="card-header">
+            <div class="card-delete">
+              <button class="deletebutton">
+                <img src="resources/img/delete.png" alt="delete" title="Delete Pokemon" draggable="false" height="25"
+                  width="25">
+              </button>
+            </div>
+            <div class="card-image-container">
+              <img class="card-image" src="resources/img/question-mark.png" draggable="false" alt="???" title="???"
+                height="110" width="110">
+              <img id="shinystar-2" class="shinystars bounceIn" src="resources/img/star.png" title="Shiny"
+                draggable="false" alt="Shiny" style="visibility: hidden;">
+            </div>
+          </div>
+          <div class="card-info">
+            <h5 class="card-title">???</h5>
+            <div class="card-type">???</div>
+            <div class="card-type-1" style="visibility: hidden; margin-top: 0;">???</div>
+          </div>
+        </div>
+
+        <div class="card left-card" pokemon="???" shiny="false">
+          <div class="card-header">
+            <div class="card-delete">
+              <button class="deletebutton">
+                <img src="resources/img/delete.png" alt="delete" title="Delete Pokemon" draggable="false" height="25"
+                  width="25">
+              </button>
+            </div>
+            <div class="card-image-container">
+              <img class="card-image" src="resources/img/question-mark.png" draggable="false" alt="???" title="???"
+                height="110" width="110">
+              <img id="shinystar-3" class="shinystars bounceIn" src="resources/img/star.png" title="Shiny"
+                draggable="false" alt="Shiny" style="visibility: hidden;">
+            </div>
+          </div>
+          <div class="card-info">
+            <h5 class="card-title">???</h5>
+            <div class="card-type">???</div>
+            <div class="card-type-1" style="visibility: hidden; margin-top: 0;">???</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="card left-card" pokemon="???" shiny="false">
+          <div class="card-header">
+            <div class="card-delete">
+              <button class="deletebutton">
+                <img src="resources/img/delete.png" alt="delete" title="Delete Pokemon" draggable="false" height="25"
+                  width="25">
+              </button>
+            </div>
+            <div class="card-image-container">
+              <img class="card-image" src="resources/img/question-mark.png" draggable="false" alt="???" title="???"
+                height="110" width="110">
+              <img id="shinystar-4" class="shinystars bounceIn" src="resources/img/star.png" title="Shiny"
+                draggable="false" alt="Shiny" style="visibility: hidden;">
+            </div>
+          </div>
+          <div class="card-info">
+            <h5 class="card-title">???</h5>
+            <div class="card-type">???</div>
+            <div class="card-type-1" style="visibility: hidden; margin-top: 0;">???</div>
+          </div>
+        </div>
+
+        <div class="card left-card" pokemon="???" shiny="false" gender="">
+          <div class="card-header">
+            <div class="card-delete">
+              <button class="deletebutton">
+                <img src="resources/img/delete.png" alt="delete" title="Delete Pokemon" draggable="false" height="25"
+                  width="25">
+              </button>
+            </div>
+            <div class="card-image-container">
+              <img class="card-image" src="resources/img/question-mark.png" draggable="false" alt="???" title="???"
+                height="110" width="110">
+              <img id="shinystar-5" class="shinystars bounceIn" src="resources/img/star.png" title="Shiny"
+                draggable="false" alt="Shiny" style="visibility: hidden;">
+            </div>
+          </div>
+          <div class="card-info">
+            <h5 class="card-title">???</h5>
+            <div class="card-type">???</div>
+            <div class="card-type-1" style="visibility: hidden; margin-top: 0;">???</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="input-pokemon-container">
+    <div>
+      <label for="input-pokemon">Choose pokemon</label>
+      <input id="input-pokemon" type="text" class="cool" />
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+TODO
+
+-MUSICA: Se si accende la musica nella prima schermata, non si deve spegnere nel cambiarla (Opzionale)
+
+-DANNO: Effettuare l'attacco solo dopo che entrambi i pokemon hanno le mosse "caricate". Quindi inizierà per primo quello con più velocità
+
+-HP BAR: Dopo che un pokemon muore esso non può attaccare e nemmeno essere attaccato
+
+-POTIONS: Incrementare la barra della vita del pokemon che ha usato la pozione (La parte di automa è già completa)
+
+TODO 21
+DANNI
+
+MODAL ALL'ENTRATA DELLA PAGINA

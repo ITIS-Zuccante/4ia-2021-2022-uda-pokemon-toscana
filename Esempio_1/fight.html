@@ -1,0 +1,407 @@
+<html lang="en" class="">
+
+<head>
+
+    <!-- <script type="module" src="javascript/team/selection.js"></script> -->
+
+
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="selectionStyle.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.iconninja.com/files/518/627/701/pokeball-icon.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="index.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Free Pokemon game - Selection</title>
+</head>
+
+<body style="background-image: url('./img/backgrounds/background23.jpg');">
+    <div class="row">
+        <div class="col text-center">
+            <a href="index.html"><img style="max-height: 100px;" src="img/Pokemon_zuccante.png"></a>
+        </div>
+    </div>
+
+    <!-- LEFT SIDE -->
+    <div class="row">
+
+        <!-- LEFT SIDEBAR -->
+        <div class="col col-2 pl-1">
+
+            <div class="card mx-auto miniature l my-1 p-0 text-center">
+                <span class="pokename l">Type</span>
+                <img class="left-m-i miniature-image" src="img\pokemon-question-mark.png" alt="Foto pokemon">
+                <span class="type l">NomePoke</span>
+            </div>
+
+            <div class="card mx-auto miniature l my-1 p-0 text-center">
+                <span class="pokename l">Type</span>
+                <img class="left-m-i miniature-image" src="img\pokemon-question-mark.png" alt="Foto pokemon">
+                <span class="type l">NomePoke</span>
+            </div>
+
+            <div class="card mx-auto miniature l my-1 p-0 text-center">
+                <span class="pokename l">Type</span>
+                <img class="left-m-i miniature-image" src="img\pokemon-question-mark.png" alt="Foto pokemon">
+                <span class="type l">NomePoke</span>
+            </div>
+
+            <div class="card mx-auto miniature l my-1 p-0 text-center">
+                <span class="pokename l">Type</span>
+                <img class="left-m-i miniature-image" src="img\pokemon-question-mark.png" alt="Foto pokemon">
+                <span class="type l">NomePoke</span>
+            </div>
+
+            <div class="card mx-auto miniature l my-1 p-0 text-center">
+                <span class="pokename l">Type</span>
+                <img class="left-m-i miniature-image" src="img\pokemon-question-mark.png" alt="Foto pokemon">
+                <span class="type l">NomePoke</span>
+            </div>
+
+            <div class="card mx-auto miniature l my-1 p-0 text-center">
+                <span class="pokename l">Type</span>
+                <img class="left-m-i miniature-image" src="img\pokemon-question-mark.png" alt="Foto pokemon">
+                <span class="type l">NomePoke</span>
+            </div>
+
+
+        </div>
+
+        <div class="col col-4">
+            <h5 class="text-center" id="leftTeamName">Team Name</h5>
+            <!-- style="min-width: 40%;" -->
+            <div class="card mt-3 mx-3 mx-auto pokemonCard p-3 col-9 animated" id="leftPokemon">
+                <img src="img\pokemon-question-mark.png" alt="Foto pokemon" id="left_image">
+                <div class="card-body p-0" id="leftfooter">
+                    <div class="card_type" id="left_top">Type</div>
+                    <h5 class="card-title  text-center mb-0 pokemonName" id="left__card__name">Pokename</h5>
+                    <div class="row">
+                        <div class="col text-center col-10 mx-auto my-0 p-0">
+                            <!-- <p class="m-0" id="leftHpValue">HP</p> -->
+                            <div class="hpBar" id="leftHp"></div>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="row my-1">
+                            <div class="col ">Hp</div>
+                            <div class="col" id="left-pokemon-hp">???</div>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col">Attack</div>
+                            <div class="col" id="left_pokemon_attack">???</div>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col">Defence</div>
+                            <div class="col" id="left_pokemon_defense">???</div>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col">Special Attack</div>
+                            <div class="col" id="left_pokemon_special_attack">???</div>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col">Special Defence</div>
+                            <div class="col" id="left_pokemon_special_defense">???</div>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col">Speed</div>
+                            <div class="col" id="left_pokemon_speed">???</div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">Ability<br><span id="left_ability">???</span></div>
+                            <div class="col">Hidden Ability<br><span id="left_hidden_ability">???</span> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col col-4">
+            <h5 class="text-center" id="rightTeamName">Team Name</h5>
+            <!-- style="min-width: 40%;" -->
+            <div class="card mt-3 mx-3 mx-auto pokemonCard p-3 col-9" id="rightPokemon">
+                <img src="img\pokemon-question-mark.png" alt="Foto pokemon" id="right_image">
+                <div class="card-body p-0">
+                    <div class="card_type" id="right_top">Type</div>
+                    <h5 class="card-title  text-center mb-0 pokemonName" id="right__card__name">Pokename</h5>
+                    <div class="row">
+                        <div class="col text-center col-10 mx-auto my-0 p-0">
+                            <!-- <p class="m-0" id="rightHpValue">HP</p> -->
+                            <div class="hpBar" id="rightHp"></div>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="row my-1">
+                            <div class="col ">Hp</div>
+                            <div class="col" id="right-pokemon-hp">???</div>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col">Attack</div>
+                            <div class="col" id="right_pokemon_attack">???</div>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col">Defence</div>
+                            <div class="col" id="right_pokemon_defense">???</div>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col">Special Attack</div>
+                            <div class="col" id="right_pokemon_special_attack">???</div>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col">Special Defence</div>
+                            <div class="col" id="right_pokemon_special_defense">???</div>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col">Speed</div>
+                            <div class="col" id="right_pokemon_speed">???</div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col">Ability<br><span id="right_ability">???</span></div>
+                            <div class="col">Hidden Ability<br><span id="right_hidden_ability">???</span> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col col-2 pl-1">
+
+            <div class="card mx-auto miniature r my-1 p-0 text-center" id="card0l">
+                <span class="pokename r" id="type0l">Type</span>
+                <img class="right-m-i miniature-image" src="img\pokemon-question-mark.png" alt="Foto pokemon">
+                <span class="type r" id="name0l">NomePoke</span>
+            </div>
+
+            <div class="card mx-auto miniature r my-1 p-0 text-center">
+                <span class="pokename r">Type</span>
+                <img class="right-m-i miniature-image" src="img\pokemon-question-mark.png" alt="Foto pokemon">
+                <span class="type r">NomePoke</span>
+            </div>
+
+            <div class="card mx-auto miniature r my-1 p-0 text-center">
+                <span class="pokename r">Type</span>
+                <img class="right-m-i miniature-image" src="img\pokemon-question-mark.png" alt="Foto pokemon">
+                <span class="type r">NomePoke</span>
+            </div>
+
+            <div class="card mx-auto miniature r my-1 p-0 text-center">
+                <span class="pokename r">Type</span>
+                <img class="right-m-i miniature-image" src="img\pokemon-question-mark.png" alt="Foto pokemon">
+                <span class="type r">NomePoke</span>
+            </div>
+
+            <div class="card mx-auto miniature r my-1 p-0 text-center">
+                <span class="pokename r">Type</span>
+                <img class="right-m-i miniature-image" src="img\pokemon-question-mark.png" alt="Foto pokemon">
+                <span class="type r">NomePoke</span>
+            </div>
+
+            <div class="card mx-auto miniature r my-1 p-0 text-center">
+                <span class="pokename r">Type</span>
+                <img class="right-m-i miniature-image" src="img\pokemon-question-mark.png" alt="Foto pokemon">
+                <span class="type r">NomePoke</span>
+            </div>
+
+
+        </div>
+
+
+        <div class="row">
+            <div class="formIsland row p-3 col-5 mt-4 toleft" style="border-radius: 60px; background-color: #c8c8c8cc;">
+                <div class="col mx-auto">
+                    <!-- style="width: 80%;" -->
+                    <form class="form-inline" autocomplete="off" onsubmit="return false;">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <!-- <label for="pokenameLeft" class="sr-only">Pokemon name</label> -->
+                            <input type="text" class="mx-auto form-control text-center" placeholder="Pokemon name"
+                                style="width: 100%; background-color: rgba(200,200,200, .6); border: none;"
+                                id="UserInput">
+                        </div>
+                    </form>
+                    <button type="submit" class="btn btn-outline-success mb-2 mx-2" id="SubmitButton">I choose
+                        you!</button>
+                    <button type="submit" class="btn btn-outline-success mb-2 mx-2" id="RandomButton"><img
+                            src="img/shuffle.svg" alt="">
+                        PokeRandom</button>
+
+                    <button type="submit" class="btn btn-outline-success mb-2 mx-2" id="Mic"><img src="img/mic-fill.svg"
+                            alt=""></button>
+
+                    <button type="submit" class="btn btn-outline-danger mb-2 mx-2" id="AttackButton"><img
+                            src="img/bullseye.svg" alt=""> Attack!</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <style>
+        div.hpBar {
+            /* border: 1px solid black !important; */
+            background-color: green;
+            border-radius: 12px;
+        }
+
+        h5.pokemonName {
+            margin-top: 35px;
+        }
+
+        /* *{ */
+        /* transform: 2s; */
+        /* transition-delay: 2s; */
+        /* transition: 2s; */
+        /* } */
+        /* .type { */
+        /* position: relative; */
+        /* bottom: 20px; */
+        /* } */
+
+        .type,
+        .pokename {
+            display: none;
+        }
+
+        .miniature:hover {
+            /* animation: 1.1s; */
+            /* transition: 9s; */
+            padding-bottom: 5px;
+            height: auto !important;
+            /* transition: 1s ease; */
+            /* -transition: height 1s ease; */
+            /* max-height: 180x !important; */
+        }
+
+        .miniature:hover .type,
+        .miniature:hover .pokename {
+            display: inline;
+        }
+
+        .miniature {
+            /* transition: 9s; */
+            max-width: 100%;
+            height: 80px;
+        }
+
+        .miniature-image {
+            max-height: 100%;
+        }
+
+        div.pokemonCard {
+            border-radius: 20px;
+        }
+
+        div.card_type {
+            padding: 5px;
+            float: right;
+            padding-right: 1.3vw;
+            /* width: 100%; */
+            width: fit-content;
+            text-align: right;
+            border-radius: 4px;
+        }
+
+
+        @keyframes bouceIt {
+            from {
+                /* top: 10px; */
+                transform: rotate(3deg);
+                /* top: 0px; */
+                /* bottom: 0px; */
+            }
+
+            to {
+                /* top: 0; */
+                transform: rotate(-3deg);
+                /* bottom: 10px; */
+                /* top: 0; */
+            }
+        }
+
+        /* @keyframes toRight {
+            from {
+                margin-left: auto !important;
+            }
+
+            to {
+                margin-right: 8em !important;
+            }
+        } */
+
+
+        /* div.formIsland.toLeft { */
+        /* margin-right: 8em !important; */
+
+        /* } */
+        .formIsland.toleft {
+            margin-right: auto;
+            margin-left: 12em;
+
+        }
+
+        div.formIsland.toright {
+            /* position: relative; */
+            /* animation-duration: 1s; */
+            /* animation-name: toRight; */
+            margin-right: 12em !important;
+            margin-left: auto !important;
+            /* animation-iteration-count: infinite; */
+            /* animation-direction: alternate; */
+        }
+
+
+
+        div.card.animated {
+            position: relative;
+            animation-duration: 1s;
+            animation-name: bouceIt;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+    </style>
+    <!-- src="/javascript/fight/fight.js -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+    <!-- <script type="module" src="javascript/fight/prova.js"></script> -->
+    <script type="module" src="/javascript/fight/fight.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+    <!-------------- NOTIFICATIONS ----------- -->
+    <!-- <link rel="stylesheet" type="text/css" media="all" href="css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" media="all" href="css/jquery.bootstrap.message.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+
+    <script type="text/javascript" src="javascript/js/libs/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="javascript/js/libs/jquery.bootstrap.message.js"></script>
+    <script type="text/javascript" src="javascript/js/index.js"></script>
+    <!-- /NOTIFICATIONS -->
+
+</body>
+
+</html>

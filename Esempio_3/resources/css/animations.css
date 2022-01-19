@@ -1,0 +1,98 @@
+@import "variables.css";
+
+.card-left-animation-attack {
+  animation: moveLeftAttack 1.8s 1;
+  -moz-animation: moveLeftAttack 1.8s 1;
+  -o-animation: moveLeftAttack 1.8s 1;
+  animation-fill-mode: none;
+}
+
+@keyframes moveLeftAttack {
+  0% {
+    left: 0%;
+    transform: translateY(0%) rotateZ(var(--card-left-degree));
+  }
+
+  33% {
+    transform: translateY(-15%) rotateZ(25deg);
+  }
+
+  33% {
+    z-index: 9999;
+    left: calc(85% - var(--card-width));
+  }
+
+  100% {
+    left: 0%;
+    transform: translateY(0%) rotateZ(var(--card-left-degree));
+  }
+}
+
+.card-right-animation-attack {
+  animation: moveRightAttack 1.8s 1;
+  -moz-animation: moveRightAttack 1.8s 1;
+  -o-animation: moveRightAttack 1.8s 1;
+  animation-fill-mode: none;
+}
+
+@keyframes moveRightAttack {
+    0% {
+    right: 0%;
+    transform: translateY(0%) rotateZ(var(--card-right-degree));
+  }
+
+  33% {
+    transform: translateY(-15%) rotateZ(-25deg);
+  }
+
+  33% {
+    z-index: 9999;
+    right: calc(85% - var(--card-width));
+  }
+
+  100% {
+    right: 0%;
+    transform: translateY(0%) rotateZ(var(--card-right-degree));
+  }
+}
+
+.card-animation-opponent {
+  animation: shake 0.3s 1;
+  animation-fill-mode: none;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(2px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(0px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 1px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, -2px) rotate(0deg);
+  }
+  70% {
+    transform: translate(2px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -2px) rotate(1deg);
+  }
+  90% {
+    transform: translate(2px, -1px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
