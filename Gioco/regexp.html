@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>Prova regexp</title>
+    </head>
+    <body>
+    <script>
+    async function invocation(groups){
+        let pokemon = groups.pokemon.toLowerCase();
+        let result = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+        let data = await result.json();
+        let sprite = await fetch(data.sprites.front_default);
+        data = await result.json();
+        result = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+    }
+
+    async function attack(groups){
+        let pokemon = groups.pokemon.toLowerCase();
+        let move = (groups.move).replace(' ', '-').toLowerCase();
+        let result = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+        let data = await result.json();
+        let m = data.moves.find(element => element.move.name == move);
+        if (m === undefined) {
+            console.log(`${pokemon} non ha la mossa ${move}`);
+            return;
+        }
+        result = await fetch(m.move.url);
+        data = await result.json();
+        let essentialData = {
+            power : data.power,
+            pp: data.pp,
+            priority: data.priority,
+            type: data.type.name
+        };
+        console.log(essentialData);
+    }
+        
+    const commands = [
+        {
+            regexp: /^((?<pokemon>[^ ]+) I choose you)$/,
+            action: invocation
+        },
+        {
+            regexp: /^((?<pokemon>[^ ]+) use (?<move>.+))$/,
+            action: attack
+        }
+    ];
+
+    // let str = "Pikachu I choose you";
+    let str = "Solgaleo use solar beam";
+    let found = false;
+    let i = 0;
+
+    while (!found && i < commands.length) {
+        console.log(i);
+        found = (commands[i].regexp).test(str);
+        if (found) {
+            let groups = str.match(commands[i].regexp).groups;
+            commands[i].action(groups);
+        }
+        i++;
+    }
+    if (!found) {
+        console.log("Comando non riconosciuto.");
+    }
+    
+    </script>
+    </body>
+</html>

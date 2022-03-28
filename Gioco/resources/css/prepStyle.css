@@ -1,0 +1,112 @@
+@font-face {
+    font-family: pokemon;
+    src: url(../fonts/pokemon_solid-webfont.woff);
+}
+
+.background{
+    width: 100%;
+    position: absolute;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    left:0px;
+}
+
+#teamDiv{
+    position: absolute;
+    left: 50%;
+    top: -15%;
+    width: 50%;
+    transform: translate(-50%);
+    }
+
+#loading{
+    position: absolute;
+    top: 8%;
+    left: 5%;
+    width: 3%;
+    visibility: hidden;
+}
+
+/*---- POKEBALL ----*/
+
+.pokeballDiv{
+    width: 30%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 45%;
+}
+
+#pokeball{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+ }
+
+/*---- POKEMON FIELD ----*/
+
+.inputDiv{
+    position: absolute;
+    transform: translate(-50%, 50%);
+    left: 48%;
+    bottom: 29%;
+    width: 50%;
+    height: 6%;
+}
+
+#insertPokemon{
+    height: 100%;
+    width: 100%;
+    border:3px solid lightgray;
+    box-shadow: 1px 1px 8px 3px #888888;
+    padding-left: 25px;
+    background: #F1F1F1 url("/images/symbols/pokeball_logo.png") no-repeat left;
+    background-size: 20px;
+}
+
+/*---- CONFIRM BUTTON ----*/
+
+#confirmDiv{
+    position: absolute;
+    left: 50%;
+    bottom: 17%;
+    width:38%;
+    transform: translate(-50%, 50%);
+}
+#confirmButton {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: #cccccc;
+    cursor: pointer;
+    transition: 0.7s all;
+    -webkit-filter: drop-shadow(1px 1px 10px #222);
+}
+#confirmButton:active{
+    transform: scale(0.90);
+}
+
+/*---- START GAME ----*/
+
+#startGameDiv{
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    width: 20%;
+    transform: translate(-50%, 50%);
+}
+
+#startGameButton{
+    width: 100%;
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+    padding: 0px;
+    visibility: hidden;
+    transition: 0.2s all;
+}
+
+#startGameButton:active{
+    transform: scale(0.95);
+}

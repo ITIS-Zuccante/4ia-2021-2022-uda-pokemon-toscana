@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Zuckemon</title>
+        <link rel="shortcut icon" href="images/symbols/pokeball_logo.png">
+        <link rel="stylesheet" href="resources/css/indexStyle.css">
+    </head>
+    <body>
+        <div class = "background">
+            <img src="images/writings/team_logo.png" class="zuckemonLogo" alt="team logo">
+            <style>
+                body {
+                    background-image: url("images/backgrounds/background.gif");
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-position: center bottom 20%;
+                }
+            </style>
+
+            <div class="divPlay">
+                <button  onclick="location.href='prep.html'" class="playButton" id="playButton">
+                    <img src="images/buttons/play_button.png" width="100%" alt="play button">
+                </button>
+            </div>
+
+            <div class="divHelp">
+                <button id="helpButton" class="helpButton">
+                    <img src="images/buttons/help_button.png" width="100%" alt="help button">
+                </button>
+            </div>
+            <div class="modal" id="modal">
+                <div class="modal-container" id="modalContainer">
+                    <div class="modal-header">
+                        <button id="closeButton" class="closeButton">&times;</button>
+                    </div>
+                    <div id="previousPageDiv">
+                        <button id="previousPage" class="pageButton">&lArr;</button>
+                    </div>
+                    <div id="nextPageDiv" >
+                        <button id="nextPage" class="pageButton">&rArr;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html> 
