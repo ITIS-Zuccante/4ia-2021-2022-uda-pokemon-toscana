@@ -37,21 +37,65 @@ body {
 1- rosso
 2- blu*/
 
-.button {
+.navigate > .button {
     border: none;
-    color: white;
-    padding: 15px 32px;
+    color: black;
+    padding-top: 25px;
+    padding-bottom: 25px; 
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: auto;
     cursor: pointer;
     background-color: #4998E0;
     opacity: 80%;
-    border-radius: 10%;
+    border-radius: 5%;
+    width: 225px;
+    height: 90px;
+    text-align: center;
+    position: relative;
+    font-family: 'Bangers', cursive;
+    font-size: 150%;
 }
 
+.left :first-child(){
+    margin-top: 50px;
+}
+
+.navigate{
+    margin: 40px;
+}
+
+.button > img{
+    /* left: 50px; */
+    position: absolute;
+    left: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.button > span{
+    position: absolute;
+    left: 45%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.button > img, .button > span{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#fight{
+    font-size: 200%;
+}
+
+.choose{
+    background: #F93C3C;
+    width: 500px;
+}
 /*.background{
     width: 100%;
     position: absolute;
