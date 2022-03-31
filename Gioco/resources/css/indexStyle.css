@@ -20,7 +20,7 @@ body {
 
 .column {
     float: left;
-  }
+}
   
 .left {
     width: 30%;
@@ -36,6 +36,8 @@ body {
 80% opacità
 1- rosso
 2- blu*/
+
+/*-----------------LEFT------------------------*/
 
 .navigate > .button {
     border: none;
@@ -57,6 +59,10 @@ body {
     position: relative;
     font-family: 'Bangers', cursive;
     font-size: 150%;
+}
+
+.navigate > .button:focus{
+    background-color: #F93C3C;
 }
 
 .left :first-child(){
@@ -92,10 +98,28 @@ body {
     font-size: 200%;
 }
 
+/*---------------------RIGHT------------------------*/
 .choose{
     background: #F93C3C;
-    width: 500px;
+    opacity: 80%;
+    height: 560px;
+    margin: 5% 10%;
+    border-radius: 30px;
 }
+
+.first-column, .second-column, .third-column, .fourth-column{
+    width: 25%;
+    float: left;
+}
+
+.cardpokemon{
+    margin: 20px;
+    background-color: white;
+    width: 150px;
+    height: 250px;
+    border-radius: 10px;
+}
+
 /*.background{
     width: 100%;
     position: absolute;
