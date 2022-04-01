@@ -58,7 +58,6 @@ body {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
     margin: auto;
     cursor: pointer;
     background-color: #4998E0;
@@ -70,10 +69,6 @@ body {
     position: relative;
     font-family: 'Bangers', cursive;
     font-size: 150%;
-}
-
-.navigate > .button:focus{
-    background-color: #F93C3C;
 }
 
 .left :first-child(){
@@ -137,6 +132,39 @@ body {
 
 .cardpokemon > p{
     font-size: 150%;
+}
+
+.input{
+    margin-top: 40px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.input > input{
+    height: 40px;
+    text-align: center;
+    border: none;
+}
+
+.choose-button > button{
+    border: none;
+    font-size: 16px;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    margin-top: 40px;
+    width: 169px;
+    height: 40px;
+}
+
+#next > button{
+    border-radius: 10px;
+    width: 200px;
+    height: 80px;
+    background-color: #DED47A;
 }
 /*.background{
     width: 100%;
