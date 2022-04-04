@@ -11,6 +11,12 @@ buttons.map( button => {
         for (let index = 0; index < buttons.length; index++) {
             console.log(buttons[index] == button);
             if(buttons[index] == button){
+                if(index == 2){
+                    window.open('REGOLAMENTO POKEMON.pdf', 'fullscreen=yes'); 
+                }
+                if(index == 3){
+                    window.location.href = "fight.html";
+                }
                 buttons[index].style.backgroundColor = "#F93C3C";
             } else{
                 buttons[index].style.backgroundColor = "#4998E0";
