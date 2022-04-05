@@ -22,6 +22,7 @@ function levenshteinDistance(str1, str2) {  //Questa funzione calcola quanto due
 }
 export function BestMatch() {
     function bestMatch(string, array) {
+        console.log(string);
         string = string.toLowerCase();
         let bestMatch = array[0];
         let worstMatch = 100;           //100 è il valore peggiore che possiamo avere, significa che una stringa è al 100% diversa

@@ -15,7 +15,7 @@ const insertPokemon_Field = document.getElementById("insertPokemon");
 const teamWriting = document.getElementById("teamImage");
 const confirmButton = document.getElementById("confirmButtonImage");
 const startButton = document.getElementById("startGameButton")
-const loading = document.getElementById("loading")
+const loading = document.getElementById("loading")  
 
 let finishedSelection = false;
 let currentTeam = 0;        //0 - RED , 1 - BLU
