@@ -6,24 +6,49 @@
 .pokeball{
     width: 30%;
 }
+
 /*------------POKEMON CARD--------------*/
 .card{
     width: 430px;
     height: 679px;
     background-color: aliceblue;
     border-radius: 15px;
+    /*position: absolute;*/
+    margin: 0 auto;
 }
 
 .card_parentdiv{
     width: 70%;
+    margin: auto;
 }
 
-.pokemon_name{
-    position: absolute;
-    width: 201px;
-    height: 35px;
-    left: 1229px;
-    top: 298px;
+.name {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+
+.pokeImg {
+    height: 260px;
+}
+
+.hpBar {
+    height: 20px;
+}
+
+.moveSet {
+    height: 250px;
+}
+
+
+.column_move {
+    float: left;
+    width: 50%;
+}
+
+.mic {
+    
 }
 /*-------------POKEBALL----------------*/
 .pokeball_img{
@@ -32,9 +57,10 @@
     border: 0px;
 }
 
-.pokeball > div{
-
+.pokeball_img > img{
+    margin: auto;
 }
+
 /* @font-face {
     font-family: 'PokemonFont';
     src: url(/resources/fonts/Pokemon-Pixel-Font.woff)format("woff")
