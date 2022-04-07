@@ -25,7 +25,9 @@ const startButton = document.getElementById("startGameButton") //uguale a startT
 const loading = document.getElementById("loading")  //icona di caricamento in alto a destra (da togliere???)
 const randomPokemon_button = document.getElementById("random");
 
-let finishedSelection = false;
+let finishedSelectionTeam1 = false;
+let finishedSelectionTeam2 = false;
+
 let currentTeam = 0;        //0 - RED , 1 - BLU
 
 let teams = [
@@ -61,9 +63,9 @@ let pokemonsObject = {};
 }*/
 
 async function chooseOne(){
-    if(!finishedSelection) {
+    if(!finishedSelectionTeam1) {
         if (inputField.value != "") {
-            console.log(inputField.value)
+            console.log(inputField.value);
             let val = bestMatch.bestMatch(inputField.value, pokedex);
             if (!(teams[currentTeam].pokemon.some(e => e.name === val))) {
                 //loading.style.visibility = "visible";
@@ -91,7 +93,7 @@ async function chooseOne(){
                     changeColor()
                 }*/
                 if(teams[currentTeam].n == 6){
-                    finishedSelection = true;
+                    finishedSelectionTeam1 = true;
                 }
             } else {
                 alert("You already have this pokemon in your team!");
@@ -115,6 +117,12 @@ function placeStars(length){
     let nameWithStars = "";
     for(let i = 0; i < length; i++){
         nameWithStars += '*';
+    }
+    //document.getElementById("demo").style.fontSize = "x-large";
+    if(nameWithStars.length > 14){
+
+    } else {
+
     }
     return nameWithStars;
 }
