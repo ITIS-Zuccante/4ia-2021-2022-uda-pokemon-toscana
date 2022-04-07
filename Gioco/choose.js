@@ -69,7 +69,10 @@ async function chooseOne(){
             let val = bestMatch.bestMatch(inputField.value, pokedex);
             if (!(teams[currentTeam].pokemon.some(e => e.name === val))) {
                 //loading.style.visibility = "visible";
+                console.log(val)
                 pokemonsObject.val = await getPokemon(pokedex.indexOf(val)+1)
+                console.log("ZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXZ")
+                console.log(pokemonsObject.val.name)
                 teams[currentTeam].pokemon.push(await loadInfo(pokemonsObject.val));
                 //loading.style.visibility = "hidden";
                 let name = teams[currentTeam].pokemon[teams[currentTeam].n].name;
@@ -78,10 +81,8 @@ async function chooseOne(){
                 teams[currentTeam].n++;
                 console.log("Pokemon scelto: ");
                 console.log(teams[currentTeam].pokemon[teams[currentTeam].n-1]);
-                pokemonName[teams[currentTeam].n-1].innerHTML  = placeStars(name.length);
+                pokemonName[teams[currentTeam].n-1].innerHTML = placeStars(name.length);
                 console.log(teams[currentTeam].pokemon[teams[currentTeam].n-1].name);
-
-
                 inputField.value = "";
                 /*if (currentTeam == 0) {
                     pokeball.src = `images/symbols/pokeBalls/redPokeball${teams[currentTeam].n}.png`;
@@ -129,3 +130,9 @@ function placeStars(length){
 
 
 insertPokemon_button.addEventListener("click", chooseOne);
+randomPokemon_button.addEventListener("click",() => {
+    //pokemonsObject.val = await getPokemon(pokedex.indexOf(Math.floor(Math.random()*896)))
+    inputField.value = pokedex.indexOf(Math.floor(Math.random()*896))
+    console.log(pokedex.indexOf(Math.random()*896))
+    chooseOne();
+})
