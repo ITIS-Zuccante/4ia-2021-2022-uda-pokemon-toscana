@@ -90,6 +90,9 @@ async function chooseOne(){
                     console.log(`Team ${teams[currentTeam].name}: ` + teams[currentTeam].pokemon[0])
                     changeColor()
                 }*/
+                if(teams[currentTeam].n == 6){
+                    finishedSelection = true;
+                }
             } else {
                 alert("You already have this pokemon in your team!");
                 inputField.value = "";
@@ -97,9 +100,10 @@ async function chooseOne(){
             }
         }
     }
-    //else{
-    //    console.log("Can't add more pokemon to the team")
-   // }
+    else{
+        alert("Hai raggiunto il numero massimo di pokemon in questo team!");    
+        console.log("Can't add more pokemon to the team")
+    }
 }
 
 /*startButton.addEventListener('click', () =>{
