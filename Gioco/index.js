@@ -6,14 +6,15 @@ const team1Window = document.getElementById('team1Choose');
 const team2Window = document.getElementById('team2Choose');
 const defaultView = document.getElementById('default');
 const rulesWindow = document.getElementById('rulesPDF');
-const logoButton   = document.getElementById('logoButton');
+const logoButton  = document.getElementById('logoButton');
+const next1Button = document.getElementById('next1');
+const next2Button = document.getElementById('next2');
 
 window.addEventListener("load", function() {
     team1Window.style.display = "none";
     team2Window.style.display = "none";
     rulesWindow.style.display = "none";
 });
-
 
 const buttons = [logoButton, team1Button, team2Button, rulesButton, fightButton];
 
@@ -22,7 +23,6 @@ buttons.map( button => {
         defaultView.style.display = "none";
         //button.style.backgroundColor = "#F93C3C";
         for (let index = 0; index < buttons.length; index++) {
-            console.log(buttons[index] == button);
             if(buttons[index] == button){
                 switch (index){//ROSSO
                     case 0:
@@ -57,3 +57,18 @@ buttons.map( button => {
         }
     });
 });
+
+next1Button.addEventListener("click",() => {
+    team1Window.style.display = "none";
+    team2Window.style.display = "block";
+    buttons[1].style.backgroundColor = "#4998E0";
+    buttons[2].style.backgroundColor = "#F93C3C";
+})
+
+next2Button.addEventListener("click",() => {
+    team2Window.style.display = "none";
+    rulesWindow.style.display = "block";
+    buttons[2].style.backgroundColor = "#4998E0";
+    buttons[3].style.backgroundColor = "#F93C3C";
+})
+

@@ -7,23 +7,36 @@ let bestMatch = BestMatch();
 
 window.localStorage.clear();
 
-const insertPokemon_button = document.getElementById("insert");
+const insertPokemon_buttonTeam1 = document.getElementById("insert1");
+const insertPokemon_buttonTeam2 = document.getElementById("insert2");
+
 //const pokemonStatus = document.getElementById("pokemon_status");
-let pokemonStatus = [];
+let pokemonStatusTeam1 = [];
 for (let i = 0; i < 6; i++) {
-    pokemonStatus[i] = document.getElementById(`pokemon_status${i+1}`);
+    pokemonStatusTeam1[i] = document.getElementById(`pokemon_status1${i+1}`);
 }
-let pokemonName = [];
+let pokemonNameTeam1 = [];
 for (let i = 0; i < 6; i++) {
-    pokemonName[i] = document.getElementById(`pokemonName${i+1}`);
+    pokemonNameTeam1[i] = document.getElementById(`pokemonName1${i+1}`);
+}
+let pokemonStatusTeam2 = [];
+for (let i = 0; i < 6; i++) {
+    pokemonStatusTeam2[i] = document.getElementById(`pokemon_status2${i+1}`);
+}
+let pokemonNameTeam2 = [];
+for (let i = 0; i < 6; i++) {
+    pokemonNameTeam2[i] = document.getElementById(`pokemonName2${i+1}`);
 }
 const startTheGame_Button = document.getElementById("startGameButton");//in teoria rimpiazzato con fightButton(da rendere cliccabile)
 const fightButton = document.getElementById('fight');
-const inputField = document.getElementById("input");
+const inputFieldTeam1 = document.getElementById("input1");
+const inputFieldTeam2 = document.getElementById("input2");
 const teamWriting = document.getElementById("teamImage"); //scritta sopra la pokeball ---DA TOGLIERE
 const startButton = document.getElementById("startGameButton") //uguale a startTheGame_Button
 const loading = document.getElementById("loading")  //icona di caricamento in alto a destra (da togliere???)
-const randomPokemon_button = document.getElementById("random");
+const randomPokemon_buttonTeam1 = document.getElementById("random1");
+const randomPokemon_buttonTeam2 = document.getElementById("random2");
+
 
 let finishedSelectionTeam1 = false;
 let finishedSelectionTeam2 = false;
@@ -62,28 +75,44 @@ let pokemonsObject = {};
     }
 }*/
 
-async function chooseOne(){
-    if(!finishedSelectionTeam1) {
-        if (inputField.value != "") {
-            console.log(inputField.value);
-            let val = bestMatch.bestMatch(inputField.value, pokedex);
+async function chooseOne(currentTeam){
+    if((!finishedSelectionTeam1 && currentTeam == 0) || (!finishedSelectionTeam2 && currentTeam == 1)) {
+        
+        let inputField;
+        switch(currentTeam){
+            case 0:
+                inputField = inputFieldTeam1.value;
+                break;
+            case 1:
+                inputField = inputFieldTeam2.value;
+                break;
+        }
+        console.log(inputField)
+        if (inputField != "") {
+            let val = bestMatch.bestMatch(inputField, pokedex);
             if (!(teams[currentTeam].pokemon.some(e => e.name === val))) {
                 //loading.style.visibility = "visible";
-                console.log(val)
                 pokemonsObject.val = await getPokemon(pokedex.indexOf(val)+1)
-                console.log("ZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXZ")
-                console.log(pokemonsObject.val.name)
                 teams[currentTeam].pokemon.push(await loadInfo(pokemonsObject.val));
                 //loading.style.visibility = "hidden";
                 let name = teams[currentTeam].pokemon[teams[currentTeam].n].name;
-                console.log(pokemonStatus[teams[currentTeam].n]);
-                pokemonStatus[teams[currentTeam].n].src = "../insertedPokemon.png";
                 teams[currentTeam].n++;
                 console.log("Pokemon scelto: ");
                 console.log(teams[currentTeam].pokemon[teams[currentTeam].n-1]);
-                pokemonName[teams[currentTeam].n-1].innerHTML = placeStars(name.length);
+                switch(currentTeam){
+                    case 0:
+                        console.log("inside0")
+                        pokemonStatusTeam1[teams[currentTeam].n-1].src = "../insertedPokemon.png";
+                        pokemonNameTeam1[teams[currentTeam].n-1].innerHTML = placeStars(name.length);
+                        break;
+                    case 1:
+                        console.log("inside1")
+                        pokemonStatusTeam2[teams[currentTeam].n-1].src = "../insertedPokemon.png";
+                        pokemonNameTeam2[teams[currentTeam].n-1].innerHTML = placeStars(name.length);
+                        break;
+                }
+                
                 console.log(teams[currentTeam].pokemon[teams[currentTeam].n-1].name);
-                inputField.value = "";
                 /*if (currentTeam == 0) {
                     pokeball.src = `images/symbols/pokeBalls/redPokeball${teams[currentTeam].n}.png`;
                 } else if (currentTeam == 1) {
@@ -94,13 +123,21 @@ async function chooseOne(){
                     changeColor()
                 }*/
                 if(teams[currentTeam].n == 6){
-                    finishedSelectionTeam1 = true;
+                    switch(currentTeam){
+                        case 0:
+                            finishedSelectionTeam1 = true;
+                            break;
+                        case 1:
+                            finishedSelectionTeam2 = true;
+                            break;
+                    }
                 }
             } else {
                 alert("You already have this pokemon in your team!");
-                inputField.value = "";
                 console.log(val + " c'è già")
             }
+            inputFieldTeam1.value = "";
+            inputFieldTeam2.value = "";
         }
     }
     else{
@@ -128,11 +165,13 @@ function placeStars(length){
     return nameWithStars;
 }
 
-
-insertPokemon_button.addEventListener("click", chooseOne);
-randomPokemon_button.addEventListener("click",() => {
-    //pokemonsObject.val = await getPokemon(pokedex.indexOf(Math.floor(Math.random()*896)))
-    inputField.value = pokedex.indexOf(Math.floor(Math.random()*896))
-    console.log(pokedex.indexOf(Math.random()*896))
-    chooseOne();
+insertPokemon_buttonTeam1.addEventListener("click", chooseOne(0));
+insertPokemon_buttonTeam2.addEventListener("click", chooseOne(1));
+randomPokemon_buttonTeam1.addEventListener("click",() => {
+    inputFieldTeam1.value = pokedex[Math.floor(Math.random()*896)];
+    chooseOne(0);
+})
+randomPokemon_buttonTeam2.addEventListener("click",() => {
+    inputFieldTeam2.value = pokedex[Math.floor(Math.random()*896)];
+    chooseOne(1);
 })
