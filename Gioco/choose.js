@@ -38,6 +38,7 @@ const randomPokemon_buttonTeam1 = document.getElementById("random1");
 const randomPokemon_buttonTeam2 = document.getElementById("random2");
 
 
+
 let finishedSelectionTeam1 = false;
 let finishedSelectionTeam2 = false;
 
@@ -76,6 +77,7 @@ let pokemonsObject = {};
 }*/
 
 async function chooseOne(currentTeam){
+    console.log("inside")
     if((!finishedSelectionTeam1 && currentTeam == 0) || (!finishedSelectionTeam2 && currentTeam == 1)) {
         
         let inputField;
@@ -133,7 +135,7 @@ async function chooseOne(currentTeam){
                     }
                 }
             } else {
-                alert("You already have this pokemon in your team!");
+                alert("Hai già scelto questo pokemon nel tuo team!");
                 console.log(val + " c'è già")
             }
             inputFieldTeam1.value = "";
@@ -145,11 +147,6 @@ async function chooseOne(currentTeam){
         console.log("Can't add more pokemon to the team")
     }
 }
-
-/*startButton.addEventListener('click', () =>{
-    window.localStorage.setItem("teams", JSON.stringify(teams));
-    window.location.href='battle.html';
-})*/
 
 function placeStars(length){
     let nameWithStars = "";
@@ -165,13 +162,21 @@ function placeStars(length){
     return nameWithStars;
 }
 
-insertPokemon_buttonTeam1.addEventListener("click", chooseOne(0));
-insertPokemon_buttonTeam2.addEventListener("click", chooseOne(1));
+insertPokemon_buttonTeam1.addEventListener("click", () => {
+    chooseOne(0)
+});
+insertPokemon_buttonTeam2.addEventListener("click",() => {
+     chooseOne(1)
+});
 randomPokemon_buttonTeam1.addEventListener("click",() => {
     inputFieldTeam1.value = pokedex[Math.floor(Math.random()*896)];
     chooseOne(0);
-})
+});
 randomPokemon_buttonTeam2.addEventListener("click",() => {
     inputFieldTeam2.value = pokedex[Math.floor(Math.random()*896)];
     chooseOne(1);
-})
+});
+fightButton.addEventListener('click', () =>{
+    window.localStorage.setItem("teams", JSON.stringify(teams));
+    window.location.href='fight.html';
+});
