@@ -61,12 +61,37 @@
     margin: auto;
 }
 
-.pokeball_left {
-    padding-left: 70px;
-}
-
 .first_pokeball {
     padding-top: 0px;
+}
+
+/*.pokeball_left > button{
+
+}*/
+
+/*----------CARD'S BUTTONS----------*/
+
+#mic2 {
+    height: 55px;
+    width: 55px;
+    /*border: none;*/
+    margin-left: 30px;
+}
+
+#random2 {
+    height: 55px;
+    width: 55px;
+    margin-left: -15px;
+    transform: translateY(-3%);
+}
+
+#input2 {
+    transform: translateY(-120%);
+    margin-left: 30px;
+}
+
+#enter2 {
+    transform: translateX(-344%);
 }
 
 /* @font-face {
