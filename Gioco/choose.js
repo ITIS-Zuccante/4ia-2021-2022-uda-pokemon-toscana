@@ -5,12 +5,15 @@ import {loadInfo} from "./resources/js/loadPokemonInfo.js"
 
 let bestMatch = BestMatch();
 
+
+window.addEventListener("load", function() {
+    team1Window.style.display = "none";
+    team2Window.style.display = "none";
+    rulesWindow.style.display = "none";
+});
+
 //window.localStorage.clear();
 
-const insertPokemon_buttonTeam1 = document.getElementById("insert1");
-const insertPokemon_buttonTeam2 = document.getElementById("insert2");
-
-//const pokemonStatus = document.getElementById("pokemon_status");
 let pokemonStatusTeam1 = [];
 for (let i = 0; i < 6; i++) {
     pokemonStatusTeam1[i] = document.getElementById(`pokemon_status1${i+1}`);
@@ -27,8 +30,18 @@ let pokemonNameTeam2 = [];
 for (let i = 0; i < 6; i++) {
     pokemonNameTeam2[i] = document.getElementById(`pokemonName2${i+1}`);
 }
-const startTheGame_Button = document.getElementById("startGameButton");//in teoria rimpiazzato con fightButton(da rendere cliccabile)
+const team1Button = document.getElementById('team1');
+const team2Button = document.getElementById('team2');
+const rulesButton = document.getElementById('rules');
 const fightButton = document.getElementById('fight');
+const team1Window = document.getElementById('team1Choose');
+const team2Window = document.getElementById('team2Choose');
+const defaultView = document.getElementById('default');
+const rulesWindow = document.getElementById('rulesPDF');
+const logoButton  = document.getElementById('logoButton');
+const next1Button = document.getElementById('next1');
+const next2Button = document.getElementById('next2');
+const startTheGame_Button = document.getElementById("startGameButton");//in teoria rimpiazzato con fightButton(da rendere cliccabile)
 const inputFieldTeam1 = document.getElementById("input1");
 const inputFieldTeam2 = document.getElementById("input2");
 const microphon_team1 = document.getElementById("micro1");
@@ -36,7 +49,9 @@ const microphon_team2 = document.getElementById("micro2")
 const loading = document.getElementById("loading")  //icona di caricamento in alto a destra (da togliere???)
 const randomPokemon_buttonTeam1 = document.getElementById("random1");
 const randomPokemon_buttonTeam2 = document.getElementById("random2");
-const logoButton  = document.getElementById('logoButton');
+const insertPokemon_buttonTeam1 = document.getElementById("insert1");
+const insertPokemon_buttonTeam2 = document.getElementById("insert2");
+const buttons = [logoButton, team1Button, team2Button, rulesButton, fightButton];
 
 let finishedSelectionTeam1 = false;
 let finishedSelectionTeam2 = false;
@@ -66,7 +81,6 @@ if(!(JSON.parse(window.localStorage.getItem("teams")) == null)){
         }
     
 } 
-console.log(teams)
 let pokemonsObject = {};
 
 async function chooseOne(currentTeam){
@@ -162,15 +176,60 @@ randomPokemon_buttonTeam2.addEventListener("click",() => {
     chooseOne(1);
 });
 
-fightButton.addEventListener('click', () =>{
-    window.localStorage.setItem("teams", JSON.stringify(teams));
-    window.location.href='fight.html';
+buttons.map( button => {
+    button.addEventListener('click', (text) => {
+        defaultView.style.display = "none";
+        //button.style.backgroundColor = "#F93C3C";
+        for (let index = 0; index < buttons.length; index++) {
+            if(buttons[index] == button){
+                switch (index){//ROSSO
+                    case 0:
+                        window.localStorage.clear();
+                        console.log(teams)
+                        defaultView.style.display = "block";
+                        continue;
+                    case 1: 
+                        team1Window.style.display = "block";
+                        break;
+                    case 2:
+                        team2Window.style.display = "block";
+                        break;
+                    case 3: 
+                        rulesWindow.style.display = "block";
+                        break;
+                    case 4:
+                        window.localStorage.setItem("teams", JSON.stringify(teams));
+                        window.location.href='fight.html';
+                        window.location.href = "fight.html";
+                }
+                buttons[index].style.backgroundColor = "#F93C3C";
+            } else {//BLU
+                if(index == 0){
+                    defaultView.style.display = "none";
+                    continue;
+                } else if(index == 1){
+                    team1Window.style.display = "none";
+                } else if(index == 2){
+                    team2Window.style.display = "none";
+                } else if(index == 3){
+                    rulesWindow.style.display = "none";
+                }
+                buttons[index].style.backgroundColor = "#4998E0";
+            }            
+        }
+    });
 });
+next1Button.addEventListener("click",() => {
+    team1Window.style.display = "none";
+    team2Window.style.display = "block";
+    buttons[1].style.backgroundColor = "#4998E0";
+    buttons[2].style.backgroundColor = "#F93C3C";
+})
 
-logoButton.addEventListener('click', () =>{
-    location.reload();
-});
+next2Button.addEventListener("click",() => {
+    team2Window.style.display = "none";
+    rulesWindow.style.display = "block";
+    buttons[2].style.backgroundColor = "#4998E0";
+    buttons[3].style.backgroundColor = "#F93C3C";
+})
 
-microphon_team1.addEventListener('click', () =>{
-    
-});
