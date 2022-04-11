@@ -25,10 +25,9 @@ buttons.map( button => {
         for (let index = 0; index < buttons.length; index++) {
             if(buttons[index] == button){
                 switch (index){//ROSSO
-                    case 0:
-                        window.localStorage.clear();
+                    /*case 0:
                         defaultView.style.display = "block";
-                        continue;
+                        continue;*/
                     case 1: 
                         team1Window.style.display = "block";
                         break;

@@ -1,6 +1,6 @@
 import {BestMatch} from './resources/js/bestMatch.js';
 import{pokedex, getPokemon} from "./resources/js/data/pokedex.js";
-
+//import { WebSpeech } from './resources/js/webSpeech.js';
 import {loadInfo} from "./resources/js/loadPokemonInfo.js"
 
 let bestMatch = BestMatch();
@@ -31,15 +31,15 @@ const startTheGame_Button = document.getElementById("startGameButton");//in teor
 const fightButton = document.getElementById('fight');
 const inputFieldTeam1 = document.getElementById("input1");
 const inputFieldTeam2 = document.getElementById("input2");
-const teamWriting = document.getElementById("teamImage"); //scritta sopra la pokeball ---DA TOGLIERE
-const startButton = document.getElementById("startGameButton") //uguale a startTheGame_Button
+const microphon_team1 = document.getElementById("micro1");
+const microphon_team2 = document.getElementById("micro2") 
 const loading = document.getElementById("loading")  //icona di caricamento in alto a destra (da togliere???)
 const randomPokemon_buttonTeam1 = document.getElementById("random1");
 const randomPokemon_buttonTeam2 = document.getElementById("random2");
+const logoButton  = document.getElementById('logoButton');
 
 let finishedSelectionTeam1 = false;
 let finishedSelectionTeam2 = false;
-
 
 let teams = [
     {
@@ -51,31 +51,23 @@ let teams = [
         name: "blue",
         n: 0,
         pokemon:[]
-
     }
 ];
-
-try {
+if(!(JSON.parse(window.localStorage.getItem("teams")) == null)){
     teams = JSON.parse(window.localStorage.getItem("teams"));
-    console.log(teams);
-} catch (error) {}
+    console.log(teams)
+        for(let j = 0; j < teams[0].n; j++){
+            pokemonStatusTeam1[teams[0].n-j-1].src = "../insertedPokemon.png";
+            pokemonNameTeam1[teams[0].n-j-1].innerHTML = placeStars(teams[0].pokemon[teams[0].n-j-1].name.length);
+        }
+        for(let j = 0; j < teams[1].n; j++){
+            pokemonStatusTeam2[teams[1].n-j-1].src = "../insertedPokemon.png";
+            pokemonNameTeam2[teams[1].n-j-1].innerHTML = placeStars(teams[1].pokemon[teams[1].n-j-1].name.length);
+        }
+    
+} 
+console.log(teams)
 let pokemonsObject = {};
-
-/*function changeColor(){
-    if(currentTeam == 0) {
-        pokeball.src="images/symbols/pokeBalls/bluePokeball.png"
-        teamWriting.src="images/writings/hdblueTeam.png"
-        confirmButton.src = "images/buttons/ichooseyou_button2.png"
-        currentTeam = 1;
-    }
-    else if (currentTeam == 1){
-        startTheGame_Button.style.visibility = "visible";
-        finishedSelection = true;
-    }
-    else{
-        console.log("error")
-    }
-}*/
 
 async function chooseOne(currentTeam){
     if(teams[currentTeam].n == 6){
@@ -124,16 +116,6 @@ async function chooseOne(currentTeam){
                         break;
                 }
                 console.log(teams[currentTeam].pokemon[teams[currentTeam].n-1].name);
-                /*if (currentTeam == 0) {
-                    pokeball.src = `images/symbols/pokeBalls/redPokeball${teams[currentTeam].n}.png`;
-                } else if (currentTeam == 1) {
-                    pokeball.src = `images/symbols/pokeBalls/bluePokeball${teams[currentTeam].n}.png`;
-                }
-                if (teams[currentTeam].n == 6) {
-                    console.log(`Team ${teams[currentTeam].name}: ` + teams[currentTeam].pokemon[0])
-                    changeColor()
-                }*/
-                
             } else {
                 alert("Hai già scelto questo pokemon nel tuo team!");
                 console.log(val + " c'è già")
@@ -165,18 +147,30 @@ function placeStars(length){
 insertPokemon_buttonTeam1.addEventListener("click", () => {
     chooseOne(0);
 });
+
 insertPokemon_buttonTeam2.addEventListener("click",() => {
      chooseOne(1);
 });
+
 randomPokemon_buttonTeam1.addEventListener("click",() => {
     inputFieldTeam1.value = pokedex[Math.floor(Math.random()*896)];
     chooseOne(0);
 });
+
 randomPokemon_buttonTeam2.addEventListener("click",() => {
     inputFieldTeam2.value = pokedex[Math.floor(Math.random()*896)];
     chooseOne(1);
 });
+
 fightButton.addEventListener('click', () =>{
     window.localStorage.setItem("teams", JSON.stringify(teams));
     window.location.href='fight.html';
+});
+
+logoButton.addEventListener('click', () =>{
+    location.reload();
+});
+
+microphon_team1.addEventListener('click', () =>{
+    
 });
