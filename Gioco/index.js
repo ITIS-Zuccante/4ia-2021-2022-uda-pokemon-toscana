@@ -26,6 +26,7 @@ buttons.map( button => {
             if(buttons[index] == button){
                 switch (index){//ROSSO
                     case 0:
+                        window.localStorage.clear();
                         defaultView.style.display = "block";
                         continue;
                     case 1: 

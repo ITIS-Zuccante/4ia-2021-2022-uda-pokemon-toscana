@@ -1,3 +1,7 @@
+let teams = JSON.parse(window.localStorage.getItem("teams"));
+
+console.log(teams)
+
 import {BestMatch} from './resources/js/bestMatch.js';
 import {pokedex, movesList} from "./resources/js/data/pokedex.js";
 import {printPokemonCard, printDefaultCard, printMoveInfo} from "./resources/js/printCard.js";
@@ -28,7 +32,6 @@ const bluePokeball = "images/symbols/pokemonIndicators/bluePokeball_alive.png"
 
 let bestMatch = BestMatch();
 
-let teams = JSON.parse(window.localStorage.getItem("teams"));
 let fainted = false;
 
 selectionDiv.style.display = "none"

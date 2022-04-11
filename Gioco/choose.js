@@ -5,7 +5,7 @@ import {loadInfo} from "./resources/js/loadPokemonInfo.js"
 
 let bestMatch = BestMatch();
 
-window.localStorage.clear();
+//window.localStorage.clear();
 
 const insertPokemon_buttonTeam1 = document.getElementById("insert1");
 const insertPokemon_buttonTeam2 = document.getElementById("insert2");
@@ -37,12 +37,9 @@ const loading = document.getElementById("loading")  //icona di caricamento in al
 const randomPokemon_buttonTeam1 = document.getElementById("random1");
 const randomPokemon_buttonTeam2 = document.getElementById("random2");
 
-
-
 let finishedSelectionTeam1 = false;
 let finishedSelectionTeam2 = false;
 
-let currentTeam = 0;        //0 - RED , 1 - BLU
 
 let teams = [
     {
@@ -58,6 +55,10 @@ let teams = [
     }
 ];
 
+try {
+    teams = JSON.parse(window.localStorage.getItem("teams"));
+    console.log(teams);
+} catch (error) {}
 let pokemonsObject = {};
 
 /*function changeColor(){
@@ -77,7 +78,16 @@ let pokemonsObject = {};
 }*/
 
 async function chooseOne(currentTeam){
-    console.log("inside")
+    if(teams[currentTeam].n == 6){
+        switch(currentTeam){
+            case 0:
+                finishedSelectionTeam1 = true;
+                break;
+            case 1:
+                finishedSelectionTeam2 = true;
+                break;
+        }
+    }
     if((!finishedSelectionTeam1 && currentTeam == 0) || (!finishedSelectionTeam2 && currentTeam == 1)) {
         
         let inputField;
@@ -113,7 +123,6 @@ async function chooseOne(currentTeam){
                         pokemonNameTeam2[teams[currentTeam].n-1].innerHTML = placeStars(name.length);
                         break;
                 }
-                
                 console.log(teams[currentTeam].pokemon[teams[currentTeam].n-1].name);
                 /*if (currentTeam == 0) {
                     pokeball.src = `images/symbols/pokeBalls/redPokeball${teams[currentTeam].n}.png`;
@@ -124,16 +133,7 @@ async function chooseOne(currentTeam){
                     console.log(`Team ${teams[currentTeam].name}: ` + teams[currentTeam].pokemon[0])
                     changeColor()
                 }*/
-                if(teams[currentTeam].n == 6){
-                    switch(currentTeam){
-                        case 0:
-                            finishedSelectionTeam1 = true;
-                            break;
-                        case 1:
-                            finishedSelectionTeam2 = true;
-                            break;
-                    }
-                }
+                
             } else {
                 alert("Hai già scelto questo pokemon nel tuo team!");
                 console.log(val + " c'è già")
@@ -163,10 +163,10 @@ function placeStars(length){
 }
 
 insertPokemon_buttonTeam1.addEventListener("click", () => {
-    chooseOne(0)
+    chooseOne(0);
 });
 insertPokemon_buttonTeam2.addEventListener("click",() => {
-     chooseOne(1)
+     chooseOne(1);
 });
 randomPokemon_buttonTeam1.addEventListener("click",() => {
     inputFieldTeam1.value = pokedex[Math.floor(Math.random()*896)];
