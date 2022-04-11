@@ -24,7 +24,7 @@
 
 .name {
     text-align: center;
-    margin-top: 25px;
+    padding-top: 25px;
     margin-bottom: 25px;
     font-size: 20px;
 }
@@ -52,13 +52,21 @@
 }
 /*-------------POKEBALL----------------*/
 .pokeball_img{
-    padding: 15px;
+    padding: 19px;
     background: rgba(0,0,0,0.0);
     border: 0px;
 }
 
 .pokeball_img > img{
     margin: auto;
+}
+
+.pokeball_left {
+    padding-left: 70px;
+}
+
+.first_pokeball {
+    padding-top: 0px;
 }
 
 /* @font-face {
