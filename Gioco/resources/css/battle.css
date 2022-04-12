@@ -46,10 +46,6 @@
     float: left;
     width: 50%;
 }
-
-.mic {
-    
-}
 /*-------------POKEBALL----------------*/
 .pokeball_img{
     padding: 19px;
@@ -64,10 +60,6 @@
 .first_pokeball {
     padding-top: 0px;
 }
-
-/*.pokeball_left > button{
-
-}*/
 
 /*----------CARD'S BUTTONS----------*/
 
@@ -92,6 +84,17 @@
 
 #enter2 {
     transform: translateX(-344%);
+}
+
+/*--------DROPDOWN MENU--------*/
+
+.menu {
+    display: none;
+}
+
+.menu:hover,
+#menubar:focus + .menu {
+    display: block;
 }
 
 /* @font-face {

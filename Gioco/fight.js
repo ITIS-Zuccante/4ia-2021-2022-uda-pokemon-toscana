@@ -10,22 +10,23 @@ import { printDialogue, closeDialogue } from './resources/js/printDialogue.js';
 import { Automaton } from './resources/js/automaton.js';
 
 const fightButton = document.getElementById("fightButton")
-const insertPokemon = document.getElementById("insertPokemon")
+const insertPokemon1 = document.getElementById("insertPokemon")
+const insertPokemon2 = document.getElementById("insertPokemon")
 const redChangeInfoButton = document.getElementById("redChangeButton")
 const blueChangeInfoButton = document.getElementById("blueChangeButton")
-const redMoves = document.getElementById("redMoves")
-const redStats = document.getElementById("redStats")
-const blueMoves = document.getElementById("blueMoves")
-const blueStats = document.getElementById("blueStats")
-const selectionDiv = document.getElementById("selectionDiv")
-
+const redMoves = document.getElementById("MoveSet1")
+const redStats = document.getElementById("Stats1")
+const blueMoves = document.getElementById("MoveSet2")
+const blueStats = document.getElementById("Stats2")
+const selectionDiv = document.getElementById("input1")
+const selectionDiv2 = document.getElementById("input2")
 
 const pokeCards = document.getElementsByClassName("pokeCard")
 
 const faintedPokeball = "images/symbols/pokemonIndicators/pokeball_fainted.png"
 const redSelected = "images/symbols/pokemonIndicators/redPokeball_selected.png"
 const blueSelected = "images/symbols/pokemonIndicators/bluePokeball_selected.png"
-const redPokeball = "images/symbols/pokemonIndicators/redPokeball_alive.png"
+const redPokeball = "PokeballMenu.png"
 const bluePokeball = "images/symbols/pokemonIndicators/bluePokeball_alive.png"
 
 let bestMatch = BestMatch();
@@ -54,7 +55,6 @@ for(let poke of teams[1].pokemon){
         move.currentPP = 30;
     }
 }
-
 
 window.localStorage.setItem("teams", JSON.stringify(teams));
 
