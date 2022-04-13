@@ -33,7 +33,8 @@ const pokemonNameBox = document.getElementsByClassName("name")
 //const pokemonTypeBox1 = document.getElementsByClassName("pokeType")
 //const pokemonTypeBox2 = document.getElementsByClassName("pokeType2")
 
-const pokemonHpBox = document.getElementsByClassName("hpBar")
+const pokemonHpBox = document.getElementsByClassName("HP")
+const pokemonTotalHp = document.getElementsByClassName("totalHP")
 
 const pokemonInfoBox = document.getElementsByClassName("pokeInfo")
 const pokemonImg = document.getElementsByClassName("PokemonSprite")
@@ -73,7 +74,8 @@ export function printPokemonCard(nTeam, nPokemon){
     //pokemonTypeBox2[nTeam].style.visibility = "hidden"
 
     pokemonNameBox[nTeam].innerHTML = teams[nTeam].pokemon[nPokemon].name;
-    pokemonHpBox[nTeam].innerHTML = hp + " HP";
+    pokemonHpBox[nTeam].innerHTML = hp + "/";
+    pokemonTotalHp[nTeam].innerHTML = hp;
     //pokemonTypeBox1[nTeam].innerHTML = typeAbbrevations[type];
     //pokemonTypeBox1[nTeam].style.backgroundColor = typeColor;
     pokemonCards[nTeam].style.backgroundImage = getDiagonalGradient(type);
@@ -81,7 +83,6 @@ export function printPokemonCard(nTeam, nPokemon){
     //pokemonInfoBox[nTeam].style.backgroundColor = typeColor;
     //pokemonInfoBox[nTeam].style.backgroundImage = "linear-gradient(to right, lightgray, white)";
     pokemonImg[nTeam].src = imageSrc;
-    pokemonImg[nTeam].style.height = "200px";
     pokemonImg[nTeam].style.height = "200px";
     pokemonAttackBox[nTeam].innerHTML = "Attack: " + attack
     pokemonDefenseBox[nTeam].innerHTML = "Defense: " + defense

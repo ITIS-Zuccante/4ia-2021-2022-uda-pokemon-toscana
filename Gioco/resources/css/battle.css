@@ -11,7 +11,7 @@
 .card{
     width: 430px;
     height: 679px;
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
     border-radius: 15px;
     /*position: absolute;*/
     margin: 0 auto;
@@ -30,11 +30,12 @@
 }
 
 .pokeImg {
-    height: 260px;
+    height: 240px;
 }
 
 .hpBar {
     height: 20px;
+    display: flex;
 }
 
 .moveSet {
@@ -52,6 +53,18 @@
     justify-content: center;  /* Centering y-axis */
     align-items :center; /* Centering x-axis */
 }
+
+
+.MoveBox1, .MoveBox2 {
+    width: 160px;
+    margin: 27.5px;
+    margin-top: 10px;
+}
+
+.MoveSet1, .MoveSet2 {
+    height: 40px;
+}
+
 /*-------------POKEBALL----------------*/
 .pokeball_img{
     padding: 19px;
@@ -102,6 +115,40 @@
 #menubar:focus + .menu {
     display: block;
 }
+
+.menu {
+    background-color: white;
+    height: 95px;
+    width: 200px;
+    text-align: center;
+}
+
+/*---------HP BAR-----------*/
+.progress {
+    position: relative;
+    width: 210px;
+    height: 30px;
+    background: #9cbab4;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .progress__fill {
+    width: 0%;
+    height: 100%;
+    background: #009579;
+    transition: all 0.2s;
+  }
+  
+  .progress__text {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    font: bold 14px "Quicksand", sans-serif;
+    color: #ffffff;
+  }
+  
 
 /* @font-face {
     font-family: 'PokemonFont';

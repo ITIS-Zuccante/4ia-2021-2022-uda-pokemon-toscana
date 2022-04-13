@@ -35,6 +35,8 @@ const pokeballTeam1src = "PokeballMenu.png"
 const pokeballTeam2src = "PokeballMenu.png"
 const pokebalss = "PokeballMenu.png";
 const pokeballUsed = "../pokeballDead.png";
+const pokeballOpen = "../openPokeball.png";
+
 let bestMatch = BestMatch();
 
 let fainted = false;
@@ -268,12 +270,14 @@ async function placeOnField(nTeam){
         pokeballTeam1src[partita.pokemonOnField[0]].src = pokeballUsed;
         //pokeballTeam1[partita.pokemonOnField[0]].src = redPokeball
         partita.pokemonOnField[nTeam] = selectedPokemon[nTeam];             //Metto in campo il nuovo pokemon selezionato
+        pokeballTeam1[selectedPokemon[nTeam]].src=pokeballOpen;
         //pokebalss[selectedPokemon[nTeam]].src = pokeballUsed;
     }
     else if (nTeam == 1) {
         if (partita.pokemonOnField[1] != -1)                                //Faccio ritornare il vecchio pokemon selezionato allo stato normale
         pokeballTeam2[partita.pokemonOnField[0]].src = pokeballUsed;
         partita.pokemonOnField[nTeam] = selectedPokemon[nTeam];             //Metto in campo il nuovo pokemon selezionato
+        pokeballTeam2[selectedPokemon[nTeam]].src=pokeballOpen;
         //bluePokeballs[selectedPokemon[nTeam]].src = blueSelected;
     }
     console.log(`Team ${nTeam}: ${getPokemonName(partita.pokemonOnField[nTeam], nTeam)} [${partita.pokemonOnField[nTeam]}] scelgo te!`)
@@ -526,4 +530,14 @@ randomTeam2Button.addEventListener("click", () =>{
     }
 })*/
 
-
+function updateProgressBar(progressBar, value) {
+    value = Math.round(value);
+    progressBar.querySelector(".progress__fill").style.width = `${value}%`;
+    progressBar.querySelector(".progress__text").textContent = `${value}%`;
+  }
+  
+  const myProgressBar = document.querySelector(".progress");
+  
+  /* Example */
+  console.log(myProgressBar)
+  updateProgressBar(myProgressBar[0], 100);
