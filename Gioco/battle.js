@@ -9,12 +9,16 @@ import {calculateDamage, calculateEffect} from "./resources/js/damageCalculator.
 import { printDialogue, closeDialogue } from './resources/js/printDialogue.js';
 import { Automaton } from './resources/js/automaton.js';
 
-const redPokeballs = document.getElementsByClassName("redPokeball");
-const bluePokeballs = document.getElementsByClassName("bluePokeball");
-const fightButton = document.getElementById("fightButton")
-const insertPokemon = document.getElementById("insertPokemon")
-const redChangeInfoButton = document.getElementById("redChangeButton")
-const blueChangeInfoButton = document.getElementById("blueChangeButton")
+const pokeballTeam1 = document.getElementsByClassName("team1");
+const pokeballTeam2 = document.getElementsByClassName("team2");
+const fightButtonTeam1 = document.getElementById("enter1");
+const insertPokemonTeam1 = document.getElementById("input1");
+const fightButtonTeam2 = document.getElementById("enter2");
+const insertPokemonTeam2 = document.getElementById("input2");
+const randomTeam1Button = document.getElementById("random1");
+const randomTeam2Button = document.getElementById("random2");
+//const redChangeInfoButton = document.getElementById("redChangeButton")
+//const blueChangeInfoButton = document.getElementById("blueChangeButton")
 const redMoves = document.getElementById("redMoves")
 const redStats = document.getElementById("redStats")
 const blueMoves = document.getElementById("blueMoves")
@@ -22,19 +26,20 @@ const blueStats = document.getElementById("blueStats")
 const selectionDiv = document.getElementById("selectionDiv")
 
 
-const pokeCards = document.getElementsByClassName("pokeCard")
+const pokeCards = document.getElementsByClassName("card")
 
-const faintedPokeball = "images/symbols/pokemonIndicators/pokeball_fainted.png"
+const faintedPokeball = "pokeballDead.png"
 const redSelected = "images/symbols/pokemonIndicators/redPokeball_selected.png"
 const blueSelected = "images/symbols/pokemonIndicators/bluePokeball_selected.png"
-const redPokeball = "images/symbols/pokemonIndicators/redPokeball_alive.png"
-const bluePokeball = "images/symbols/pokemonIndicators/bluePokeball_alive.png"
-
+const pokeballTeam1src = "PokeballMenu.png"
+const pokeballTeam2src = "PokeballMenu.png"
+const pokebalss = "PokeballMenu.png";
+const pokeballUsed = "../pokeballDead.png";
 let bestMatch = BestMatch();
 
 let fainted = false;
 
-selectionDiv.style.display = "none"
+//selectionDiv.style.display = "none"
 
 for(let poke of teams[0].pokemon){
     poke.hp = poke.startHP
@@ -83,16 +88,18 @@ console.log(teams[1].pokemon)
 await placeOnField(0)
 await placeOnField(1)
 closeDialogue()
-selectionDiv.style.display = "block"
+//selectionDiv.style.display = "block"
 
 partita.round++
 
 function faintPokemon(nPokemon, nTeam){
+    console.log(nTeam)
     if(nTeam == 0){
-        redPokeballs[nPokemon].src=faintedPokeball;
+        console.log(pokeballTeam1[nPokemon])
+        pokeballTeam1[nPokemon].src=pokeballUsed;
     }
     else if(nTeam == 1){
-        bluePokeballs[nPokemon].src=faintedPokeball;
+        pokeballTeam2[nPokemon].src=pokeballUsed;
     }
     fainted = true;
     partita.pokemonOnField[nTeam] = -1
@@ -103,23 +110,29 @@ function faintPokemon(nPokemon, nTeam){
     printDialogue(`It seems that ${getPokemonName(nPokemon, nTeam)} is exausted!`)
     closeDialogue()
     alert(`${getPokemonName(nPokemon, nTeam)} is exausted! Select another pokemon to proceed!`)
-    selectionDiv.style.display = "block"
+    //selectionDiv.style.display = "block"
 }
 
 function switchTurn(){
+    if(insertPokemonTeam1.value == ""){
+        alert("Il team 1 deve ancora fare una mossa per il combattimento!");
+        insertPokemonTeam1.value = "";
+    }
+    else if(insertPokemonTeam2.value == ""){
+        alert("Il team 2 ancora fare una mossa per il combattimento!");
+        insertPokemonTeam2.value = "";
+    }
     if(partita.currentTeamTurn == 0){
         partita.currentTeamTurn = 1;
-        selectionDiv.style.left = "70%";
     }
     else{
         partita.currentTeamTurn = 0;
-        selectionDiv.style.left = "29.5%";
     }
 }
 
 async function attackPhase(choicesArray){
     console.log("Fase di attacco: [" + choicesArray + "]")
-    selectionDiv.style.display = "none"
+    //selectionDiv.style.display = "none"
     if(choicesArray.includes("pokemon")){
         if(choicesArray.every(val => val === "pokemon")){
             await placeOnField(0)
@@ -175,7 +188,7 @@ async function attackPhase(choicesArray){
     partita.round++
     selectedMove = [-1, -1]
     selectedPokemon = [-1, -1]
-    selectionDiv.style.display = "initial"
+    //selectionDiv.style.display = "initial"
 }
 
 
@@ -252,15 +265,16 @@ async function selectMove(moveName, nTeam, nPokemon) {
 async function placeOnField(nTeam){
     if (nTeam == 0) {
         if (partita.pokemonOnField[0] != -1)                                //Faccio ritornare il vecchio pokemon selezionato allo stato normale
-            redPokeballs[partita.pokemonOnField[0]].src = redPokeball
+        pokeballTeam1src[partita.pokemonOnField[0]].src = pokeballUsed;
+        //pokeballTeam1[partita.pokemonOnField[0]].src = redPokeball
         partita.pokemonOnField[nTeam] = selectedPokemon[nTeam];             //Metto in campo il nuovo pokemon selezionato
-        redPokeballs[selectedPokemon[nTeam]].src = redSelected;
+        //pokebalss[selectedPokemon[nTeam]].src = pokeballUsed;
     }
     else if (nTeam == 1) {
         if (partita.pokemonOnField[1] != -1)                                //Faccio ritornare il vecchio pokemon selezionato allo stato normale
-            bluePokeballs[partita.pokemonOnField[1]].src = bluePokeball
+        pokeballTeam2[partita.pokemonOnField[0]].src = pokeballUsed;
         partita.pokemonOnField[nTeam] = selectedPokemon[nTeam];             //Metto in campo il nuovo pokemon selezionato
-        bluePokeballs[selectedPokemon[nTeam]].src = blueSelected;
+        //bluePokeballs[selectedPokemon[nTeam]].src = blueSelected;
     }
     console.log(`Team ${nTeam}: ${getPokemonName(partita.pokemonOnField[nTeam], nTeam)} [${partita.pokemonOnField[nTeam]}] scelgo te!`)
     printPokemonCard(nTeam, partita.pokemonOnField[nTeam])                  //Printo la carta del pokemon messo in campo
@@ -316,6 +330,7 @@ async function dealDamage(teamAtk,teamDef, moveName){
             case "damage":    // TODO: Da modificare quanto verranno aggiunti gli ailment
             case "damage+ailment":
                 let dealtDamage = Math.round(calculateDamage(teams[teamAtk].pokemon[partita.pokemonOnField[teamAtk]], teams[teamDef].pokemon[partita.pokemonOnField[teamDef]], move))
+                console.log(dealtDamage)
                 for (let i = 0; i < dealtDamage; i++) {
                     teams[teamDef].pokemon[partita.pokemonOnField[teamDef]].hp -= 1
                     window.localStorage.setItem("teams", JSON.stringify(teams));
@@ -429,22 +444,21 @@ function getMoveIndex(moveName, nTeam, nPokemon){
 }
 
 
-fightButton.addEventListener('click', async () => {    // TODO: CAPIRE SE LASCIARE ASYNC O NO
-   
-    /*if (insertPokemon.value.startsWith("scelgo te")) {
-        let str = insertPokemon.value
+fightButtonTeam1.addEventListener('click', async () => {    // TODO: CAPIRE SE LASCIARE ASYNC O NO
+    partita.currentTeamTurn = 0;
+    if (insertPokemonTeam1.value.startsWith("scelgo te")) {
+        let str = insertPokemonTeam1.value
         selectPokemon(str.substr(str.indexOf(" ") + 2), partita.currentTeamTurn);   //substr ecc.. toglie le prime due parole (scelgo te) in modo da rimanere con il pokemon
-    } else if (insertPokemon.value.startsWith("usa")) {
-        let str = insertPokemon.value
+    } else if (insertPokemonTeam1.value.startsWith("usa")) {
+        let str = insertPokemonTeam1.value
         selectMove(str.substr(str.indexOf(" ") + 1), partita.currentTeamTurn, partita.pokemonOnField[partita.currentTeamTurn])
-    } else if (insertPokemon.value == "test") {
+    } else if (insertPokemonTeam1.value == "test") {
         pokeCards[0].classList.add("attackAnim")
         await sleep(2000)
         pokeCards[0].classList.remove("attackAnim")
 
-    }*/
-
-    let automaton = Automaton();
+    }
+    /*let automaton = Automaton();
     automaton.run(insertPokemon.value);
     if (automaton.accepted() == 1){
         let str = automaton.result()
@@ -453,10 +467,45 @@ fightButton.addEventListener('click', async () => {    // TODO: CAPIRE SE LASCIA
     else if(automaton.accepted() == 0){
         let str = automaton.result()
         selectPokemon(str, partita.currentTeamTurn);
-    }
+    }*/
 })
 
-redChangeInfoButton.addEventListener('click', () =>{
+fightButtonTeam2.addEventListener('click', async () => {    // TODO: CAPIRE SE LASCIARE ASYNC O NO
+    partita.currentTeamTurn = 1;
+    if (insertPokemonTeam2.value.startsWith("scelgo te")) {
+        let str = insertPokemonTeam2.value
+        selectPokemon(str.substr(str.indexOf(" ") + 2), partita.currentTeamTurn);   //substr ecc.. toglie le prime due parole (scelgo te) in modo da rimanere con il pokemon
+    } else if (insertPokemonTeam2.value.startsWith("usa")) {
+        let str = insertPokemonTeam2.value
+        selectMove(str.substr(str.indexOf(" ") + 1), partita.currentTeamTurn, partita.pokemonOnField[partita.currentTeamTurn])
+    } else if (insertPokemonTeam2.value == "test") {
+        pokeCards[1].classList.add("attackAnim")
+        await sleep(2000)
+        pokeCards[1].classList.remove("attackAnim")
+
+    }
+    /*let automaton = Automaton();
+    automaton.run(insertPokemon.value);
+    if (automaton.accepted() == 1){
+        let str = automaton.result()
+        selectMove(str, partita.currentTeamTurn, partita.pokemonOnField[partita.currentTeamTurn])
+    }
+    else if(automaton.accepted() == 0){
+        let str = automaton.result()
+        selectPokemon(str, partita.currentTeamTurn);
+    }*/
+})
+
+randomTeam1Button.addEventListener("click", () =>{
+    partita.currentTeamTurn = 0;
+    selectMove(getMoveName(Math.floor(Math.random() * 4),partita.pokemonOnField[partita.currentTeamTurn],0), partita.currentTeamTurn, partita.pokemonOnField[partita.currentTeamTurn]);
+})
+
+randomTeam2Button.addEventListener("click", () =>{
+    partita.currentTeamTurn = 1;
+    selectMove(getMoveName(Math.floor(Math.random() * 4),partita.pokemonOnField[partita.currentTeamTurn],1), partita.currentTeamTurn, partita.pokemonOnField[partita.currentTeamTurn]);
+})
+/*redChangeInfoButton.addEventListener('click', () =>{
     if(redStats.style.display == "" || redStats.style.display == "none"){
         redStats.style.display = "block";
         redMoves.style.display = "none";
@@ -465,8 +514,8 @@ redChangeInfoButton.addEventListener('click', () =>{
         redMoves.style.display = "block";
         redStats.style.display = "none";
     }
-})
-blueChangeInfoButton.addEventListener('click', () =>{
+})*/
+/*blueChangeInfoButton.addEventListener('click', () =>{
     if(blueStats.style.display == "" || blueStats.style.display == "none"){
         blueStats.style.display = "block";
         blueMoves.style.display = "none";
@@ -475,6 +524,6 @@ blueChangeInfoButton.addEventListener('click', () =>{
         blueMoves.style.display = "block";
         blueStats.style.display = "none";
     }
-})
+})*/
 
 

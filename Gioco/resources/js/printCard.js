@@ -23,33 +23,36 @@ let typeAbbrevations = {
 }
 
 
-const pokemonCards = document.getElementsByClassName("contentDiv")
+const pokemonCards = document.getElementsByClassName("card")
 
-const redMovesInfo = document.getElementsByClassName("redMoveInfo")
-const blueMovesInfo = document.getElementsByClassName("blueMoveInfo")
+const Team1MovesInfo = document.getElementsByClassName("moveInfo1")
+const Team2MovesInfo = document.getElementsByClassName("moveInfo2")
 
-const pokemonNameBox = document.getElementsByClassName("pokeName")
-const pokemonTypeBox1 = document.getElementsByClassName("pokeType")
-const pokemonTypeBox2 = document.getElementsByClassName("pokeType2")
-const pokemonHpBox = document.getElementsByClassName("pokeHp")
+const pokemonNameBox = document.getElementsByClassName("name")
+
+//const pokemonTypeBox1 = document.getElementsByClassName("pokeType")
+//const pokemonTypeBox2 = document.getElementsByClassName("pokeType2")
+
+const pokemonHpBox = document.getElementsByClassName("hpBar")
+
 const pokemonInfoBox = document.getElementsByClassName("pokeInfo")
-const pokemonImg = document.getElementsByClassName("pokemonImg")
+const pokemonImg = document.getElementsByClassName("PokemonSprite")
 
 
-const pokemonAttackBox = document.getElementsByClassName("pokeAttack")
-const pokemonDefenseBox = document.getElementsByClassName("pokeDefense")
-const pokemonSpecialAttackBox = document.getElementsByClassName("pokeSpecialAtt")
-const pokemonSpecialDefenseBox = document.getElementsByClassName("pokeSpecialDef")
-const pokemonSpeedBox = document.getElementsByClassName("pokeSpeed")
+const pokemonAttackBox = document.getElementsByClassName("Attack")
+const pokemonDefenseBox = document.getElementsByClassName("Defense")
+const pokemonSpecialAttackBox = document.getElementsByClassName("SpecialAttack")
+const pokemonSpecialDefenseBox = document.getElementsByClassName("SpecialDefense")
+const pokemonSpeedBox = document.getElementsByClassName("Speed")
 
-const redMoveType = document.getElementsByClassName("redMoveType")
-const blueMoveType = document.getElementsByClassName("blueMoveType")
-const redMoveBox = document.getElementsByClassName("redMoveBox")
-const blueMoveBox = document.getElementsByClassName("blueMoveBox")
-const redMovesTextBox = document.getElementsByClassName("redMoves")
-const blueMovesTextBox = document.getElementsByClassName("blueMoves")
-const redPPBox = document.getElementsByClassName("redPP")
-const bluePPBox = document.getElementsByClassName("bluePP")
+const Team1MoveType = document.getElementsByClassName("Team1MoveType")
+const Team2MoveType = document.getElementsByClassName("Team2MoveType")
+const Team1MoveBox = document.getElementsByClassName("MoveBox1")
+const Team2MoveBox = document.getElementsByClassName("MoveBox2")
+const Team1MovesTextBox = document.getElementsByClassName("MoveSet1")
+const Team2MovesTextBox = document.getElementsByClassName("MoveSet2")
+//const redPPBox = document.getElementsByClassName("redPP")
+//const bluePPBox = document.getElementsByClassName("bluePP")
 
 
 export function printPokemonCard(nTeam, nPokemon){
@@ -67,18 +70,19 @@ export function printPokemonCard(nTeam, nPokemon){
     let imageSrc = teams[nTeam].pokemon[nPokemon].sprites["front_default"]
     let moves = teams[nTeam].pokemon[nPokemon].moves
 
-    pokemonTypeBox2[nTeam].style.visibility = "hidden"
+    //pokemonTypeBox2[nTeam].style.visibility = "hidden"
 
     pokemonNameBox[nTeam].innerHTML = teams[nTeam].pokemon[nPokemon].name;
     pokemonHpBox[nTeam].innerHTML = hp + " HP";
-    pokemonTypeBox1[nTeam].innerHTML = typeAbbrevations[type];
-    pokemonTypeBox1[nTeam].style.backgroundColor = typeColor;
+    //pokemonTypeBox1[nTeam].innerHTML = typeAbbrevations[type];
+    //pokemonTypeBox1[nTeam].style.backgroundColor = typeColor;
     pokemonCards[nTeam].style.backgroundImage = getDiagonalGradient(type);
     //pokemonInfoBox[nTeam].style.backgroundImage = getVerticalGradient(type);
     //pokemonInfoBox[nTeam].style.backgroundColor = typeColor;
     //pokemonInfoBox[nTeam].style.backgroundImage = "linear-gradient(to right, lightgray, white)";
     pokemonImg[nTeam].src = imageSrc;
-
+    pokemonImg[nTeam].style.height = "200px";
+    pokemonImg[nTeam].style.height = "200px";
     pokemonAttackBox[nTeam].innerHTML = "Attack: " + attack
     pokemonDefenseBox[nTeam].innerHTML = "Defense: " + defense
     pokemonSpecialAttackBox[nTeam].innerHTML = "Special Attack: " + specialAttack
@@ -87,19 +91,19 @@ export function printPokemonCard(nTeam, nPokemon){
 
     for(let i in moves){
         if(nTeam == 0){
-            redMovesTextBox[i].innerHTML = moves[i].name;
-            redPPBox[i].innerHTML = "PP: "  + moves[i].currentPP + "/" + moves[i].info.pp;
+            Team1MovesTextBox[i].innerHTML = moves[i].name;
+            //redPPBox[i].innerHTML = "PP: "  + moves[i].currentPP + "/" + moves[i].info.pp;
             //redMoveBox[i-1].style.backgroundImage = getDiagonalGradient(moves[i].info.type.name)
-            redMoveBox[i].style.backgroundColor = typesColor[moves[i].info.type.name].color_type;
-            redMoveType[i].innerHTML = typeAbbrevations[moves[i].info.type.name]
-            redMoveType[i].style.backgroundColor = typesColor[moves[i].info.type.name].color_type
+            Team1MoveBox[i].style.backgroundColor = typesColor[moves[i].info.type.name].color_type;
+            //Team1MoveType[i].innerHTML = typeAbbrevations[moves[i].info.type.name]
+            Team1MoveType[i].style.backgroundColor = typesColor[moves[i].info.type.name].color_type
         }
         else if(nTeam == 1){
-            blueMovesTextBox[i].innerHTML = moves[i].name;
-            bluePPBox[i].innerHTML = "PP: "  + moves[i].currentPP + "/" + moves[i].info.pp;
-            blueMoveBox[i].style.backgroundColor = typesColor[moves[i].info.type.name].color_type;
-            blueMoveType[i].innerHTML = typeAbbrevations[moves[i].info.type.name]
-            blueMoveType[i].style.backgroundColor = typesColor[moves[i].info.type.name].color_type
+            Team2MovesTextBox[i].innerHTML = moves[i].name;
+            //bluePPBox[i].innerHTML = "PP: "  + moves[i].currentPP + "/" + moves[i].info.pp;
+            Team2MoveBox[i].style.backgroundColor = typesColor[moves[i].info.type.name].color_type;
+            //Team2MoveType[i].innerHTML = typeAbbrevations[moves[i].info.type.name]
+            Team2MoveType[i].style.backgroundColor = typesColor[moves[i].info.type.name].color_type
         }
     }
 
@@ -108,20 +112,20 @@ export function printPokemonCard(nTeam, nPokemon){
     if(teams[nTeam].pokemon[nPokemon].type.length > 1){  //Se ha più di un tipo
         type = teams[nTeam].pokemon[nPokemon].type[1]
         typeColor = typesColor[type].color_type;
-        pokemonTypeBox2[nTeam].style.visibility = "visible";
+        /*pokemonTypeBox2[nTeam].style.visibility = "visible";
         pokemonTypeBox2[nTeam].innerHTML = typeAbbrevations[type];
-        pokemonTypeBox2[nTeam].style.backgroundColor = typeColor;
+        pokemonTypeBox2[nTeam].style.backgroundColor = typeColor;*/
     }
 }
 
 export function printDefaultCard(nTeam){
 
-    pokemonTypeBox2[nTeam].style.visibility = "hidden"
+    //pokemonTypeBox2[nTeam].style.visibility = "hidden"
 
     pokemonNameBox[nTeam].innerHTML ="???"
     pokemonHpBox[nTeam].innerHTML = "???"
-    pokemonTypeBox1[nTeam].innerHTML = "???"
-    pokemonTypeBox1[nTeam].style.backgroundColor = "gray";
+    //pokemonTypeBox1[nTeam].innerHTML = "???"
+    //pokemonTypeBox1[nTeam].style.backgroundColor = "gray";
     pokemonCards[nTeam].style.backgroundImage = "";
     pokemonImg[nTeam].src = "images/symbols/questionMark.png";
 
@@ -133,18 +137,18 @@ export function printDefaultCard(nTeam){
 
     for(let i = 1; i < 5; i++){
         if(nTeam == 0){
-            redMovesTextBox[i-1].innerHTML = ""
-            redPPBox[i-1].innerHTML = ""
-            redMoveBox[i-1].style.backgroundColor = "white"
-            redMoveType[i-1].innerHTML = ""
-            redMoveType[i-1].style.backgroundColor = "white"
+            Team1MovesTextBox[i-1].innerHTML = ""
+            //redPPBox[i-1].innerHTML = ""
+            Team1MoveBox[i-1].style.backgroundColor = "white"
+            Team1MoveType[i-1].innerHTML = ""
+            Team1MoveType[i-1].style.backgroundColor = "white"
         }
         else if(nTeam == 1){
-            blueMovesTextBox[i-1].innerHTML = ""
-            bluePPBox[i-1].innerHTML = ""
-            blueMoveBox[i-1].style.backgroundColor = "white"
-            blueMoveType[i-1].innerHTML = ""
-            blueMoveType[i-1].style.backgroundColor = "white"
+            Team2MovesTextBox[i-1].innerHTML = ""
+            //bluePPBox[i-1].innerHTML = ""
+            Team2MoveBox[i-1].style.backgroundColor = "white"
+            Team2MoveType[i-1].innerHTML = ""
+            Team2MoveType[i-1].style.backgroundColor = "white"
         }
     }
 }
@@ -160,7 +164,7 @@ export function printMoveInfo(nTeam, nPokemon){
             str += "Accuracy: " + moves[i].info.accuracy + "\n"
             str += "Power: " + moves[i].info.power + "\n"
             //str += "Description: " + moves[i].info.effect_entries[0].short_effect //TODO: Capire cosa fare della descrizione (alcune descrizioni dicono cose infattibili in game)
-            redMovesInfo[i].title = str
+            Team1MovesInfo[i].title = str
         }        
     }
 
@@ -170,7 +174,7 @@ export function printMoveInfo(nTeam, nPokemon){
             str += "Accuracy: " + moves[i].info.accuracy + "\n"
             str += "Power: " + moves[i].info.power + "\n"
             //str += "Description: " + moves[i].info.effect_entries[0].short_effect
-            blueMovesInfo[i].title = str
+            Team2MovesInfo[i].title = str
         }        
     }
 

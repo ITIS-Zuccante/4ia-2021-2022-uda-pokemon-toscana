@@ -177,6 +177,6 @@ export function Automaton() {
         return { // esponiamo i metodi pubblici
             "accepted": accepted,
             "run": run,
-            "result": getValue
+            "isEqual": getValue
         }
     } // fine modulo Automaton

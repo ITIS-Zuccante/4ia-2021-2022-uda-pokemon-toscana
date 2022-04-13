@@ -41,10 +41,16 @@
     height: 250px;
 }
 
-
 .column_move {
     float: left;
     width: 50%;
+}
+
+.pokeImg{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Centering y-axis */
+    align-items :center; /* Centering x-axis */
 }
 /*-------------POKEBALL----------------*/
 .pokeball_img{
@@ -60,7 +66,6 @@
 .first_pokeball {
     padding-top: 0px;
 }
-
 /*----------CARD'S BUTTONS----------*/
 
 #mic2 {
@@ -85,6 +90,7 @@
 #enter2 {
     transform: translateX(-344%);
 }
+
 
 /*--------DROPDOWN MENU--------*/
 
