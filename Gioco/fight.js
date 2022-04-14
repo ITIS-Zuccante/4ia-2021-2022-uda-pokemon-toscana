@@ -424,6 +424,13 @@ function getMoveIndex(moveName, nTeam, nPokemon){
     return -1
 }
 
+function writeMove(team){
+    if (team == 0){
+        selectionDiv.innerHTML = "usa " +
+    } else {
+
+    }
+}
 
 fightButton.addEventListener('click', async () => {    // TODO: CAPIRE SE LASCIARE ASYNC O NO
    
