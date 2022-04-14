@@ -10,7 +10,7 @@
 /*------------POKEMON CARD--------------*/
 .card{
     width: 430px;
-    height: 679px;
+    height: 600px;
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
     /*position: absolute;*/
@@ -72,9 +72,11 @@
     border: 0px;
 }
 
-.pokeball_img > img{
-    margin: auto;
+/*
+.pokeball_left > pokeball_img {
+    float: right;
 }
+*/
 
 .first_pokeball {
     padding-top: 0px;
@@ -149,6 +151,16 @@
     color: #ffffff;
   }
   
+/*---------OTHER-----------*/
+
+#battle {
+    border: none;
+    padding: 0px;
+}
+
+#battle img{
+    padding: none;
+}
 
 /* @font-face {
     font-family: 'PokemonFont';
