@@ -424,11 +424,13 @@ function getMoveIndex(moveName, nTeam, nPokemon){
     return -1
 }
 
+const moves1 = getElementsByClassName("MoveBox");
+
 function writeMove(team){
     if (team == 0){
-        selectionDiv.innerHTML = "usa " +
+        selectionDiv.innerHTML = "usa " + $(this).val();
     } else {
-
+        selectionDiv2.innerHTML = "usa " + $(this).val();
     }
 }
 
