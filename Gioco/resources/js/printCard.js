@@ -84,6 +84,13 @@ export function printPokemonCard(nTeam, nPokemon, firstTime){
     pokemonHpBox[nTeam].innerHTML = hp + "/";
     if (firstTime){
         pokemonTotalHp[nTeam].innerHTML = hp;
+        pokemonImg[nTeam].src = imageSrc;
+        pokemonImg[nTeam].style.height = "200px";
+        pokemonAttackBox[nTeam].innerHTML = "Attack: " + attack
+        pokemonDefenseBox[nTeam].innerHTML = "Defense: " + defense
+        pokemonSpecialAttackBox[nTeam].innerHTML = "Special Attack: " + specialAttack
+        pokemonSpecialDefenseBox[nTeam].innerHTML = "Special Defense: " + specialDefense
+        pokemonSpeedBox[nTeam].innerHTML = "Speed: " + speed
     }
     if(nTeam == 0){
         updateProgressBar(bar1, (hp/pokemonTotalHp[nTeam].innerHTML)*100);
@@ -96,13 +103,7 @@ export function printPokemonCard(nTeam, nPokemon, firstTime){
     //pokemonInfoBox[nTeam].style.backgroundImage = getVerticalGradient(type);
     //pokemonInfoBox[nTeam].style.backgroundColor = typeColor;
     //pokemonInfoBox[nTeam].style.backgroundImage = "linear-gradient(to right, lightgray, white)";
-    pokemonImg[nTeam].src = imageSrc;
-    pokemonImg[nTeam].style.height = "200px";
-    pokemonAttackBox[nTeam].innerHTML = "Attack: " + attack
-    pokemonDefenseBox[nTeam].innerHTML = "Defense: " + defense
-    pokemonSpecialAttackBox[nTeam].innerHTML = "Special Attack: " + specialAttack
-    pokemonSpecialDefenseBox[nTeam].innerHTML = "Special Defense: " + specialDefense
-    pokemonSpeedBox[nTeam].innerHTML = "Speed: " + speed
+   
 
     for(let i in moves){
         if(nTeam == 0){
