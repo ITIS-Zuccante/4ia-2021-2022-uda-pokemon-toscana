@@ -424,13 +424,25 @@ function getMoveIndex(moveName, nTeam, nPokemon){
     return -1
 }
 
-const moves1 = getElementsByClassName("MoveBox");
+const ButtonMoves1 = getElementsByClassName("MoveBox1");
+const ButtonMoves2 = getElementsByClassName("MoveBox2");
 
-function writeMove(team){
+for(let i = 0; i < ButtonMoves1.length(); i++){
+    ButtonMoves1[i].addEventListener("click", writeMove(0, i));
+}
+
+for(let i = 0; i < ButtonMoves2.length(); i++){
+    ButtonMoves2[i].addEventListener("click", writeMove(1, i));
+}
+
+const Moves1 = getElementsByClassName("MoveSet1");
+const Moves2 = getElementsByClassName("MoveSet2");;
+
+function writeMove(team, i){
     if (team == 0){
-        selectionDiv.innerHTML = "usa " + $(this).val();
+        selectionDiv.innerHTML = "usa " + Moves1[i].val();
     } else {
-        selectionDiv2.innerHTML = "usa " + $(this).val();
+        selectionDiv2.innerHTML = "usa " + Moves2[i].val();
     }
 }
 
