@@ -128,11 +128,12 @@
 /*---------HP BAR-----------*/
 .progress {
     position: relative;
-    width: 210px;
-    height: 30px;
-    background: #9cbab4;
+    width: 300px;
+    height: 20px;
+    background: white;
     border-radius: 5px;
     overflow: hidden;
+    margin-left: 20px;
   }
   
   .progress__fill {
@@ -148,7 +149,7 @@
     right: 5px;
     transform: translateY(-50%);
     font: bold 14px "Quicksand", sans-serif;
-    color: #ffffff;
+    color: black;
   }
   
 /*---------OTHER-----------*/

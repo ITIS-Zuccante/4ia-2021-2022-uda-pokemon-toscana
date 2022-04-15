@@ -54,12 +54,19 @@ const Team1MovesTextBox = document.getElementsByClassName("MoveSet1")
 const Team2MovesTextBox = document.getElementsByClassName("MoveSet2")
 //const redPPBox = document.getElementsByClassName("redPP")
 //const bluePPBox = document.getElementsByClassName("bluePP")
+//BARRAAAAAAAAAAAAAAAAAAAAAAAAA
+const bar1 = document.getElementById("bar1");
+const bar2 = document.getElementById("bar2");
 
+function updateProgressBar(progressBar, value) {
+    value = Math.round(value);
+    progressBar.querySelector(".progress__fill").style.width = `${value}%`;
+    progressBar.querySelector(".progress__text").textContent = `${value}%`;
+}
 
-export function printPokemonCard(nTeam, nPokemon){
+export function printPokemonCard(nTeam, nPokemon, firstTime){
 
     let teams = JSON.parse(window.localStorage.getItem("teams"));
-
     let type = teams[nTeam].pokemon[nPokemon].type[0]
     let typeColor = typesColor[type].color_type;
     let hp = teams[nTeam].pokemon[nPokemon].hp;
@@ -75,7 +82,14 @@ export function printPokemonCard(nTeam, nPokemon){
 
     pokemonNameBox[nTeam].innerHTML = teams[nTeam].pokemon[nPokemon].name;
     pokemonHpBox[nTeam].innerHTML = hp + "/";
-    pokemonTotalHp[nTeam].innerHTML = hp;
+    if (firstTime){
+        pokemonTotalHp[nTeam].innerHTML = hp;
+    }
+    if(nTeam == 0){
+        updateProgressBar(bar1, (hp/pokemonTotalHp[nTeam].innerHTML)*100);
+    } else {
+        updateProgressBar(bar2, (hp/pokemonTotalHp[nTeam].innerHTML)*100);
+    }
     //pokemonTypeBox1[nTeam].innerHTML = typeAbbrevations[type];
     //pokemonTypeBox1[nTeam].style.backgroundColor = typeColor;
     pokemonCards[nTeam].style.backgroundImage = getDiagonalGradient(type);

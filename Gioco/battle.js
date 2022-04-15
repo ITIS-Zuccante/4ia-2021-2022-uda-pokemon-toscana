@@ -41,6 +41,21 @@ let bestMatch = BestMatch();
 
 let fainted = false;
 
+/*
+//BARRAAAAAAAAAAAAAAAAAAAAAAAAA
+const bar1 = document.getElementById("bar1");
+const bar2 = document.getElementById("bar2");
+
+function updateProgressBar(progressBar, value) {
+    value = Math.round(value);
+    progressBar.querySelector(".progress__fill").style.width = `${value}%`;
+    progressBar.querySelector(".progress__text").textContent = `${value}%`;
+}
+
+updateProgressBar(bar1, 100);
+updateProgressBar(bar2, 100);
+*/
+
 //selectionDiv.style.display = "none"
 
 for(let poke of teams[0].pokemon){
@@ -281,7 +296,7 @@ async function placeOnField(nTeam){
         //bluePokeballs[selectedPokemon[nTeam]].src = blueSelected;
     }
     console.log(`Team ${nTeam}: ${getPokemonName(partita.pokemonOnField[nTeam], nTeam)} [${partita.pokemonOnField[nTeam]}] scelgo te!`)
-    printPokemonCard(nTeam, partita.pokemonOnField[nTeam])                  //Printo la carta del pokemon messo in campo
+    printPokemonCard(nTeam, partita.pokemonOnField[nTeam], true)                  //Printo la carta del pokemon messo in campo
     printMoveInfo(nTeam, partita.pokemonOnField[nTeam])
     await printDialogue(`I choose you ${getPokemonName(partita.pokemonOnField[nTeam], nTeam)}!`)
     selectedPokemon[nTeam] = -1                                             //Faccio tornare il valore temporaneo di pokemon selezioanto allo stato iniziale
@@ -339,7 +354,7 @@ async function dealDamage(teamAtk,teamDef, moveName){
                     teams[teamDef].pokemon[partita.pokemonOnField[teamDef]].hp -= 1
                     window.localStorage.setItem("teams", JSON.stringify(teams));
                     if (teams[teamDef].pokemon[partita.pokemonOnField[teamDef]].hp > 0) {
-                        printPokemonCard(teamDef, nPokemonDef)
+                        printPokemonCard(teamDef, nPokemonDef, false)
                     } else {
                         faintPokemon(nPokemonDef, teamDef)
                         if (teamDef != partita.currentTeamTurn) {
@@ -352,7 +367,7 @@ async function dealDamage(teamAtk,teamDef, moveName){
             case "net-good-stats":
                 calculateEffect(teams[teamDef].pokemon[nPokemonDef], teams[teamAtk].pokemon[nPokemonAtk], move)
                 window.localStorage.setItem("teams", JSON.stringify(teams));
-                printPokemonCard(teamDef, nPokemonDef)
+                printPokemonCard(teamDef, nPokemonDef, false)
                 break;
             case "damage+lower" || "damage+raise":  // TODO: DA TESTARE
                 dealtDamage = Math.round(calculateDamage(teams[teamAtk].pokemon[partita.pokemonOnField[teamAtk]], teams[teamDef].pokemon[partita.pokemonOnField[teamDef]], move))
@@ -360,7 +375,7 @@ async function dealDamage(teamAtk,teamDef, moveName){
                     teams[teamDef].pokemon[partita.pokemonOnField[teamDef]].hp -= 1
                     window.localStorage.setItem("teams", JSON.stringify(teams));
                     if (teams[teamDef].pokemon[partita.pokemonOnField[teamDef]].hp > 0) {
-                        printPokemonCard(teamDef, nPokemonDef)
+                        printPokemonCard(teamDef, nPokemonDef, false)
                     } else {
                         faintPokemon(nPokemonDef, teamDef)
                         if (teamDef != partita.currentTeamTurn) {
@@ -371,11 +386,11 @@ async function dealDamage(teamAtk,teamDef, moveName){
                 }
                 calculateEffect(teams[teamDef].pokemon[nPokemonDef], move)
                 window.localStorage.setItem("teams", JSON.stringify(teams));
-                printPokemonCard(teamDef, nPokemonDef)
+                printPokemonCard(teamDef, nPokemonDef, false)
         }
         teams[teamAtk].pokemon[partita.pokemonOnField[teamAtk]].moves[moveIndex].currentPP -= 1;
         window.localStorage.setItem("teams", JSON.stringify(teams));
-        printPokemonCard(teamAtk, nPokemonAtk)
+        printPokemonCard(teamAtk, nPokemonAtk, false)
         await sleep(500)
     }
 }
@@ -502,12 +517,14 @@ fightButtonTeam2.addEventListener('click', async () => {    // TODO: CAPIRE SE L
 
 randomTeam1Button.addEventListener("click", () =>{
     partita.currentTeamTurn = 0;
-    selectMove(getMoveName(Math.floor(Math.random() * 4),partita.pokemonOnField[partita.currentTeamTurn],0), partita.currentTeamTurn, partita.pokemonOnField[partita.currentTeamTurn]);
+    let move = getMoveName(Math.floor(Math.random() * 4),partita.pokemonOnField[partita.currentTeamTurn],0);
+    insertPokemonTeam1.value = 'usa ' + move;
 })
 
 randomTeam2Button.addEventListener("click", () =>{
     partita.currentTeamTurn = 1;
-    selectMove(getMoveName(Math.floor(Math.random() * 4),partita.pokemonOnField[partita.currentTeamTurn],1), partita.currentTeamTurn, partita.pokemonOnField[partita.currentTeamTurn]);
+    let move = getMoveName(Math.floor(Math.random() * 4),partita.pokemonOnField[partita.currentTeamTurn],1);
+    insertPokemonTeam2.value = 'usa ' + move;
 })
 /*redChangeInfoButton.addEventListener('click', () =>{
     if(redStats.style.display == "" || redStats.style.display == "none"){
@@ -530,14 +547,20 @@ randomTeam2Button.addEventListener("click", () =>{
     }
 })*/
 
-function updateProgressBar(progressBar, value) {
-    value = Math.round(value);
-    progressBar.querySelector(".progress__fill").style.width = `${value}%`;
-    progressBar.querySelector(".progress__text").textContent = `${value}%`;
-  }
-  
-  const myProgressBar = document.querySelector(".progress");
-  
-  /* Example */
-  console.log(myProgressBar)
-  updateProgressBar(myProgressBar[0], 100);
+const ButtonMoves1 = document.getElementsByClassName("MoveBox1");
+const ButtonMoves2 = document.getElementsByClassName("MoveBox2");
+
+const Moves1 = document.getElementsByClassName("MoveSet1");
+const Moves2 = document.getElementsByClassName("MoveSet2");
+
+for(let i = 0; i < ButtonMoves1.length; i++){
+    ButtonMoves1[i].addEventListener('click', () =>{
+        insertPokemonTeam1.value = 'usa ' + Moves1[i].textContent;
+    });
+}
+
+for(let i = 0; i < ButtonMoves2.length; i++){
+    ButtonMoves2[i].addEventListener('click', () =>{
+        insertPokemonTeam2.value = 'usa ' + Moves2[i].textContent;
+    });
+}
