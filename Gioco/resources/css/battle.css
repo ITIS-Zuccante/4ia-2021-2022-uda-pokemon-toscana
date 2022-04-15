@@ -1,3 +1,12 @@
+body{
+    background-image: url("../../../BattleBackground.jpg");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center bottom;
+}
+
 .left, .right{
     width: 50%;
     float:left      
