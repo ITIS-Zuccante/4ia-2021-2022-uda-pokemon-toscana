@@ -34,9 +34,7 @@ const pokeCards = document.getElementsByClassName("card")
 const faintedPokeball = "pokeballDead.png"
 const redSelected = "images/symbols/pokemonIndicators/redPokeball_selected.png"
 const blueSelected = "images/symbols/pokemonIndicators/bluePokeball_selected.png"
-const pokeballTeam1src = "PokeballMenu.png"
-const pokeballTeam2src = "PokeballMenu.png"
-const pokebalss = "PokeballMenu.png";
+const pokeballsrc = "PokeballMenu.png"
 const pokeballUsed = "../pokeballDead.png";
 const pokeballOpen = "../openPokeball.png";
 
@@ -98,10 +96,10 @@ let partita = {
 }
 
 
-console.log("Red Team:")
+console.log("Team 1:")
 console.log(teams[0].pokemon)
 
-console.log("Blue Team:")
+console.log("Team 2:")
 console.log(teams[1].pokemon)
 
 
@@ -283,19 +281,20 @@ async function selectMove(moveName, nTeam, nPokemon) {
 
 async function placeOnField(nTeam){
     if (nTeam == 0) {
-        if (partita.pokemonOnField[0] != -1)                              //Faccio ritornare il vecchio pokemon selezionato allo stato normale
-        pokeballTeam1src[partita.pokemonOnField[0]].src = pokeballUsed;
-        //pokeballTeam1[partita.pokemonOnField[0]].src = redPokeball
+        //Faccio ritornare il vecchio pokemon selezionato allo stato normale
+        if(partita.pokemonOnField[0] != -1){
+            pokeballTeam1[partita.pokemonOnField[nTeam]].src = pokeballsrc;
+        }
         partita.pokemonOnField[nTeam] = selectedPokemon[nTeam];             //Metto in campo il nuovo pokemon selezionato
-        pokeballTeam1[selectedPokemon[nTeam]].src=pokeballOpen;
-        //pokebalss[selectedPokemon[nTeam]].src = pokeballUsed;
+        pokeballTeam1[selectedPokemon[nTeam]].src = pokeballOpen;
     }
     else if (nTeam == 1) {
-        if (partita.pokemonOnField[1] != -1)                                //Faccio ritornare il vecchio pokemon selezionato allo stato normale
-        pokeballTeam2[partita.pokemonOnField[0]].src = pokeballUsed;
+        //Faccio ritornare il vecchio pokemon selezionato allo stato normale
+        if(partita.pokemonOnField[1] != -1){
+            pokeballTeam2[partita.pokemonOnField[nTeam]].src = pokeballsrc;
+        }
         partita.pokemonOnField[nTeam] = selectedPokemon[nTeam];             //Metto in campo il nuovo pokemon selezionato
-        pokeballTeam2[selectedPokemon[nTeam]].src=pokeballOpen;
-        //bluePokeballs[selectedPokemon[nTeam]].src = blueSelected;
+        pokeballTeam2[selectedPokemon[nTeam]].src = pokeballOpen;
     }
     console.log(`Team ${nTeam}: ${getPokemonName(partita.pokemonOnField[nTeam], nTeam)} [${partita.pokemonOnField[nTeam]}] scelgo te!`)
     printPokemonCard(nTeam, partita.pokemonOnField[nTeam], true)                  //Printo la carta del pokemon messo in campo
@@ -690,6 +689,3 @@ for(let i = 0; i < pokeball2.length; i++){
         insertPokemonTeam2.value = 'scelgo te ' + teams[1].pokemon[i].name;
     });
 }
-
-
-
