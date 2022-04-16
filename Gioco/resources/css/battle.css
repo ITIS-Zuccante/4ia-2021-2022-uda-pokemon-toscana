@@ -4,7 +4,8 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    background-position: center bottom;
+    background-position: center center;
+    background-size: 100% 100%;
 }
 
 .left, .right{
@@ -18,12 +19,20 @@ body{
 
 /*------------POKEMON CARD--------------*/
 .card{
-    width: 430px;
-    height: 600px;
+    width: 330px;
+    height: 500px;
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
     /*position: absolute;*/
     margin: 0 auto;
+}
+
+#card1 {
+    transform: translateY(80px);
+}
+
+#card2 {
+    transform: translateY(-30px);
 }
 
 .card_parentdiv{
@@ -33,13 +42,13 @@ body{
 
 .name {
     text-align: center;
-    padding-top: 25px;
-    margin-bottom: 25px;
+    padding-top: 20px;
+    margin-bottom: 20px;
     font-size: 20px;
 }
 
 .pokeImg {
-    height: 240px;
+    height: 180px;
 }
 
 .hpBar {
@@ -48,7 +57,7 @@ body{
 }
 
 .moveSet {
-    height: 250px;
+    height: 200px;
 }
 
 .column_move {
@@ -65,9 +74,8 @@ body{
 
 
 .MoveBox1, .MoveBox2 {
-    width: 160px;
-    margin: 27.5px;
-    margin-top: 10px;
+    width: 140px;
+    margin: 12.5px;
 }
 
 .MoveSet1, .MoveSet2 {
@@ -92,29 +100,17 @@ body{
 }
 /*----------CARD'S BUTTONS----------*/
 
-#mic2 {
-    height: 55px;
-    width: 55px;
-    /*border: none;*/
-    margin-left: 30px;
+#mic1, #mic2  {
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    transform: translateY(6px);
 }
 
-#random2 {
-    height: 55px;
-    width: 55px;
-    margin-left: -15px;
-    transform: translateY(-3%);
+#random1, #random2  {
+    width: 50px;
+    height: 50px;
 }
-
-#input2 {
-    transform: translateY(-120%);
-    margin-left: 30px;
-}
-
-#enter2 {
-    transform: translateX(-344%);
-}
-
 
 /*--------DROPDOWN MENU--------*/
 
@@ -132,10 +128,19 @@ body{
     text-align: center;
 }
 
+#menubar1, #menubar2 {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
 /*---------HP BAR-----------*/
+.HP {
+    margin-left: 20px;
+}
+
 .progress {
     position: relative;
-    width: 300px;
+    width: 200px;
     height: 20px;
     background: white;
     border-radius: 5px;
@@ -163,7 +168,10 @@ body{
 
 #battle {
     border: none;
-    padding: 0px;
+    padding: 20px;
+    position: absolute;
+    bottom: 30px;
+    transform: translateX(-1000px);
 }
 
 #battle img{
