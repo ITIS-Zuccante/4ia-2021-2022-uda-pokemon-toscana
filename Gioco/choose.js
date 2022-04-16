@@ -1,10 +1,9 @@
 import {BestMatch} from './resources/js/bestMatch.js';
 import{pokedex, getPokemon} from "./resources/js/data/pokedex.js";
-//import { WebSpeech } from './resources/js/webSpeech.js';
 import {loadInfo} from "./resources/js/loadPokemonInfo.js"
+import {WebSpeech} from "./resources/js/WebSpeech.js";
 
 let bestMatch = BestMatch();
-
 
 window.addEventListener("load", function() {
     team1Window.style.display = "none";
@@ -13,6 +12,19 @@ window.addEventListener("load", function() {
 });
 
 //window.localStorage.clear();
+
+/*let isListening = false;
+let SpeechRecognition = null;
+let recognition = null;
+
+try {
+    SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition(i);
+} catch (e) {
+    console.error(e);
+}
+
+recognition.continuous = true;*/
 
 let pokemonStatusTeam1 = [];
 for (let i = 0; i < 6; i++) {
@@ -173,6 +185,16 @@ randomPokemon_buttonTeam1.addEventListener("click",() => {
 randomPokemon_buttonTeam2.addEventListener("click",() => {
     inputFieldTeam2.value = pokedex[Math.floor(Math.random()*896)];
     chooseOne(1);
+});
+
+microphon_team1.addEventListener("click", (e)=>{
+    let webSpeech = WebSpeech(0);
+    webSpeech.start();
+});
+
+microphon_team2.addEventListener("click", (e)=>{
+    let webSpeech = WebSpeech(1);
+    webSpeech.start();
 });
 
 buttons.map( button => {

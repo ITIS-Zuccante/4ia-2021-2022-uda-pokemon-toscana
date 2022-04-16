@@ -1,8 +1,11 @@
 import { Automaton } from "./automaton.js";
+const inputFieldTeam1 = document.getElementById("input1");
+const inputFieldTeam2 = document.getElementById("input2");
+const inputField = [inputFieldTeam1, inputFieldTeam2];
 
 let automaton = Automaton();
 
-export function WebSpeech() {
+export function WebSpeech(currentTeam) {
     let recognizer = new webkitSpeechRecognition()
         || new Speechrecognition()
         || null;
@@ -46,6 +49,7 @@ export function WebSpeech() {
             } else {
                 for (let i = event.resultIndex; i < event.results.length; i++) {
                     if (event.results[i].isFinal) {
+                        inputField[currentTeam].value += event.results[i][0].transcript;
                         final_transcript += event.results[i][0].transcript;
                         automaton.run(final_transcript);
                     } else {
@@ -63,8 +67,8 @@ export function WebSpeech() {
         };
 
         return {
-            "start" : start,
-            "stop"  :  this.stop,
+            "start" : start(),
+            //"stop"  :  this.stop,
             "getText": () => { return final_transcript; }
         }
     } else {
