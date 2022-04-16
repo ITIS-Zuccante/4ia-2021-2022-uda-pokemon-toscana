@@ -77,13 +77,13 @@ export function printPokemonCard(nTeam, nPokemon, firstTime){
     let speed = teams[nTeam].pokemon[nPokemon].speed
     let imageSrc = teams[nTeam].pokemon[nPokemon].sprites["front_default"]
     let moves = teams[nTeam].pokemon[nPokemon].moves
-
+    let startHp = teams[nTeam].pokemon[nPokemon].startHP
     //pokemonTypeBox2[nTeam].style.visibility = "hidden"
 
     pokemonNameBox[nTeam].innerHTML = teams[nTeam].pokemon[nPokemon].name;
     pokemonHpBox[nTeam].innerHTML = hp + "/";
     if (firstTime){
-        pokemonTotalHp[nTeam].innerHTML = hp;
+        pokemonTotalHp[nTeam].innerHTML = startHp;
         pokemonImg[nTeam].src = imageSrc;
         pokemonImg[nTeam].style.height = "200px";
         pokemonAttackBox[nTeam].innerHTML = "Attack: " + attack

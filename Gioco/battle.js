@@ -283,7 +283,7 @@ async function selectMove(moveName, nTeam, nPokemon) {
 
 async function placeOnField(nTeam){
     if (nTeam == 0) {
-        if (partita.pokemonOnField[0] != -1)                                //Faccio ritornare il vecchio pokemon selezionato allo stato normale
+        if (partita.pokemonOnField[0] != -1)                              //Faccio ritornare il vecchio pokemon selezionato allo stato normale
         pokeballTeam1src[partita.pokemonOnField[0]].src = pokeballUsed;
         //pokeballTeam1[partita.pokemonOnField[0]].src = redPokeball
         partita.pokemonOnField[nTeam] = selectedPokemon[nTeam];             //Metto in campo il nuovo pokemon selezionato
@@ -675,3 +675,21 @@ for(let i = 0; i < ButtonMoves2.length; i++){
         insertPokemonTeam2.value = 'usa ' + Moves2[i].textContent;
     });
 }
+
+const pokeball1 = document.getElementsByClassName('pokeball_team1');
+const pokeball2 = document.getElementsByClassName('pokeball_team2');
+
+for(let i = 0; i < pokeball1.length; i++){
+    pokeball1[i].addEventListener('click', () =>{
+        insertPokemonTeam1.value = 'scelgo te ' + teams[0].pokemon[i].name;
+    });
+}
+
+for(let i = 0; i < pokeball2.length; i++){
+    pokeball2[i].addEventListener('click', () =>{
+        insertPokemonTeam2.value = 'scelgo te ' + teams[1].pokemon[i].name;
+    });
+}
+
+
+
