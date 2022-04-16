@@ -122,10 +122,14 @@ body{
 
 .menu {
     display: none;
-    height: 212px;
-    width: 430px;
+    height: 180px ;
+    width: 330px;
     padding: 0;
     text-align: center;
+}
+
+ul{
+    padding: 0;
 }
 
 #menubar1, #menubar2 {
