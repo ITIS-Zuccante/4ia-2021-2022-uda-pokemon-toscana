@@ -183,15 +183,25 @@ ul{
 #battle {
     border: none;
     padding: 20px;
-    position: absolute;
     bottom: 30px;
-    transform: translateX(-1000px);
+    position: relative;
 }
 
 #battle img{
     padding: none;
 }
 
+.dialogueBox {
+    width: 200px;
+    background-color: white;
+}
+
+#wrapper {
+    width:50%;
+    margin-left:25%;
+    margin-right:25%;
+    text-align: center;
+}
 /* @font-face {
     font-family: 'PokemonFont';
     src: url(/resources/fonts/Pokemon-Pixel-Font.woff)format("woff")
