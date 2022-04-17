@@ -41,8 +41,8 @@ export function WebSpeech(currentTeam) {
         };
 
         recognizer.onresult = (event) => {
-            console.log(typeof (event.results));
-            console.log(event.results);
+            //console.log(typeof (event.results));
+            //console.log(event.results);
             if (typeof (event.results) == 'undefined') {
                 this.onend = null;
                 this.stop();

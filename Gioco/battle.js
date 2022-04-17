@@ -8,16 +8,19 @@ import {printPokemonCard, printDefaultCard, printMoveInfo} from "./resources/js/
 import {calculateDamage, calculateEffect} from "./resources/js/damageCalculator.js";
 import { printDialogue, closeDialogue } from './resources/js/printDialogue.js';
 import { Automaton } from './resources/js/automaton.js';
+import {WebSpeech} from "./resources/js/WebSpeech.js";
 
 const pokeballTeam1 = document.getElementsByClassName("team1");
 const pokeballTeam2 = document.getElementsByClassName("team2");
 const fightButtonTeam1 = document.getElementById("enter1");
-const insertPokemonTeam1 = document.getElementById("input1");
 const fightButtonTeam2 = document.getElementById("enter2");
-const insertPokemonTeam2 = document.getElementById("input2");
+const fightButton = document.getElementById("battle");
+const inputFieldTeam1 = document.getElementById("input1");
+const inputFieldTeam2 = document.getElementById("input2");
 const randomTeam1Button = document.getElementById("random1");
 const randomTeam2Button = document.getElementById("random2");
-const fightButton = document.getElementById("battle");
+const microphon_team1 = document.getElementById("mic1");
+const microphon_team2 = document.getElementById("mic2");
 //const redChangeInfoButton = document.getElementById("redChangeButton")
 //const blueChangeInfoButton = document.getElementById("blueChangeButton")
 const menuBar1Button =document.getElementById("menubar1");
@@ -130,13 +133,13 @@ function faintPokemon(nPokemon, nTeam){
 }
 
 function switchTurn(){
-    if(insertPokemonTeam1.value == ""){
+    if(inputFieldTeam1.value == ""){
         alert("Il team 1 deve ancora fare una mossa per il combattimento!");
-        insertPokemonTeam1.value = "";
+        inputFieldTeam1.value = "";
     }
-    else if(insertPokemonTeam2.value == ""){
+    else if(inputFieldTeam2.value == ""){
         alert("Il team 2 ancora fare una mossa per il combattimento!");
-        insertPokemonTeam2.value = "";
+        inputFieldTeam2.value = "";
     }
     if(partita.currentTeamTurn == 0){
         partita.currentTeamTurn = 1;
@@ -265,7 +268,7 @@ async function selectMove(moveName, nTeam, nPokemon) {
         if (move.currentPP > 0) {
             let nMove = getMoveIndex(moveName, nTeam, nPokemon)
             selectedMove[nTeam] = nMove
-            console.log(`Team ${nTeam}: Mossa selezionata = ${moveName} [${nMove}]`)
+            console.log(`Team ${nTeam+1}: Mossa selezionata = ${moveName} [${nMove}]`)
             let [finalPhase, choiceArr] = checkFinalPhase()
             if (finalPhase) {
                 await attackPhase(choiceArr)
@@ -296,7 +299,7 @@ async function placeOnField(nTeam){
         partita.pokemonOnField[nTeam] = selectedPokemon[nTeam];             //Metto in campo il nuovo pokemon selezionato
         pokeballTeam2[selectedPokemon[nTeam]].src = pokeballOpen;
     }
-    console.log(`Team ${nTeam}: ${getPokemonName(partita.pokemonOnField[nTeam], nTeam)} [${partita.pokemonOnField[nTeam]}] scelgo te!`)
+    console.log(`Team ${nTeam+1}: ${getPokemonName(partita.pokemonOnField[nTeam], nTeam)} [${partita.pokemonOnField[nTeam]}] scelgo te!`)
     printPokemonCard(nTeam, partita.pokemonOnField[nTeam], true)                  //Printo la carta del pokemon messo in campo
     printMoveInfo(nTeam, partita.pokemonOnField[nTeam])
     await printDialogue(`I choose you ${getPokemonName(partita.pokemonOnField[nTeam], nTeam)}!`)
@@ -316,6 +319,8 @@ async function selectPokemon(pokeName, nTeam){
                     let [finalPhase, choiceArr] = checkFinalPhase()
                     if (finalPhase) {
                         await attackPhase(choiceArr)
+                        inputFieldTeam2.value = "";
+                        inputFieldTeam1.value = "";
                         return
                     }
                     else{
@@ -326,6 +331,8 @@ async function selectPokemon(pokeName, nTeam){
                     placeOnField(nTeam)
                     fainted = false
                 }
+                inputFieldTeam2.value = "";
+                inputFieldTeam1.value = "";
                 return
             }
             alert("This pokemon is exausted")
@@ -341,7 +348,7 @@ async function selectPokemon(pokeName, nTeam){
 async function dealDamage(teamAtk,teamDef, moveName){
     let nPokemonAtk = partita.pokemonOnField[teamAtk];
     let nPokemonDef = partita.pokemonOnField[teamDef];
-
+    
     if(nPokemonAtk != -1 && nPokemonDef != -1) {
 
         let move = getMove(moveName, nPokemonAtk, teamAtk)
@@ -396,8 +403,8 @@ async function dealDamage(teamAtk,teamDef, moveName){
         printPokemonCard(teamAtk, nPokemonAtk, false)
         await sleep(500)
     }
-    insertPokemonTeam2.value = "";
-    insertPokemonTeam1.value = "";
+    inputFieldTeam2.value = "";
+    inputFieldTeam1.value = "";
 }
 
 function checkFinalPhase(){
@@ -468,13 +475,26 @@ function getMoveIndex(moveName, nTeam, nPokemon){
 }
 
 fightButton.addEventListener('click', async () =>{
-    let insertPokemonTeam = [insertPokemonTeam1, insertPokemonTeam2];
+    let insertPokemon = [inputFieldTeam1, inputFieldTeam2];
+    console.log(inputFieldTeam1.value)
     for(let i = 0; i < 2; i++){
+        
         partita.currentTeamTurn = i;
-        if (insertPokemonTeam[i].value.startsWith("scelgo te")) {
+        let automaton = Automaton();
+        automaton.run(insertPokemon[i].value);
+        console.log(automaton.accepted())
+        if (automaton.accepted() == 1){
+            let str = automaton.result()
+            selectMove(str, partita.currentTeamTurn, partita.pokemonOnField[partita.currentTeamTurn])
+        }
+        else if(automaton.accepted() == 0){
+            let str = automaton.result()
+            selectPokemon(str, partita.currentTeamTurn);
+        }
+        /*if (insertPokemonTeam[i].value.startsWith("scelgo te")) {
             let str = insertPokemonTeam[i].value
             selectPokemon(str.substr(str.indexOf(" ") + 2), partita.currentTeamTurn);   //substr ecc.. toglie le prime due parole (scelgo te) in modo da rimanere con il pokemon
-        } else if (insertPokemonTeam[i].value.startsWith("usa")) {
+        } else if (insertPokemonTeam[i].value.toLowerCase().startsWith("usa")) {
             let str = insertPokemonTeam[i].value
             console.log(str)
             selectMove(str.substr(str.indexOf(" ") + 1), partita.currentTeamTurn, partita.pokemonOnField[partita.currentTeamTurn])
@@ -482,18 +502,9 @@ fightButton.addEventListener('click', async () =>{
             pokeCards[1].classList.add("attackAnim")
             await sleep(2000)
             pokeCards[1].classList.remove("attackAnim")
-        }
+        }*/
     } 
-    /*let automaton = Automaton();
-    automaton.run(insertPokemon.value);
-    if (automaton.accepted() == 1){
-        let str = automaton.result()
-        selectMove(str, partita.currentTeamTurn, partita.pokemonOnField[partita.currentTeamTurn])
-    }
-    else if(automaton.accepted() == 0){
-        let str = automaton.result()
-        selectPokemon(str, partita.currentTeamTurn);
-    }*/
+    
 })
 
 /*fightButtonTeam1.addEventListener('click', async () => {    // TODO: CAPIRE SE LASCIARE ASYNC O NO
@@ -633,13 +644,23 @@ function changeStats(team){
 randomTeam1Button.addEventListener("click", () =>{
     partita.currentTeamTurn = 0;
     let move = getMoveName(Math.floor(Math.random() * 4),partita.pokemonOnField[partita.currentTeamTurn],0);
-    insertPokemonTeam1.value = 'usa ' + move;
+    inputFieldTeam1.value = 'use ' + move + ' now';
 });
 
 randomTeam2Button.addEventListener("click", () =>{
     partita.currentTeamTurn = 1;
     let move = getMoveName(Math.floor(Math.random() * 4),partita.pokemonOnField[partita.currentTeamTurn],1);
-    insertPokemonTeam2.value = 'usa ' + move;
+    inputFieldTeam2.value = 'use ' + move + ' now';
+});
+
+microphon_team1.addEventListener("click", (e)=>{
+    let webSpeech = WebSpeech(0);
+    webSpeech.start();
+});
+
+microphon_team2.addEventListener("click", (e)=>{
+    let webSpeech = WebSpeech(1);
+    webSpeech.start();
 });
 /*redChangeInfoButton.addEventListener('click', () =>{
     if(redStats.style.display == "" || redStats.style.display == "none"){
@@ -665,13 +686,13 @@ randomTeam2Button.addEventListener("click", () =>{
 
 for(let i = 0; i < ButtonMoves1.length; i++){
     ButtonMoves1[i].addEventListener('click', () =>{
-        insertPokemonTeam1.value = 'usa ' + Moves1[i].textContent;
+        inputFieldTeam1.value = 'use ' + Moves1[i].textContent + ' now';
     });
 }
 
 for(let i = 0; i < ButtonMoves2.length; i++){
     ButtonMoves2[i].addEventListener('click', () =>{
-        insertPokemonTeam2.value = 'usa ' + Moves2[i].textContent;
+        inputFieldTeam2.value = 'use ' + Moves2[i].textContent + ' now';
     });
 }
 
@@ -680,12 +701,12 @@ const pokeball2 = document.getElementsByClassName('pokeball_team2');
 
 for(let i = 0; i < pokeball1.length; i++){
     pokeball1[i].addEventListener('click', () =>{
-        insertPokemonTeam1.value = 'scelgo te ' + teams[0].pokemon[i].name;
+        inputFieldTeam1.value = teams[0].pokemon[i].name + ' i choose you';
     });
 }
 
 for(let i = 0; i < pokeball2.length; i++){
     pokeball2[i].addEventListener('click', () =>{
-        insertPokemonTeam2.value = 'scelgo te ' + teams[1].pokemon[i].name;
+        inputFieldTeam2.value = teams[1].pokemon[i].name + ' i choose you';
     });
 }

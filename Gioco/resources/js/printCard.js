@@ -83,7 +83,7 @@ export function printPokemonCard(nTeam, nPokemon, firstTime){
     pokemonNameBox[nTeam].innerHTML = teams[nTeam].pokemon[nPokemon].name;
     pokemonHpBox[nTeam].innerHTML = hp + "/";
     if (firstTime){
-        pokemonTotalHp[nTeam].innerHTML = startHp;
+        pokemonTotalHp[nTeam].innerHTML = startHp + " HP";
         pokemonImg[nTeam].src = imageSrc;
         pokemonImg[nTeam].style.height = "200px";
         pokemonAttackBox[nTeam].innerHTML = "Attack: " + attack
@@ -93,9 +93,9 @@ export function printPokemonCard(nTeam, nPokemon, firstTime){
         pokemonSpeedBox[nTeam].innerHTML = "Speed: " + speed
     }
     if(nTeam == 0){
-        updateProgressBar(bar1, (hp/pokemonTotalHp[nTeam].innerHTML)*100);
+        updateProgressBar(bar1, (hp/startHp)*100);
     } else {
-        updateProgressBar(bar2, (hp/pokemonTotalHp[nTeam].innerHTML)*100);
+        updateProgressBar(bar2, (hp/startHp)*100);
     }
     //pokemonTypeBox1[nTeam].innerHTML = typeAbbrevations[type];
     //pokemonTypeBox1[nTeam].style.backgroundColor = typeColor;

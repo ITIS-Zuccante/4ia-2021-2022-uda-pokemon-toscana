@@ -13,19 +13,6 @@ window.addEventListener("load", function() {
 
 //window.localStorage.clear();
 
-/*let isListening = false;
-let SpeechRecognition = null;
-let recognition = null;
-
-try {
-    SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    recognition = new SpeechRecognition(i);
-} catch (e) {
-    console.error(e);
-}
-
-recognition.continuous = true;*/
-
 let pokemonStatusTeam1 = [];
 for (let i = 0; i < 6; i++) {
     pokemonStatusTeam1[i] = document.getElementById(`pokemon_status1${i+1}`);
@@ -130,12 +117,10 @@ async function chooseOne(currentTeam){
                 console.log(teams[currentTeam].pokemon[teams[currentTeam].n-1]);
                 switch(currentTeam){
                     case 0:
-                        console.log("inside0")
                         pokemonStatusTeam1[teams[currentTeam].n-1].src = "../insertedPokemon.png";
                         pokemonNameTeam1[teams[currentTeam].n-1].innerHTML = placeStars(name.length);
                         break;
                     case 1:
-                        console.log("inside1")
                         pokemonStatusTeam2[teams[currentTeam].n-1].src = "../insertedPokemon.png";
                         pokemonNameTeam2[teams[currentTeam].n-1].innerHTML = placeStars(name.length);
                         break;
