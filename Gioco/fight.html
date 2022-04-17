@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Battaglia</title>
@@ -9,97 +10,101 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
-    <body>
-        <div class="logo">
-            <!-- <img src="ima  ges/writings/zuckemon_logo.png" alt="logo" class="center"> -->
-            <h1 id="logo">Zuckemon</h1> 
-        </div>
-        <div class="row">
-            <div class="column left">
-                <div class="column pokeball">
-                    <div>
-                        <button class="pokeball_img first_pokeball pokeball_team1">
-                            <img src="PokeballMenu.png" class="team1" alt="error" width="80px" height="80px">
-                        </button>
-                    </div>
-                    <div>
-                        <button class="pokeball_img pokeball_team1">
-                            <img src="PokeballMenu.png" class="team1" alt="error" width="80px" height="80px">
-                        </button>
-                    </div>
-                    <div>
-                        <button class="pokeball_img pokeball_team1">
-                            <img src="PokeballMenu.png" class="team1" alt="error" width="80px" height="80px">
-                        </button>
-                    </div>
-                    <div>
-                        <button class="pokeball_img pokeball_team1">
-                            <img src="PokeballMenu.png" class="team1" alt="error" width="80px" height="80px">
-                        </button>
-                    </div>
-                    <div>
-                        <button class="pokeball_img pokeball_team1">
-                            <img src="PokeballMenu.png" class="team1" alt="error" width="80px" height="80px">
-                        </button>
-                    </div>
-                    <div>
-                        <button class="pokeball_img pokeball_team1">
-                            <img src="PokeballMenu.png" class="team1" alt="error" width="80px" height="80px">
-                        </button>
-                    </div>
-                </div>
-                <div class="column card_parentdiv">
-                    <div class="card" id="card1">
-                        <div class="name">???</div>
-                        <div class="pokeImg">
-                            <img src="" class="PokemonSprite" alt="error">
-                        </div>
-                        <div class="hpBar">
-                            <div>
-                                <a class="HP"></a>
-                            <a class="totalHP"></a>
-                            </div>
-                            <div class="progress" id="bar1">
-                                <div class="progress__fill"></div>
-                                <span class="progress__text">100%</span>
-                            </div>
-                        </div>
-                        <div class="dropdown">
-                            <button id="menubar1">
-                                Statistiche
-                            </button>
-                            <ul class="menu" id="Stats1" contenteditable="false">
-                                <ul cl="Attack" class="Attack">Attack: ???</ul>
-                                <ul id="Defense" class="Defense">Defense: ???</ul>
-                                <ul id="SpecialAttack" class="SpecialAttack">Special Attack: ???</ul>
-                                <ul id="SpecialDefense" class="SpecialDefense">Special Defense: ???</ul>
-                                <ul id="Speed" class="Speed">Speed: ???</ul>
-                                <div contenteditable="false">
-                                    <input type="password" placeholder="Inserisci la password" id="team1StatsPassword" >
-                                    <button id="changeStatsTeam1">
-                                        Cambia le statistiche!
-                                    </button>
-                                </div>
-                            </ul>
-                        </div>
-                        <div id="MoveSet1" >
-                            <div class="row" > <!--PRIMA RIGA SET DI MOSSE-->
-                                <button class="column_move MoveBox1 moveInfo1">
-                                    <div class="MoveSet1 Team1MoveType"></div>
-                                </button>
-                                <button class="column_move MoveBox1 moveInfo1">
-                                    <div class="MoveSet1 Team1MoveType"></div>
-                                </button>
-                            </div>
 
-                            <div class="row"> <!--PRIMA RIGA SET DI MOSSE-->
-                                <button class="column_move MoveBox1 moveInfo1">
-                                    <div class="MoveSet1 Team1MoveType"></div>
-                                </button>
-                                <button class="column_move MoveBox1 moveInfo1">
-                                    <div class="MoveSet1 Team1MoveType"></div>
+<body>
+    <img id="versusGif" src="../giphy.gif" alt="">
+    <div class="logo">
+        <!-- <img src="ima  ges/writings/zuckemon_logo.png" alt="logo" class="center"> -->
+        <h1 id="logo">Zuckemon</h1>
+    </div>
+    <div class="row">
+        <div class="column left">
+            <div class="column pokeball">
+                <div>
+                    <button class="pokeball_img first_pokeball pokeball_team1">
+                        <img src="PokeballMenu.png" class="team1" alt="error" width="80px" height="80px">
+                    </button>
+                </div>
+                <div>
+                    <button class="pokeball_img pokeball_team1">
+                        <img src="PokeballMenu.png" class="team1" alt="error" width="80px" height="80px">
+                    </button>
+                </div>
+                <div>
+                    <button class="pokeball_img pokeball_team1">
+                        <img src="PokeballMenu.png" class="team1" alt="error" width="80px" height="80px">
+                    </button>
+                </div>
+                <div>
+                    <button class="pokeball_img pokeball_team1">
+                        <img src="PokeballMenu.png" class="team1" alt="error" width="80px" height="80px">
+                    </button>
+                </div>
+                <div>
+                    <button class="pokeball_img pokeball_team1">
+                        <img src="PokeballMenu.png" class="team1" alt="error" width="80px" height="80px">
+                    </button>
+                </div>
+                <div>
+                    <button class="pokeball_img pokeball_team1">
+                        <img src="PokeballMenu.png" class="team1" alt="error" width="80px" height="80px">
+                    </button>
+                </div>
+            </div>
+            <div class="column card_parentdiv">
+                <div class="card" id="card1">
+                    <div class="name">???</div>
+                    <div class="pokeImg">
+                        <img src="" class="PokemonSprite" alt="error">
+                    </div>
+                    <div class="hpBar">
+                        <div>
+                            <a class="HP"></a>
+                            <a class="totalHP"></a>
+                        </div>
+                        <div class="progress" id="bar1">
+                            <div class="progress__fill"></div>
+                            <span class="progress__text">100%</span>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button id="menubar1">
+                            Statistiche
+                        </button>
+                        <ul class="menu" id="Stats1" contenteditable="false">
+                            <ul cl="Attack" class="Attack">Attack: ???</ul>
+                            <ul id="Defense" class="Defense">Defense: ???</ul>
+                            <ul id="SpecialAttack" class="SpecialAttack">Special Attack: ???</ul>
+                            <ul id="SpecialDefense" class="SpecialDefense">Special Defense: ???</ul>
+                            <ul id="Speed" class="Speed">Speed: ???</ul>
+                            <div contenteditable="false">
+                                <input type="password" placeholder="Inserisci la password" id="team1StatsPassword">
+                                <button id="changeStatsTeam1">
+                                    Cambia le statistiche!
                                 </button>
                             </div>
+                        </ul>
+                    </div>
+                    <div id="MoveSet1">
+                        <div class="row">
+                            <!--PRIMA RIGA SET DI MOSSE-->
+                            <button class="column_move MoveBox1 moveInfo1">
+                                <div class="MoveSet1 Team1MoveType"></div>
+                            </button>
+                            <button class="column_move MoveBox1 moveInfo1">
+                                <div class="MoveSet1 Team1MoveType"></div>
+                            </button>
+                        </div>
+
+                        <div class="row">
+                            <!--PRIMA RIGA SET DI MOSSE-->
+                            <button class="column_move MoveBox1 moveInfo1">
+                                <div class="MoveSet1 Team1MoveType"></div>
+                            </button>
+                            <button class="column_move MoveBox1 moveInfo1">
+                                <div class="MoveSet1 Team1MoveType"></div>
+                            </button>
+                        </div>
                         <div class="activate">
                             <button id="mic1">
                                 <img src="../mic.png" alt="microphon">
@@ -112,62 +117,65 @@
                             </button>
                         </div>
                     </div>
-                    </div>
                 </div>
             </div>
-            <div class="column right">
-                <div class="column card_parentdiv">
-                    <div class="card" id="card2">
-                        <div class="name">???</div>
-                        <div class="pokeImg">
-                            <img src="" class="PokemonSprite" alt="error">
-                        </div>
-                        <div class="hpBar">
-                            <div>
-                                <a class="HP"></a>
+        </div>
+        
+        <div class="column right">
+            <div class="column card_parentdiv">
+                <div class="card" id="card2">
+                    <div class="name">???</div>
+                    <div class="pokeImg">
+                        <img src="" class="PokemonSprite" alt="error">
+                    </div>
+                    <div class="hpBar">
+                        <div>
+                            <a class="HP"></a>
                             <a class="totalHP"></a>
-                            </div>
-                            <div class="progress" id="bar2">
-                                <div class="progress__fill"></div>
-                                <span class="progress__text">100%</span>
-                            </div>
                         </div>
-                        <div class="dropdown">
-                            <button id="menubar2">
-                                Statistiche
+                        <div class="progress" id="bar2">
+                            <div class="progress__fill"></div>
+                            <span class="progress__text">100%</span>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button id="menubar2">
+                            Statistiche
+                        </button>
+                        <ul class="menu" id="Stats2" contenteditable="false">
+                            <ul id="Attack2" class="Attack">Attack: ???</ul>
+                            <ul id="Defense2" class="Defense">Defense: ???</ul>
+                            <ul id="SpecialAttack2" class="SpecialAttack">Special Attack: ???</ul>
+                            <ul id="SpecialDefense2" class="SpecialDefense">Special Defense: ???</ul>
+                            <ul id="Speed2" class="Speed">Speed: ???</ul>
+                            <div contenteditable="false">
+                                <input type="password" placeholder="Inserisci la password" id="team2StatsPassword">
+                                <button id="changeStatsTeam2">
+                                    Cambia le statistiche!
+                                </button>
+                            </div>
+                        </ul>
+                    </div>
+                    <div id="MoveSet2">
+                        <div class="row">
+                            <!--PRIMA RIGA SET DI MOSSE-->
+                            <button class="column_move MoveBox2 moveInfo2">
+                                <div class="MoveSet2 Team2MoveType"></div>
                             </button>
-                            <ul class="menu" id="Stats2" contenteditable="false">
-                                <ul id="Attack2" class="Attack">Attack: ???</ul>
-                                <ul id="Defense2" class="Defense">Defense: ???</ul>
-                                <ul id="SpecialAttack2" class="SpecialAttack">Special Attack: ???</ul>
-                                <ul id="SpecialDefense2" class="SpecialDefense">Special Defense: ???</ul>
-                                <ul id="Speed2" class="Speed">Speed: ???</ul>
-                                <div contenteditable="false">
-                                    <input type="password" placeholder="Inserisci la password" id="team2StatsPassword" >
-                                    <button id="changeStatsTeam2" >
-                                        Cambia le statistiche!
-                                    </button>
-                                </div>
-                            </ul>
+                            <button class="column_move MoveBox2 moveInfo2">
+                                <div class="MoveSet2 Team2MoveType"></div>
+                            </button>
                         </div>
-                        <div id="MoveSet2">
-                            <div class="row"> <!--PRIMA RIGA SET DI MOSSE-->
-                                <button class="column_move MoveBox2 moveInfo2">
-                                    <div class="MoveSet2 Team2MoveType"></div>
-                                </button>
-                                <button class="column_move MoveBox2 moveInfo2">
-                                    <div class="MoveSet2 Team2MoveType"></div>
-                                </button>
-                            </div>
 
-                            <div class="row"> <!--PRIMA RIGA SET DI MOSSE-->
-                                <button class="column_move MoveBox2 moveInfo2">
-                                    <div class="MoveSet2 Team2MoveType"></div>
-                                </button>
-                                <button class="column_move MoveBox2 moveInfo2">
-                                    <div class="MoveSet2 Team2MoveType"></div>
-                                </button>
-                            </div>
+                        <div class="row">
+                            <!--PRIMA RIGA SET DI MOSSE-->
+                            <button class="column_move MoveBox2 moveInfo2">
+                                <div class="MoveSet2 Team2MoveType"></div>
+                            </button>
+                            <button class="column_move MoveBox2 moveInfo2">
+                                <div class="MoveSet2 Team2MoveType"></div>
+                            </button>
+                        </div>
                         <div class="activate">
                             <button id="mic2">
                                 <img src="../mic.png" alt="microphon">
@@ -220,13 +228,13 @@
                 BATTLE!
             </button>
         </div>
-        
+
         <div class="dialogueBox">
             <div class="dialogueText" id="dialogue"></div>
             <div class="triangleDiv"><img src="/images/symbols/triangle.png" class="triangleImg"></div>
         </div>
-       
-        
+
+
         <!-- <div class = "background">
             <style>
                 body {
@@ -385,5 +393,5 @@
             </div>
         </div> -->
         <script type="module" src="battle.js"></script>
-    </body>
+</body>
 </html>

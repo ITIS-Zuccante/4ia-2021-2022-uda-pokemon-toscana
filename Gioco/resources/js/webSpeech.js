@@ -67,7 +67,7 @@ export function WebSpeech(currentTeam) {
         };
 
         return {
-            "start" : start(),
+            "start" : start,
             //"stop"  :  this.stop,
             "getText": () => { return final_transcript; }
         }
