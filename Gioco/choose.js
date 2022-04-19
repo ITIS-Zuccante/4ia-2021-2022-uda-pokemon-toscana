@@ -222,7 +222,7 @@ buttons.map(button => {
                         break;
                     case 4:
                         console.log(teams[0].n + "<1 2>"  + teams[1].n)
-                        if(teams[0].n == 6 && teams[1].n == 6){
+                        if(teams[0].n >= 6 && teams[1].n >= 6){
                             window.localStorage.setItem("teams", JSON.stringify(teams));
                             window.location.href = 'fight.html'; 
                         } else {
