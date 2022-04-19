@@ -7,6 +7,10 @@ body {
     background-position: center bottom;
 }
 
+.pokemonFont {
+    font-family: 'Press Start 2P', cursive;
+}
+
 #logoButton{
     display: flex;
     text-align: center;
@@ -16,7 +20,6 @@ body {
 }
 
 #logo{
-    font-family: 'Press Start 2P', cursive;
     font-size: 100px;
     color: yellow;
     align-items: center;
@@ -183,160 +186,44 @@ body {
     height: 80px;
     background-color: #DED47A;
 }
-
+/*************** RULES ******************/
 .PDFdiv {
     height : 90%;
     width : 90%;
     margin-top: 2.5%;
     margin-left: 2.5%;
 }
-/*.background{
-    width: 100%;
-    position: absolute;
-    top:0px;
-    right:0px;
-    bottom:0px;
-    left:0px;
-}
-.zuckemonLogo{
-    position: absolute;
-    width: 40%;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 14%;
-}
-.teamLogo{
-    position: absolute;
-    width: 20%;
-    transform: translate(-50%, -50%);
-    left: 63%;
-    top: 23.5%;
-}
 
----- PLAY ----
-
-.divPlay{
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    width: 30%;
-    transform: translate(-50%, -50%);
-}
-.playButton{
-    background-color: transparent;
-    border: #cccccc;
-    height: 100%;
-    width: 100%;
-    cursor: pointer;
-    transition: 0.2s all;
-    transition-duration: 1s;
-}
-.playButton:active {
-    transform: scale(0.96);
-}
-
----- HELP ----
-
-.divHelp{
-    position: absolute;
-    width: 10%;
-    left: 70%;
-    top: 79.7%;
-    transform: translate(-50%, -50%);
-}
-.helpButton{
-    padding: 10%;
-    cursor: pointer;
-    background-color: transparent;
-    border: #cccccc;
-    transition: 0.2s all;
-    height: 100%;
-    width: 100%;
-}
-.helpButton:active {
-    transform: scale(0.96);
-}
-
----- RULES ----
-
-.modal{
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.8);
-}
-
-.modal-container{
-    position: absolute;
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%, -50%);
-    background-image: url("/images/writings/rules/rules_1.png");
-    background-repeat: no-repeat;
-    background-color: transparent;
-    background-size: contain;
-    background-position: center;
-    margin: auto;
-    padding: 20px;
-    width: 60vw;
-    height: 70vw;
-    -webkit-filter: drop-shadow(15px 25px 18px #222);
-
-}
-
-.modal-header .closeButton{
-    position: absolute;
+/************* HOME PAGE ********************/
+#home {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    top: 26%;
-    right: 4%;
-    cursor: pointer;
-    border: 0.2vw solid black;
-    outline: none;
-    background: none;
-    font-size: 1.2vw;
-    color: red;
-    font-weight: bold;
-    border-radius: 20%;
-
+    overflow: hidden
+}
+#home img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
 }
 
-.closeButton:active {
-    transform: scale(0.96);
-}
-
-.pageButton{
-    border: 0.2vw solid black;
-    outline: none;
-    background: none;
-    font-size: 1.5vw;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s all;
-    border-radius: 20%;
-}
-
-.pageButton:active {
-    transform: scale(0.96);
-}
-
-#previousPageDiv{
+#home span, #home h1, #home a{
     position: absolute;
-    bottom: 26%;
-    left: 9%;
 }
 
-#nextPageDiv{
-    position: absolute;
-    bottom: 26%;
-    right: 9%;
-}*/
+#home h1{
+    top: 20%;
+    font-size: 250%;
+}
 
+#home span{
+    top: 48%;
+    left: 32%;
+    font-size: 200%;
+}
+
+#home a{
+    text-decoration: none;
+    top: 80%;
+    left: 77%;
+}

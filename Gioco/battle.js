@@ -1,6 +1,8 @@
 let teams = JSON.parse(window.localStorage.getItem("teams"));
 const versusAnimation = document.getElementById("versusGif");
-versusAnimation.style.display = "none"
+versusAnimation.style.display = "none";
+const win = document.getElementById("win");
+win.style.display = "none"
 console.log(teams)
 
 import { BestMatch } from './resources/js/bestMatch.js';
@@ -22,22 +24,30 @@ const randomTeam1Button = document.getElementById("random1");
 const randomTeam2Button = document.getElementById("random2");
 const microphon_team1 = document.getElementById("mic1");
 const microphon_team2 = document.getElementById("mic2");
-//const redChangeInfoButton = document.getElementById("redChangeButton")
-//const blueChangeInfoButton = document.getElementById("blueChangeButton")
 const menuBar1Button = document.getElementById("menubar1");
 const menuBar2Button = document.getElementById("menubar2");
-const redMoves = document.getElementById("redMoves")
-const redStats = document.getElementById("redStats")
-const blueMoves = document.getElementById("blueMoves")
-const blueStats = document.getElementById("blueStats")
-const selectionDiv = document.getElementById("selectionDiv")
-
-
+const rowItem = document.getElementsByClassName("mainRow");
+const pokeball1 = document.getElementsByClassName('pokeball_team1');
+const pokeball2 = document.getElementsByClassName('pokeball_team2');
 const pokeCards = document.getElementsByClassName("card")
+const ButtonMoves1 = document.getElementsByClassName("MoveBox1");
+const ButtonMoves2 = document.getElementsByClassName("MoveBox2");
+const Moves1 = document.getElementsByClassName("MoveSet1");
+const Moves2 = document.getElementsByClassName("MoveSet2");
+const moveSet1 = document.getElementById("MoveSet1");
+const StatsWindowTeam1 = document.getElementById("Stats1");
+const moveSet2 = document.getElementById("MoveSet2");
+const StatsWindowTeam2 = document.getElementById("Stats2");
+const changeStatsTeam2Button = document.getElementById("changeStatsTeam2");
+const changeStatsTeam2Password = document.getElementById("team2StatsPassword");
+const changeStatsTeam1Button = document.getElementById("changeStatsTeam1");
+const changeStatsTeam1Password = document.getElementById("team1StatsPassword");
+const pokemonAttackBox = document.getElementsByClassName("Attack")
+const pokemonDefenseBox = document.getElementsByClassName("Defense")
+const pokemonSpecialAttackBox = document.getElementsByClassName("SpecialAttack")
+const pokemonSpecialDefenseBox = document.getElementsByClassName("SpecialDefense")
+const pokemonSpeedBox = document.getElementsByClassName("Speed")
 
-const faintedPokeball = "pokeballDead.png"
-const redSelected = "images/symbols/pokemonIndicators/redPokeball_selected.png"
-const blueSelected = "images/symbols/pokemonIndicators/bluePokeball_selected.png"
 const pokeballsrc = "PokeballMenu.png"
 const pokeballUsed = "../pokeballDead.png";
 const pokeballOpen = "../openPokeball.png";
@@ -45,8 +55,6 @@ const pokeballOpen = "../openPokeball.png";
 let bestMatch = BestMatch();
 
 let fainted = false;
-
-//selectionDiv.style.display = "none"
 
 for (let poke of teams[0].pokemon) {
     poke.hp = poke.startHP
@@ -95,17 +103,27 @@ console.log(teams[1].pokemon)
 await placeOnField(0)
 await placeOnField(1)
 closeDialogue()
-//selectionDiv.style.display = "block"
 
 partita.round++
+let deadTeam1 = 0;
+let deadTeam2 = 0;
 
 function faintPokemon(nPokemon, nTeam) {
     if (nTeam == 0) {
         pokeballTeam1[nPokemon].src = pokeballUsed;
+        deadTeam1++;
+        if(deadTeam1 == 6){
+            winGame(0);
+        }
     }
     else if (nTeam == 1) {
         pokeballTeam2[nPokemon].src = pokeballUsed;
+        deadTeam2++;
+        if(deadTeam2 == 6){
+            winGame(1);
+        }
     }
+    
     fainted = true;
     partita.pokemonOnField[nTeam] = -1
     printDefaultCard(nTeam)
@@ -115,16 +133,15 @@ function faintPokemon(nPokemon, nTeam) {
     printDialogue(`It seems that ${getPokemonName(nPokemon, nTeam)} is exausted!`)
     closeDialogue()
     alert(`${getPokemonName(nPokemon, nTeam)} is exausted! Select another pokemon to proceed!`)
-    //selectionDiv.style.display = "block"
 }
 
 function switchTurn(row) {
-    if (inputFieldTeam1.value == "") {
+    /*if (inputFieldTeam1.value == "") {
         alert("Il team 1 deve ancora fare una mossa per il combattimento!" + row + inputFieldTeam1.value);
     }
     else if (inputFieldTeam2.value == "") {
         alert("Il team 2 ancora fare una mossa per il combattimento!");
-    }
+    }*/
     if (partita.currentTeamTurn == 0) {
         partita.currentTeamTurn = 1;
     }
@@ -135,7 +152,6 @@ function switchTurn(row) {
 
 async function attackPhase(choicesArray) {
     console.log("Fase di attacco: [" + choicesArray + "]")
-    //selectionDiv.style.display = "none"
     if (choicesArray.includes("pokemon")) {
         if (choicesArray.every(val => val === "pokemon")) {
             await placeOnField(0)
@@ -192,7 +208,6 @@ async function attackPhase(choicesArray) {
     partita.round++
     selectedMove = [-1, -1]
     selectedPokemon = [-1, -1]
-    //selectionDiv.style.display = "initial"
     inputFieldTeam2.value = "";
     inputFieldTeam1.value = "";
 }
@@ -424,6 +439,14 @@ function checkFinalPhase() {
     return [false]
 }
 
+function winGame(nTeam){
+    rowItem[0].style.display = "none";
+    rowItem[1].style.display = "none";
+    rowItem[2].style.display = "none";
+    win.style.display = "block";
+    win.innerText = `Team ${nTeam} you won the battle!`;
+}
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -477,20 +500,7 @@ fightButton.addEventListener('click', async () => {
             let str = automaton.result()
             selectPokemon(str, partita.currentTeamTurn);
         }
-        /*if (insertPokemonTeam[i].value.startsWith("scelgo te")) {
-            let str = insertPokemonTeam[i].value
-            selectPokemon(str.substr(str.indexOf(" ") + 2), partita.currentTeamTurn);   //substr ecc.. toglie le prime due parole (scelgo te) in modo da rimanere con il pokemon
-        } else if (insertPokemonTeam[i].value.toLowerCase().startsWith("usa")) {
-            let str = insertPokemonTeam[i].value
-            console.log(str)
-            selectMove(str.substr(str.indexOf(" ") + 1), partita.currentTeamTurn, partita.pokemonOnField[partita.currentTeamTurn])
-        } else if (insertPokemonTeam[i].value == "test") {
-            pokeCards[1].classList.add("attackAnim")
-            await sleep(2000)
-            pokeCards[1].classList.remove("attackAnim")
-        }*/
     }
-
 })
 
 /*fightButtonTeam1.addEventListener('click', async () => {    // TODO: CAPIRE SE LASCIARE ASYNC O NO
@@ -546,17 +556,7 @@ fightButtonTeam2.addEventListener('click', async () => {    // TODO: CAPIRE SE L
         selectPokemon(str, partita.currentTeamTurn);
     }
 })*/
-const ButtonMoves1 = document.getElementsByClassName("MoveBox1");
-const ButtonMoves2 = document.getElementsByClassName("MoveBox2");
 
-const Moves1 = document.getElementsByClassName("MoveSet1");
-const Moves2 = document.getElementsByClassName("MoveSet2");
-
-
-const moveSet1 = document.getElementById("MoveSet1");
-const StatsWindowTeam1 = document.getElementById("Stats1");
-const moveSet2 = document.getElementById("MoveSet2");
-const StatsWindowTeam2 = document.getElementById("Stats2");
 
 menuBar1Button.addEventListener("click", () => {
     if (!(StatsWindowTeam1.style.display == "block")) {
@@ -582,23 +582,11 @@ menuBar2Button.addEventListener("click", () => {
     }
 
 });
-//calculateDamage(teams[teamAtk].pokemon[partita.pokemonOnField[teamAtk]], teams[teamDef].pokemon[partita.pokemonOnField[teamDef]], move)
-const changeStatsTeam2Button = document.getElementById("changeStatsTeam2");
-const changeStatsTeam2Password = document.getElementById("team2StatsPassword");
-
-const changeStatsTeam1Button = document.getElementById("changeStatsTeam1");
-const changeStatsTeam1Password = document.getElementById("team1StatsPassword");
-
-const pokemonAttackBox = document.getElementsByClassName("Attack")
-const pokemonDefenseBox = document.getElementsByClassName("Defense")
-const pokemonSpecialAttackBox = document.getElementsByClassName("SpecialAttack")
-const pokemonSpecialDefenseBox = document.getElementsByClassName("SpecialDefense")
-const pokemonSpeedBox = document.getElementsByClassName("Speed")
 
 changeStatsTeam1Button.addEventListener("click", async () => {
     if (changeStatsTeam1Password.value.toLowerCase() == "cambia") {
         StatsWindowTeam1.contentEditable = "true";
-        await sleep(5000);
+        await sleep(10000);
         StatsWindowTeam1.contentEditable = "false";
         changeStats(0);
     } else {
@@ -648,27 +636,6 @@ microphon_team2.addEventListener("click", (e) => {
     let webSpeech = WebSpeech(1);
     webSpeech.start();
 });
-/*redChangeInfoButton.addEventListener('click', () =>{
-    if(redStats.style.display == "" || redStats.style.display == "none"){
-        redStats.style.display = "block";
-        redMoves.style.display = "none";
-    }
-    else if(redMoves.style.display == "" || redMoves.style.display == "none"){
-        redMoves.style.display = "block";
-        redStats.style.display = "none";
-    }
-})*/
-/*blueChangeInfoButton.addEventListener('click', () =>{
-    if(blueStats.style.display == "" || blueStats.style.display == "none"){
-        blueStats.style.display = "block";
-        blueMoves.style.display = "none";
-    }
-    else if(blueMoves.style.display == "" || blueMoves.style.display == "none"){
-        blueMoves.style.display = "block";
-        blueStats.style.display = "none";
-    }
-})*/
-
 
 for (let i = 0; i < ButtonMoves1.length; i++) {
     ButtonMoves1[i].addEventListener('click', () => {
@@ -681,9 +648,6 @@ for (let i = 0; i < ButtonMoves2.length; i++) {
         inputFieldTeam2.value = 'use ' + Moves2[i].textContent + ' now';
     });
 }
-
-const pokeball1 = document.getElementsByClassName('pokeball_team1');
-const pokeball2 = document.getElementsByClassName('pokeball_team2');
 
 for (let i = 0; i < pokeball1.length; i++) {
     pokeball1[i].addEventListener('click', () => {

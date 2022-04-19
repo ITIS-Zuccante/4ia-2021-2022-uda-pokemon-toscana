@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Zuckemon</title>
     <link rel="shortcut icon" href="images/symbols/pokeball_logo.png">
-    <link rel="stylesheet" href="resources/css/indexStyle.css">
+    <link rel="stylesheet" href="resources/css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
 <body>
     <div class="logo">
         <!-- <img src="ima  ges/writings/zuckemon_logo.png" alt="logo" class="center"> -->
-        <h1 id="logo">Zuckemon</h1>
+        <h1 id="logo" class="pokemonFont">Zuckemon</h1>
     </div>
     <div class="row">
         <div class="column left">
@@ -47,8 +47,11 @@
             </div>
         </div>
         <div class="column right" id="default">
-            <div class="choose">
+            <div class="choose" id="home">
                 <img src="default.png" alt="">
+                <h1 class="pokemonFont">Benvenuti su Zuckemon!</h1>
+                <span class="pokemonFont">Combattete fino all'ultimo <br> Pokemon in una sfida <br> tra sei dei vostri <br>amichetti preferiti!</span>
+                <a target="_blank" href="https://github.com/ITIS-Zuccante/4ia-2021-2022-uda-pokemon-toscana">Gruppo "Toscana" - C. Zuccante</a>
             </div>
         </div>
         <div class="column right" id="team1Choose">
@@ -94,8 +97,8 @@
                     <div class="input">
                         <input type="password" placeholder="Inserisci un pokemon!" id="input1">
                     </div>
-                    <div class="choose-button" id="insert1">
-                        <button>
+                    <div class="choose-button">
+                        <button id="insert1">
                             <span>INSERISCI</span>
                         </button>
                     </div>
@@ -109,8 +112,8 @@
                             <span>RANDOM</span>
                         </button>
                     </div>
-                    <div class="choose-button" id="next1">
-                        <button>
+                    <div class="choose-button">
+                        <button id="next1">
                             <span>NEXT</span>
                         </button>
                     </div>
@@ -160,8 +163,8 @@
                     <div class="input">
                         <input type="password" placeholder="Inserisci un pokemon!" id="input2">
                     </div>
-                    <div class="choose-button" id="insert2">
-                        <button>
+                    <div class="choose-button">
+                        <button id="insert2">
                             <span>INSERISCI</span>
                         </button>
                     </div>
@@ -175,8 +178,8 @@
                             <span>RANDOM</span>
                         </button>
                     </div>
-                    <div class="choose-button" id="next2">
-                        <button>
+                    <div class="choose-button">
+                        <button id="next2">
                             <span>NEXT</span>
                         </button>
                     </div>
@@ -191,38 +194,7 @@
             </div>
         </div>
     </div>
-    <!-- <div class = "background">
-            <img src="images/writings/team_logo.png" class="zuckemonLogo" alt="team logo">
-            <style>
-                
-            </style>
-
-            <div class="divPlay">
-                <button  onclick="location.href='prep.html'" class="playButton" id="playButton">
-                    <img src="images/buttons/play_button.png" width="100%" alt="play button">
-                </button>
-            </div>
-
-            <div class="divHelp">
-                <button id="helpButton" class="helpButton">
-                    <img src="images/buttons/help_button.png" width="100%" alt="help button">
-                </button>
-            </div>
-            <div class="modal" id="modal">
-                <div class="modal-container" id="modalContainer">
-                    <div class="modal-header">
-                        <button id="closeButton" class="closeButton">&times;</button>
-                    </div>
-                    <div id="previousPageDiv">
-                        <button id="previousPage" class="pageButton">&lArr;</button>
-                    </div>
-                    <div id="nextPageDiv" >
-                        <button id="nextPage" class="pageButton">&rArr;</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    <script src="index.js"></script>
+    <!-- <script src="index.js"></script> -->
     <script type="module" src="choose.js"></script>
 </body>
 

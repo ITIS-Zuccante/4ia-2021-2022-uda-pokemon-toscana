@@ -151,9 +151,9 @@ function placeStars(length) {
     for (let i = 0; i < length; i++) {
         nameWithStars += '*';
     }
-    //document.getElementById("demo").style.fontSize = "x-large";
+    //
     if (nameWithStars.length > 14) {
-
+        
     } else {
 
     }
@@ -174,7 +174,7 @@ randomPokemon_buttonTeam1.addEventListener("click", () => {
 });
 
 randomPokemon_buttonTeam2.addEventListener("click", () => {
-    inputFieldTeam2.value = pokedex[Math.floor(Math.random() * 896)];
+    inputFieldTeam2.value = pokedex[Math.floor(Math.random() * 899)];
     chooseOne(1);
 });
 
