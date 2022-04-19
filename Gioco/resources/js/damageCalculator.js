@@ -73,7 +73,6 @@ export function calculateEffect(pokemonDef, pokemonAtk, move){
         "speed" : "speed",
         "accuracy" : "accuracy"
     }
-
     let target = move.info.target.name
 
     if(move.info.stat_changes[0].stat.name != "accuracy"){

@@ -40,12 +40,10 @@ const rulesWindow = document.getElementById('rulesPDF');
 const logoButton = document.getElementById('logo');
 const next1Button = document.getElementById('next1');
 const next2Button = document.getElementById('next2');
-const startTheGame_Button = document.getElementById("startGameButton");//in teoria rimpiazzato con fightButton(da rendere cliccabile)
 const inputFieldTeam1 = document.getElementById("input1");
 const inputFieldTeam2 = document.getElementById("input2");
 const microphon_team1 = document.getElementById("micro1");
 const microphon_team2 = document.getElementById("micro2")
-const loading = document.getElementById("./loading.gif")  //icona di caricamento in alto a destra (da togliere???)
 const randomPokemon_buttonTeam1 = document.getElementById("random1");
 const randomPokemon_buttonTeam2 = document.getElementById("random2");
 const insertPokemon_buttonTeam1 = document.getElementById("insert1");
@@ -73,11 +71,11 @@ if(!(JSON.parse(window.localStorage.getItem("teams")) == null)) {
     teams = JSON.parse(window.localStorage.getItem("teams"));
     console.log(teams)
     for (let j = 0; j < teams[0].n; j++) {
-        pokemonStatusTeam1[teams[0].n - j - 1].src = "../insertedPokemon.png";
+        pokemonStatusTeam1[teams[0].n - j - 1].src = "images/symbols/indexIMG/insertedPokemon.png";
         pokemonNameTeam1[teams[0].n - j - 1].innerHTML = placeStars(teams[0].pokemon[teams[0].n - j - 1].name.length);
     }
     for (let j = 0; j < teams[1].n; j++) {
-        pokemonStatusTeam2[teams[1].n - j - 1].src = "../insertedPokemon.png";
+        pokemonStatusTeam2[teams[1].n - j - 1].src = "images/symbols/indexIMG/insertedPokemon.png";
         pokemonNameTeam2[teams[1].n - j - 1].innerHTML = placeStars(teams[1].pokemon[teams[1].n - j - 1].name.length);
     }
 }
@@ -111,9 +109,9 @@ async function chooseOne(currentTeam) {
             console.log(val)
             if (!(teams[currentTeam].pokemon.some(e => e.name === val)) && !(val.replaceAll("-", "") === "")) {
                 if(currentTeam==0){
-                    pokemonStatusTeam1[teams[currentTeam].n].src = "../loading.gif";
+                    pokemonStatusTeam1[teams[currentTeam].n].src = "images/symbols/indexIMG/loading.gif";
                 } else{
-                    pokemonStatusTeam2[teams[currentTeam].n].src = "../loading.gif";
+                    pokemonStatusTeam2[teams[currentTeam].n].src = "images/symbols/indexIMG/loading.gif";
                 }
                 pokemonsObject.val = await getPokemon(pokedex.indexOf(val) + 1)
                 teams[currentTeam].pokemon.push(await loadInfo(pokemonsObject.val));
@@ -123,11 +121,11 @@ async function chooseOne(currentTeam) {
                 console.log(teams[currentTeam].pokemon[teams[currentTeam].n - 1]);
                 switch (currentTeam) {
                     case 0:
-                        pokemonStatusTeam1[teams[currentTeam].n - 1].src = "../insertedPokemon.png";
+                        pokemonStatusTeam1[teams[currentTeam].n - 1].src = "images/symbols/indexIMG/insertedPokemon.png";
                         pokemonNameTeam1[teams[currentTeam].n - 1].innerHTML = placeStars(name.length);
                         break;
                     case 1:
-                        pokemonStatusTeam2[teams[currentTeam].n - 1].src = "../insertedPokemon.png";
+                        pokemonStatusTeam2[teams[currentTeam].n - 1].src = "images/symbols/indexIMG/insertedPokemon.png";
                         pokemonNameTeam2[teams[currentTeam].n - 1].innerHTML = placeStars(name.length);
                         break;
                 }
@@ -259,7 +257,7 @@ next2Button.addEventListener("click", () => {
 
 function clearLocal(){
     for(let i = 0; i < pokemonCardIMG.length; i++){
-        pokemonCardIMG[i].src = "../question-mark.png";
+        pokemonCardIMG[i].src = "images/symbols/question-mark.png";
         pokemonCardPAR[i].innerHTML = "..."
     }
 }

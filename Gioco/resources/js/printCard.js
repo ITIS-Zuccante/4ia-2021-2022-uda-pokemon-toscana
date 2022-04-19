@@ -54,7 +54,7 @@ const Team1MovesTextBox = document.getElementsByClassName("MoveSet1")
 const Team2MovesTextBox = document.getElementsByClassName("MoveSet2")
 //const redPPBox = document.getElementsByClassName("redPP")
 //const bluePPBox = document.getElementsByClassName("bluePP")
-//BARRAAAAAAAAAAAAAAAAAAAAAAAAA
+
 const bar1 = document.getElementById("bar1");
 const bar2 = document.getElementById("bar2");
 
@@ -140,10 +140,11 @@ export function printDefaultCard(nTeam){
 
     pokemonNameBox[nTeam].innerHTML ="???"
     pokemonHpBox[nTeam].innerHTML = "???"
+    pokemonTotalHp[nTeam].innerHTML = ""
     //pokemonTypeBox1[nTeam].innerHTML = "???"
     //pokemonTypeBox1[nTeam].style.backgroundColor = "gray";
     pokemonCards[nTeam].style.backgroundImage = "";
-    pokemonImg[nTeam].src = "images/symbols/questionMark.png";
+    pokemonImg[nTeam].src = "images/symbols/question-mark.png";
 
     pokemonAttackBox[nTeam].innerHTML = "Attack: " + "???"
     pokemonDefenseBox[nTeam].innerHTML = "Defense: " + "???"
