@@ -71,12 +71,16 @@ if(!(JSON.parse(window.localStorage.getItem("teams")) == null)) {
     teams = JSON.parse(window.localStorage.getItem("teams"));
     console.log(teams)
     for (let j = 0; j < teams[0].n; j++) {
-        pokemonStatusTeam1[teams[0].n - j - 1].src = "images/symbols/indexIMG/insertedPokemon.png";
-        pokemonNameTeam1[teams[0].n - j - 1].innerHTML = placeStars(teams[0].pokemon[teams[0].n - j - 1].name.length);
+        try {
+            pokemonStatusTeam1[teams[0].n - j - 1].src = "images/symbols/indexIMG/insertedPokemon.png";
+            pokemonNameTeam1[teams[0].n - j - 1].innerHTML = placeStars(teams[0].pokemon[teams[0].n - j - 1].name.length);
+        } catch (error) {}
     }
     for (let j = 0; j < teams[1].n; j++) {
-        pokemonStatusTeam2[teams[1].n - j - 1].src = "images/symbols/indexIMG/insertedPokemon.png";
-        pokemonNameTeam2[teams[1].n - j - 1].innerHTML = placeStars(teams[1].pokemon[teams[1].n - j - 1].name.length);
+        try {
+            pokemonStatusTeam2[teams[1].n - j - 1].src = "images/symbols/indexIMG/insertedPokemon.png";
+            pokemonNameTeam2[teams[1].n - j - 1].innerHTML = placeStars(teams[1].pokemon[teams[1].n - j - 1].name.length);
+        } catch (error) {}
     }
 }
 let pokemonsObject = {};
