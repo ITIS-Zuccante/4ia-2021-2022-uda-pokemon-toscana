@@ -13,6 +13,7 @@ import { printDialogue, closeDialogue } from './resources/js/printDialogue.js';
 import { Automaton } from './resources/js/automaton.js';
 import { WebSpeech } from "./resources/js/WebSpeech.js";
 
+const logoButton = document.getElementById('logo');
 const pokeballTeam1 = document.getElementsByClassName("team1");
 const pokeballTeam2 = document.getElementsByClassName("team2");
 const fightButtonTeam1 = document.getElementById("enter1");
@@ -640,6 +641,11 @@ microphon_team2.addEventListener("click", (e) => {
     let webSpeech = WebSpeech(1);
     webSpeech.start();
 });
+
+logoButton.addEventListener("click", ()=>{
+    window.localStorage.clear();
+    window.location.href = "index.html";
+})
 
 for (let i = 0; i < ButtonMoves1.length; i++) {
     ButtonMoves1[i].addEventListener('click', () => {

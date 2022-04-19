@@ -194,6 +194,7 @@ buttons.map(button => {
             if (buttons[index] == button) {
                 switch (index) {//ROSSO
                     case 0:
+                        
                         clearLocal()
                         window.localStorage.clear()
                         teams = [
@@ -220,9 +221,14 @@ buttons.map(button => {
                         rulesWindow.style.display = "block";
                         break;
                     case 4:
-                        window.localStorage.setItem("teams", JSON.stringify(teams));
-                        window.location.href = 'fight.html';
-                        window.location.href = "fight.html";
+                        console.log(teams[0].n + "<1 2>"  + teams[1].n)
+                        if(teams[0].n == 6 && teams[1].n == 6){
+                            window.localStorage.setItem("teams", JSON.stringify(teams));
+                            window.location.href = 'fight.html'; 
+                        } else {
+                            alert("Devi selezionare 6 pokemon per ogni squadra!")
+                            defaultView.style.display = "block";
+                        }
                 }
                 buttons[index].style.backgroundColor = "#F93C3C";
             } else {//BLU
