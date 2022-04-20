@@ -4,6 +4,9 @@ import { loadInfo } from "./resources/js/loadPokemonInfo.js"
 import { WebSpeech } from "./resources/js/WebSpeech.js";
 
 let bestMatch = BestMatch();
+const team1Window = document.getElementById('team1Choose');
+const team2Window = document.getElementById('team2Choose');
+const rulesWindow = document.getElementById('rulesPDF');
 
 window.addEventListener("load", function () {
     team1Window.style.display = "none";
@@ -33,10 +36,7 @@ const team1Button = document.getElementById('team1');
 const team2Button = document.getElementById('team2');
 const rulesButton = document.getElementById('rules');
 const fightButton = document.getElementById('fight');
-const team1Window = document.getElementById('team1Choose');
-const team2Window = document.getElementById('team2Choose');
 const defaultView = document.getElementById('default');
-const rulesWindow = document.getElementById('rulesPDF');
 const logoButton = document.getElementById('logo');
 const next1Button = document.getElementById('next1');
 const next2Button = document.getElementById('next2');
@@ -67,20 +67,20 @@ let teams = [
         pokemon: []
     }
 ];
-if(!(JSON.parse(window.localStorage.getItem("teams")) == null)) {
+if (!(JSON.parse(window.localStorage.getItem("teams")) == null)) {
     teams = JSON.parse(window.localStorage.getItem("teams"));
     console.log(teams)
     for (let j = 0; j < teams[0].n; j++) {
         try {
             pokemonStatusTeam1[teams[0].n - j - 1].src = "images/symbols/indexIMG/insertedPokemon.png";
             pokemonNameTeam1[teams[0].n - j - 1].innerHTML = placeStars(teams[0].pokemon[teams[0].n - j - 1].name.length);
-        } catch (error) {}
+        } catch (error) { }
     }
     for (let j = 0; j < teams[1].n; j++) {
         try {
             pokemonStatusTeam2[teams[1].n - j - 1].src = "images/symbols/indexIMG/insertedPokemon.png";
             pokemonNameTeam2[teams[1].n - j - 1].innerHTML = placeStars(teams[1].pokemon[teams[1].n - j - 1].name.length);
-        } catch (error) {}
+        } catch (error) { }
     }
 }
 let pokemonsObject = {};
@@ -112,9 +112,9 @@ async function chooseOne(currentTeam) {
             let val = bestMatch.bestMatch(inputField, pokedex);
             console.log(val)
             if (!(teams[currentTeam].pokemon.some(e => e.name === val)) && !(val.replaceAll("-", "") === "")) {
-                if(currentTeam==0){
+                if (currentTeam == 0) {
                     pokemonStatusTeam1[teams[currentTeam].n].src = "images/symbols/indexIMG/loading.gif";
-                } else{
+                } else {
                     pokemonStatusTeam2[teams[currentTeam].n].src = "images/symbols/indexIMG/loading.gif";
                 }
                 pokemonsObject.val = await getPokemon(pokedex.indexOf(val) + 1)
@@ -155,7 +155,7 @@ function placeStars(length) {
     }
     //
     if (nameWithStars.length > 14) {
-        
+
     } else {
 
     }
@@ -198,7 +198,7 @@ buttons.map(button => {
             if (buttons[index] == button) {
                 switch (index) {//ROSSO
                     case 0:
-                        
+
                         clearLocal()
                         window.localStorage.clear()
                         teams = [
@@ -225,10 +225,10 @@ buttons.map(button => {
                         rulesWindow.style.display = "block";
                         break;
                     case 4:
-                        console.log(teams[0].n + "<1 2>"  + teams[1].n)
-                        if(teams[0].n >= 6 && teams[1].n >= 6){
+                        console.log(teams[0].n + "<1 2>" + teams[1].n)
+                        if (teams[0].n >= 6 && teams[1].n >= 6) {
                             window.localStorage.setItem("teams", JSON.stringify(teams));
-                            window.location.href = 'fight.html'; 
+                            window.location.href = 'fight.html';
                         } else {
                             alert("Devi selezionare 6 pokemon per ogni squadra!")
                             defaultView.style.display = "block";
@@ -265,8 +265,8 @@ next2Button.addEventListener("click", () => {
     buttons[3].style.backgroundColor = "#F93C3C";
 })
 
-function clearLocal(){
-    for(let i = 0; i < pokemonCardIMG.length; i++){
+function clearLocal() {
+    for (let i = 0; i < pokemonCardIMG.length; i++) {
         pokemonCardIMG[i].src = "images/symbols/question-mark.png";
         pokemonCardPAR[i].innerHTML = "..."
     }

@@ -1,4 +1,4 @@
-body{
+body {
     background-image: url("../../images/backgrounds/BattleBackground.jpg");
     background-color: #cccccc;
     background-repeat: no-repeat;
@@ -9,16 +9,18 @@ body{
     margin: 0;
 }
 
-.left, .right{
+.left,
+.right {
     width: 50%;
-    float:left      
+    float: left
 }
 
-.pokeball{
+.pokeball {
     width: 30%;
 }
+
 /*------------POKEMON CARD--------------*/
-.card{
+.card {
     width: 330px;
     height: 500px;
     background-color: rgb(255, 255, 255);
@@ -35,7 +37,7 @@ body{
     transform: translateY(-30px);
 }
 
-.card_parentdiv{
+.card_parentdiv {
     width: 70%;
     margin: auto;
 }
@@ -65,15 +67,18 @@ body{
     width: 50%;
 }
 
-.pokeImg{
+.pokeImg {
     display: flex;
     flex-direction: column;
-    justify-content: center;  /* Centering y-axis */
-    align-items :center; /* Centering x-axis */
+    justify-content: center;
+    /* Centering y-axis */
+    align-items: center;
+    /* Centering x-axis */
 }
 
 
-.MoveBox1, .MoveBox2 {
+.MoveBox1,
+.MoveBox2 {
     width: 140px;
     margin: 12.5px;
     border-radius: 8px;
@@ -82,33 +87,37 @@ body{
 
 }
 
-.MoveSet1, .MoveSet2 {
+.MoveSet1,
+.MoveSet2 {
     height: 40px;
 }
 
 /*-------------POKEBALL----------------*/
-.pokeball_img{
+.pokeball_img {
     padding: 19px;
-    background: rgba(0,0,0,0.0);
+    background: rgba(0, 0, 0, 0.0);
     border: 0px;
 }
 
-.pokeball_team1{
+.pokeball_team1 {
     margin-left: 85px;
 }
 
 .first_pokeball {
     padding-top: 0px;
 }
+
 /*----------    GIF    ----------*/
-#versusGif{
+#versusGif {
     position: absolute;
     top: 23%;
     left: 33%;
 }
+
 /*----------CARD'S BUTTONS----------*/
 
-#mic1, #mic2  {
+#mic1,
+#mic2 {
     width: 50px;
     height: 50px;
     margin-left: 20px;
@@ -116,7 +125,8 @@ body{
     border-radius: 5px;
 }
 
-#random1, #random2  {
+#random1,
+#random2 {
     width: 50px;
     height: 50px;
     border-radius: 5px;
@@ -132,17 +142,18 @@ body{
 
 .menu {
     display: none;
-    height: 180px ;
+    height: 180px;
     width: 330px;
     padding: 0;
     text-align: center;
 }
 
-ul{
+ul {
     padding: 0;
 }
 
-#menubar1, #menubar2 {
+#menubar1,
+#menubar2 {
     margin-top: 10px;
     margin-left: 20px;
 }
@@ -160,24 +171,24 @@ ul{
     border-radius: 5px;
     overflow: hidden;
     margin-left: 20px;
-  }
-  
-  .progress__fill {
+}
+
+.progress__fill {
     width: 0%;
     height: 100%;
     background: #009579;
     transition: all 0.2s;
-  }
-  
-  .progress__text {
+}
+
+.progress__text {
     position: absolute;
     top: 50%;
     right: 5px;
     transform: translateY(-50%);
     font: bold 14px "Quicksand", sans-serif;
     color: black;
-  }
-  
+}
+
 /*---------OTHER-----------*/
 
 #battle {
@@ -187,7 +198,7 @@ ul{
     position: relative;
 }
 
-#battle img{
+#battle img {
     padding: none;
 }
 
@@ -204,15 +215,22 @@ ul{
     line-height: 20px;
 }
 
+@media (max-width: 1599px) {
+    .dialogueBox {
+        top: 75%;
+        left: 55%;
+    }
+}
+
 #wrapper {
-    width:50%;
-    margin-left:25%;
-    margin-right:25%;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
     text-align: center;
 }
 
 /*---------------- WIN WINDOW -------------------*/
-#win{
+#win {
     font-family: 'Press Start 2P', cursive;
     margin-top: 300px;
     color: crimson;

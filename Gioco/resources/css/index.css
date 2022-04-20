@@ -197,34 +197,27 @@ body {
 
 /************* HOME PAGE ********************/
 #home {
-    display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden
+    overflow: hidden;
+    background-image: url("../../images/backgrounds/default.png");
+    background-size: cover; 
 }
-#home img {
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%
-}
-
-#home span, #home h1, #home a{
-    position: absolute;
-}
-
+ 
 #home h1{
-    top: 20%;
-    font-size: 250%;
+    text-align: center;
+    margin-top: 5%;
+    font-size: 220%;
 }
 
-#home span{
-    top: 48%;
-    left: 32%;
-    font-size: 200%;
+#home p{
+    /* text-align: center; */
+    margin-top: 15%;
+    font-size: 150%;
+    width: 80%;
 }
 
 #home a{
+    text-align: center;
     text-decoration: none;
-    top: 78%;
-    left: 77%;
-}
+} 
