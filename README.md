@@ -65,3 +65,8 @@ Link utili per il progetto
 ### REST API
 
 * https://blog.devgenius.io/best-practice-and-cheat-sheet-for-rest-api-design-6a6e12dfa89f
+
+### MUSICHE
+  
+* https://www.youtube.com/watch?v=-BKfhq_TtcE (Licenza Attribuzione di Creative Commons (riutilizzo consentito))
+
